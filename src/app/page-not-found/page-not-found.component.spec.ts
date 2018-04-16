@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 import { PageNotFoundComponent } from './page-not-found.component';
 
 describe('PageNotFoundComponent', () => {
@@ -6,19 +8,34 @@ describe('PageNotFoundComponent', () => {
     let fixture: ComponentFixture<PageNotFoundComponent>;
 
     beforeEach(async(() => {
+        const successfulCompileCallback = (): void => {
+            fixture = TestBed.createComponent(PageNotFoundComponent);
+            component = fixture.componentInstance;
+            fixture.detectChanges();
+        };
+
+        const failedCompileCallback = (): void => {
+            throw new Error('PageNotFoundComponent could not be compiled.');
+        };
+
         TestBed.configureTestingModule({
-            declarations: [PageNotFoundComponent]
-        }).compileComponents();
+            declarations: [
+                PageNotFoundComponent,
+            ],
+            imports: [
+                RouterTestingModule,
+            ],
+            schemas: [
+                CUSTOM_ELEMENTS_SCHEMA,
+            ]
+        }).compileComponents().then(
+            successfulCompileCallback,
+            failedCompileCallback
+        );
     }));
 
-    it('should show page not found message', () => {
-        // Arrange & Act
-        fixture = TestBed.createComponent(PageNotFoundComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-
-        // Assert
+    it('should show site title in navbar', () => {
         const compiled = fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('h2').textContent).toBe('Page not found');
+        expect(compiled.querySelector('h1.display-4').textContent).toBe('Page Not Found');
     });
 });
