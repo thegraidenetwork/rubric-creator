@@ -1,24 +1,24 @@
-import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: AppComponent,
+        component: AboutComponent,
     },
     {
         path: 'rubrics',
-        component: AppComponent,
+        component: AboutComponent,
     },
     {
         path: 'rubrics/create',
-        component: AppComponent,
+        component: AboutComponent,
     },
     {
         path: 'rubrics/:id',
-        component: AppComponent,
+        component: AboutComponent,
     },
     {
         path: '404',
