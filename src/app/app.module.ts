@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { appRoutes } from './app.routes';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -12,6 +13,7 @@ import { appRoutes } from './app.routes';
     imports: [
         appRoutes,
         BrowserModule,
+        NgbModule.forRoot(),
     ],
     providers: [],
     bootstrap: [
