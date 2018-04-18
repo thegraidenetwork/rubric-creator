@@ -1,6 +1,7 @@
 import { select, Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
-import { DECREMENT, INCREMENT, RESET } from '../../reducers/rubric.reducer';
+import { SELECT_RUBRIC } from '../../store/rubrics.reducer';
+import { StateInterface } from '../../store/rubrics.state';
 
 @Component({
     selector: 'rc-view-rubric',
@@ -9,14 +10,12 @@ import { DECREMENT, INCREMENT, RESET } from '../../reducers/rubric.reducer';
 })
 export class ViewRubricComponent implements OnInit {
 
-    constructor(private store: Store<{ rubric: number }>) {
-        this.store.pipe(select('rubric')).subscribe(updated => console.log(updated));
+    constructor(private store: Store<StateInterface>) {
+        this.store.pipe(select('rubrics')).subscribe(updated => console.log(updated));
     }
 
     public ngOnInit(): void {
-        this.store.dispatch({ type: INCREMENT });
-        this.store.dispatch({ type: DECREMENT });
-        // this.store.dispatch({ type: RESET });
+        this.store.dispatch({ type: SELECT_RUBRIC });
     }
 
 }

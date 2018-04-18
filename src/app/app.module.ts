@@ -10,8 +10,11 @@ import { AboutComponent } from './containers/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JsonbinHttpService } from './services/http/jsonbin-http.service';
 import { StoreModule } from '@ngrx/store';
-import { rubricReducer } from './reducers/rubric.reducer';
+import { rubricsReducer } from './store/rubrics.reducer';
 import { ViewRubricComponent } from './containers/view-rubric/view-rubric.component';
+import { RubricsEffects } from './store/rubrics.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { getInitialState } from './store/rubrics.state';
 
 @NgModule({
     declarations: [
@@ -27,7 +30,11 @@ import { ViewRubricComponent } from './containers/view-rubric/view-rubric.compon
         NgbModule.forRoot(),
         RouterModule,
         HttpClientModule,
-        StoreModule.forRoot({ rubric: rubricReducer }),
+        StoreModule.forRoot(
+            { rubrics: rubricsReducer },
+            { initialState: getInitialState }
+        ),
+        EffectsModule.forRoot([RubricsEffects]),
     ],
     providers: [
         JsonbinHttpService,
