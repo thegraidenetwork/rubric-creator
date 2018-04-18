@@ -9,6 +9,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './containers/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JsonbinHttpService } from './services/http/jsonbin-http.service';
+import { StoreModule } from '@ngrx/store';
+import { rubricReducer } from './reducers/rubric.reducer';
+import { ViewRubricComponent } from './containers/view-rubric/view-rubric.component';
 
 @NgModule({
     declarations: [
@@ -16,6 +19,7 @@ import { JsonbinHttpService } from './services/http/jsonbin-http.service';
         PageNotFoundComponent,
         NavbarComponent,
         AboutComponent,
+        ViewRubricComponent,
     ],
     imports: [
         appRoutes,
@@ -23,6 +27,7 @@ import { JsonbinHttpService } from './services/http/jsonbin-http.service';
         NgbModule.forRoot(),
         RouterModule,
         HttpClientModule,
+        StoreModule.forRoot({ rubric: rubricReducer }),
     ],
     providers: [
         JsonbinHttpService,

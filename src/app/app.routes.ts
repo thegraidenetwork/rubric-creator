@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 import { PageNotFoundComponent } from './containers/page-not-found/page-not-found.component';
 import { AboutComponent } from './containers/about/about.component';
+import { ViewRubricComponent } from './containers/view-rubric/view-rubric.component';
 
 const routes: Routes = [
     {
@@ -18,7 +19,7 @@ const routes: Routes = [
     },
     {
         path: 'rubrics/:id',
-        component: AboutComponent,
+        component: ViewRubricComponent,
     },
     {
         path: '404',
