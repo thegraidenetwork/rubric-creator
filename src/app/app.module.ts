@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './containers/page-not-found/page-not-found.component';
 import { appRoutes } from './app.routes';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
-import { AboutComponent } from './about/about.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AboutComponent } from './containers/about/about.component';
+import { HttpClientModule } from '@angular/common/http';
+import { JsonbinHttpService } from './services/http/jsonbin-http.service';
 
 @NgModule({
     declarations: [
@@ -20,8 +22,11 @@ import { AboutComponent } from './about/about.component';
         BrowserModule,
         NgbModule.forRoot(),
         RouterModule,
+        HttpClientModule,
     ],
-    providers: [],
+    providers: [
+        JsonbinHttpService,
+    ],
     bootstrap: [
         AppComponent,
     ],
