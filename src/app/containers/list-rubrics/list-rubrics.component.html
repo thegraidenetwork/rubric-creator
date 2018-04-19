@@ -1,0 +1,5 @@
+<ul *ngIf="rubrics">
+    <li *ngFor="let rubric of rubrics">
+        <a [routerLink]="['/rubrics', rubric.uuid]">{{ rubric.name }}</a>
+    </li>
+</ul>

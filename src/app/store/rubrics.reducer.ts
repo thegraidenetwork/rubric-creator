@@ -3,9 +3,6 @@ import { RubricsActionsUnion, RubricsActionTypes } from './rubrics.actions';
 
 export function rubricsReducer(state: RubricsStateInterface, action: RubricsActionsUnion): RubricsStateInterface {
     switch (action.type) {
-        case RubricsActionTypes.GetRubric:
-            return state;
-
         case RubricsActionTypes.GetRubricSuccess:
             return {
                 ...state,
@@ -13,12 +10,25 @@ export function rubricsReducer(state: RubricsStateInterface, action: RubricsActi
                 error: undefined,
             };
 
+        case RubricsActionTypes.GetRubricsSuccess:
+            return {
+                ...state,
+                allRubrics: action.payload,
+                error: undefined,
+            };
+
         case RubricsActionTypes.GetRubricError:
+        case RubricsActionTypes.GetRubricsError:
             return {
                 ...state,
                 currentRubric: undefined,
+                allRubrics: undefined,
                 error: action.payload,
             };
+
+        case RubricsActionTypes.GetRubric:
+        case RubricsActionTypes.GetRubrics:
+            return state;
 
         default:
             return state;

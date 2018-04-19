@@ -3,7 +3,7 @@ import { RubricInterface } from '../interfaces/rubric.interface';
 export interface RubricsStateInterface {
     currentRubric: RubricInterface | undefined;
     allRubrics: Array<RubricInterface> | undefined;
-    error: Error | undefined;
+    error: object | undefined;
 }
 
 export function getInitialState(): {rubrics: RubricsStateInterface} {
