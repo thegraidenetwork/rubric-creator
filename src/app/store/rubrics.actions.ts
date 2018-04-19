@@ -1,7 +1,7 @@
 /* tslint:disable:max-classes-per-file */
 import { Action } from '@ngrx/store';
-import { RubricInterface } from '../interfaces/rubric.interface';
-import { DisplayableErrorInterface } from '../interfaces/displayable-error.interface';
+import { RubricInterface } from '../object-interfaces/rubric.interface';
+import { DisplayableErrorInterface } from '../object-interfaces/displayable-error.interface';
 
 export enum RubricsActionTypes {
     GetRubric = 'Get Rubric',

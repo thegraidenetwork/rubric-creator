@@ -1,5 +1,5 @@
-import { RubricInterface } from '../interfaces/rubric.interface';
-import { DisplayableErrorInterface } from '../interfaces/displayable-error.interface';
+import { RubricInterface } from '../object-interfaces/rubric.interface';
+import { DisplayableErrorInterface } from '../object-interfaces/displayable-error.interface';
 
 export interface RubricsStateInterface {
     currentRubric: RubricInterface | undefined;

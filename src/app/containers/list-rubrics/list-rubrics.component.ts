@@ -1,7 +1,7 @@
 import { select, Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { RubricsStateInterface } from '../../store/rubrics.state';
-import { RubricInterface } from '../../interfaces/rubric.interface';
+import { RubricInterface } from '../../object-interfaces/rubric.interface';
 import { BaseComponent } from '../../components/base/base.component';
 import { GetRubrics } from '../../store/rubrics.actions';
 

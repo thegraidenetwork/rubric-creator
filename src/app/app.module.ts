@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './containers/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
-import { JsonbinHttpService } from './services/data/jsonbin-http.service';
+import { JsonbinHttpService } from './data-services/clients/jsonbin-http.service';
 import { StoreModule } from '@ngrx/store';
 import { rubricsReducer } from './store/rubrics.reducer';
 import { ViewRubricComponent } from './containers/view-rubric/view-rubric.component';
@@ -17,8 +17,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { getInitialState } from './store/rubrics.state';
 import { LocalStorageModule } from '@ngx-pwa/local-storage';
 import { ListRubricsComponent } from './containers/list-rubrics/list-rubrics.component';
-import { LocalStorageService } from './services/data/local-storage.service';
+import { LocalStorageService } from './data-services/clients/local-storage.service';
 import { PageAlertComponent } from './components/page-alert/page-alert.component';
+import { BackendDataService } from './data-services/backend-data.service';
 
 @NgModule({
     bootstrap: [
@@ -49,6 +50,7 @@ import { PageAlertComponent } from './components/page-alert/page-alert.component
     providers: [
         JsonbinHttpService,
         LocalStorageService,
+        BackendDataService,
     ],
 })
 export class AppModule {
