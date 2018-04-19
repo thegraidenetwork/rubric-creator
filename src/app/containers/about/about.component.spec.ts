@@ -27,7 +27,7 @@ describe('AboutComponent', () => {
             ],
             schemas: [
                 CUSTOM_ELEMENTS_SCHEMA,
-            ]
+            ],
         }).compileComponents().then(
             successfulCompileCallback,
             failedCompileCallback

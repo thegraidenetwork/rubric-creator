@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ListRubricsComponent } from './list-rubrics.component';
 
 describe('ViewRubricComponent', () => {
@@ -7,10 +6,9 @@ describe('ViewRubricComponent', () => {
   let fixture: ComponentFixture<ListRubricsComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ListRubricsComponent ]
-    })
-    .compileComponents();
+    void TestBed.configureTestingModule({
+      declarations: [ ListRubricsComponent ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

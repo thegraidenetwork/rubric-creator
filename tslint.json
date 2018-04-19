@@ -134,9 +134,6 @@
     "new-parens": true,
     "newline-before-return": true,
     "no-angle-bracket-type-assertion": true,
-    "no-any": {
-      "severity": "warning"
-    },
     "no-arg": true,
     "no-attribute-parameter-decorator": true,
     "no-consecutive-blank-lines": [
@@ -353,7 +350,6 @@
         "variable-declaration": "onespace"
       }
     ],
-    "typeof-compare": true,
     "unified-signatures": true,
     "use-default-type-parameter": true,
     "use-host-property-decorator": true,

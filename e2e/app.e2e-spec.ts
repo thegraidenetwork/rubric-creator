@@ -9,6 +9,6 @@ describe('rubric-creator App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    void expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });

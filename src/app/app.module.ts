@@ -20,6 +20,9 @@ import { ListRubricsComponent } from './containers/list-rubrics/list-rubrics.com
 import { LocalStorageService } from './services/data/local-storage.service';
 
 @NgModule({
+    bootstrap: [
+        AppComponent,
+    ],
     declarations: [
         AppComponent,
         PageNotFoundComponent,
@@ -44,9 +47,6 @@ import { LocalStorageService } from './services/data/local-storage.service';
     providers: [
         JsonbinHttpService,
         LocalStorageService,
-    ],
-    bootstrap: [
-        AppComponent,
     ],
 })
 export class AppModule {
