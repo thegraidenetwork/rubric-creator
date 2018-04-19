@@ -1,24 +1,24 @@
-import { StateInterface } from './rubrics.state';
-import { RubricsAction } from './rubrics.actions';
+import { RubricsStateInterface } from './rubrics.state';
+import { RubricsActionsUnion, RubricsActionTypes } from './rubrics.actions';
 
-export const SELECT_RUBRIC = 'SELECT_RUBRIC';
-export const GET_RUBRIC_FOUND = 'GET_RUBRIC_FOUND';
-export const GET_RUBRIC_FAILED = 'GET_RUBRIC_FAILED';
-
-export function rubricsReducer(state: StateInterface, action: RubricsAction): StateInterface {
+export function rubricsReducer(state: RubricsStateInterface, action: RubricsActionsUnion): RubricsStateInterface {
     switch (action.type) {
-        case SELECT_RUBRIC:
+        case RubricsActionTypes.GetRubric:
             return state;
 
-        case GET_RUBRIC_FOUND:
-            state.currentRubric = action.payload;
+        case RubricsActionTypes.GetRubricSuccess:
+            return {
+                ...state,
+                currentRubric: action.payload,
+                error: undefined,
+            };
 
-            return state;
-
-        case GET_RUBRIC_FAILED:
-            state.currentRubric = undefined;
-
-            return state;
+        case RubricsActionTypes.GetRubricError:
+            return {
+                ...state,
+                currentRubric: undefined,
+                error: action.payload,
+            };
 
         default:
             return state;

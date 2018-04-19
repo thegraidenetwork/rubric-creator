@@ -18,7 +18,7 @@ const routes: Routes = [
         component: AboutComponent,
     },
     {
-        path: 'rubrics/:id',
+        path: 'rubrics/:rubric_uuid',
         component: ViewRubricComponent,
     },
     {

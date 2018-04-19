@@ -1,17 +1,17 @@
 import { RubricInterface } from '../interfaces/rubric.interface';
 
-export interface StateInterface {
+export interface RubricsStateInterface {
     currentRubric: RubricInterface | undefined;
     allRubrics: Array<RubricInterface> | undefined;
-    errorMessage: string | undefined;
+    error: Error | undefined;
 }
 
-export function getInitialState(): {rubrics: StateInterface} {
+export function getInitialState(): {rubrics: RubricsStateInterface} {
     return {
         rubrics: {
             currentRubric: undefined,
             allRubrics: undefined,
-            errorMessage: undefined,
+            error: undefined,
         },
     };
 }
