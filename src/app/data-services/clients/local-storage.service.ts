@@ -9,11 +9,11 @@ export class LocalStorageService implements GetRubricsDataInterface {
     constructor(private localStorage: LocalStorage) {}
 
     public getRubrics(): Observable<Array<RubricInterface>> {
-        return this.getItem<Array<RubricInterface>>('rubrics')
-            .filter(rubrics => (rubrics !== null && rubrics !== undefined));
+        return this.get<Array<RubricInterface>>('rubrics')
+            .filter(rubrics => rubrics !== null);
     }
 
-    private getItem<T>(key: string): Observable<T> {
+    private get<T>(key: string): Observable<T> {
         return this.localStorage.getItem<T>(key);
     }
 

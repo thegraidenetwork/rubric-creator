@@ -1,2 +1,46 @@
 <p><a [routerLink]="'../'">All Rubrics</a></p>
-<p>view-rubric works!</p>
+<div *ngIf="rubric; else loading" id="rubric">
+    <h3 id="title">{{ rubric.name }}</h3>
+    <p *ngIf="rubric.description" [innerHTML]="rubric.description | nl2br"></p>
+    <p *ngIf="rubric.id">
+        <a href="#" (click)="downloadRubric()">Download Rubric</a>
+    </p>
+
+    <table class="table table-responsive table-striped">
+        <!-- Head -->
+        <thead>
+        <tr>
+            <td><h4>Components</h4></td>
+            <td [attr.colspan]="maxLevelsCount">
+                <h4>Levels</h4>
+            </td>
+        </tr>
+        </thead>
+
+        <!-- Body -->
+        <tbody>
+        <tr *ngFor="let component of rubric.components; let index = index;">
+            <th [width]="componentWidth()">
+                {{ component.name }}
+                <div *ngIf="component.description" class="caption" [innerHtml]="component.description | nl2br"></div>
+            </th>
+            <th *ngFor="let level of component.levels" [width]="componentWidth()">
+                <div [ngSwitch]="!!(level.label)">
+                    <div *ngSwitchCase="true">
+                        {{ level.label }}
+                        <div class="caption">
+                            Points: {{ level.score }}
+                        </div>
+                    </div>
+                    <div *ngSwitchDefault class="text-center">
+                        {{ level.score }}
+                    </div>
+                </div>
+                <div class="caption" *ngIf="level.description" [innerHTML]="level.description | nl2br"></div>
+            </th>
+            <td *ngFor="let emptyElement of emptyElements(component)"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<ng-template #loading><div class="angular-placeholder">Loading...</div></ng-template>

@@ -20,6 +20,7 @@ import { ListRubricsComponent } from './containers/list-rubrics/list-rubrics.com
 import { LocalStorageService } from './data-services/clients/local-storage.service';
 import { PageAlertComponent } from './components/page-alert/page-alert.component';
 import { BackendDataService } from './data-services/backend-data.service';
+import { Nl2brPipe } from './pipes/nl2br.pipe';
 
 @NgModule({
     bootstrap: [
@@ -33,6 +34,7 @@ import { BackendDataService } from './data-services/backend-data.service';
         ViewRubricComponent,
         ListRubricsComponent,
         PageAlertComponent,
+        Nl2brPipe,
     ],
     imports: [
         appRoutes,
