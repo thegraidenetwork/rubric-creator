@@ -10,8 +10,8 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class BackendDataService implements BackendDataInterface {
-    private rubric = new Subject<RubricInterface>();
     private rubrics = new BehaviorSubject<Array<RubricInterface>>(defaultRubrics);
+    private _rubrics: Array<RubricInterface> = defaultRubrics;
 
     constructor(
         private jsonbin: JsonbinHttpService,
@@ -19,14 +19,42 @@ export class BackendDataService implements BackendDataInterface {
     ) {}
 
     public getRubric(uuid: string): Subject<RubricInterface> {
-        this.jsonbin.getRubric(uuid).subscribe(rubric => this.rubric.next(rubric));
+        this.jsonbin.getRubric(uuid).subscribe(rubric => this.pushOrUpdate(rubric));
 
-        return this.rubric;
+        return this.getRubrics().map(rubrics => rubrics.find(rubric => rubric.uuid === uuid));
     }
 
     public getRubrics(): Observable<Array<RubricInterface>> {
-        this.localStorage.getRubrics().subscribe(rubrics => this.rubrics.next(rubrics));
+        this.localStorage.getRubrics()
+            .filter(rubrics => rubrics !== null)
+            .subscribe(rubrics => this.setRubrics(rubrics));
 
         return this.rubrics;
+    }
+
+    private pushOrUpdate(rubric: RubricInterface): void {
+        let updated = false;
+
+        this._rubrics = this._rubrics.map((existingRubric: RubricInterface) => {
+            if (existingRubric.uuid === rubric.uuid) {
+                updated = true;
+
+                return rubric;
+            }
+
+            return existingRubric;
+        });
+
+        if (!updated) {
+            this._rubrics.push(rubric);
+        }
+
+        this.setRubrics(this._rubrics);
+    }
+
+    private setRubrics(rubrics: Array<RubricInterface>): void {
+        this._rubrics = rubrics;
+        this.rubrics.next(rubrics);
+        this.localStorage.setRubrics(rubrics).subscribe();
     }
 }
