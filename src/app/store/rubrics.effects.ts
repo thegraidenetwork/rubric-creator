@@ -6,6 +6,11 @@ import { of } from 'rxjs/observable/of';
 import { GetRubric, GetRubrics, RubricsActionTypes } from './rubrics.actions';
 import { Action } from '@ngrx/store';
 import { LocalStorageService } from '../services/data/local-storage.service';
+import { DisplayableErrorInterface } from '../interfaces/displayable-error.interface';
+
+function _generateDisplayableError(error?: object): DisplayableErrorInterface {
+    return {message: 'Whoops! Something went wrong and data could not be loaded. Try refreshing the page.'};
+}
 
 @Injectable()
 export class RubricsEffects {
@@ -15,7 +20,7 @@ export class RubricsEffects {
         .mergeMap(action => {
             return this.jsonbin.getRubric(action.payload)
                 .map(data => ({type: RubricsActionTypes.GetRubricSuccess, payload: data}))
-                .catch(err => of({type: RubricsActionTypes.GetRubricError, payload: err}));
+                .catch(err => of({type: RubricsActionTypes.GetRubricError, payload: _generateDisplayableError(err)}));
         });
 
     @Effect()
@@ -24,7 +29,7 @@ export class RubricsEffects {
         .mergeMap(action => {
             return this.localStorage.getRubrics()
                 .map(data => ({type: RubricsActionTypes.GetRubricsSuccess, payload: data}))
-                .catch(err => of({type: RubricsActionTypes.GetRubricsError, payload: err}));
+                .catch(err => of({type: RubricsActionTypes.GetRubricsError, payload: _generateDisplayableError(err)}));
         });
 
     constructor(

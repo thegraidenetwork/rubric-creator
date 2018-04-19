@@ -18,6 +18,7 @@ import { getInitialState } from './store/rubrics.state';
 import { LocalStorageModule } from '@ngx-pwa/local-storage';
 import { ListRubricsComponent } from './containers/list-rubrics/list-rubrics.component';
 import { LocalStorageService } from './services/data/local-storage.service';
+import { PageAlertComponent } from './components/page-alert/page-alert.component';
 
 @NgModule({
     bootstrap: [
@@ -30,6 +31,7 @@ import { LocalStorageService } from './services/data/local-storage.service';
         AboutComponent,
         ViewRubricComponent,
         ListRubricsComponent,
+        PageAlertComponent,
     ],
     imports: [
         appRoutes,

@@ -1,9 +1,10 @@
 import { RubricInterface } from '../interfaces/rubric.interface';
+import { DisplayableErrorInterface } from '../interfaces/displayable-error.interface';
 
 export interface RubricsStateInterface {
     currentRubric: RubricInterface | undefined;
     allRubrics: Array<RubricInterface> | undefined;
-    error: object | undefined;
+    error: DisplayableErrorInterface | undefined;
 }
 
 export function getInitialState(): {rubrics: RubricsStateInterface} {
