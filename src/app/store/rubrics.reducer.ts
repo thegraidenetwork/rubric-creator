@@ -27,6 +27,11 @@ export function rubricsReducer(state: RubricsStateInterface, action: RubricsActi
             };
 
         case RubricsActionTypes.GetRubric:
+            return {
+                ...state,
+                currentRubric: undefined,
+            };
+
         case RubricsActionTypes.GetRubrics:
             return state;
 
