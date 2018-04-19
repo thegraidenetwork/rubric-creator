@@ -26,10 +26,9 @@ export class ViewRubricComponent extends BaseComponent implements OnInit {
             this.store.dispatch(new GetRubric(params['rubric_uuid'] as string));
         });
 
-        this.store.pipe(select('rubrics')).subscribe((state: RubricsStateInterface) => {
-            console.log(state);
-            this.rubric = state.currentRubric;
-        });
+        this.store.takeUntil(this.ngUnsubscribe)
+            .pipe(select('rubrics'))
+            .subscribe((state: RubricsStateInterface) => this.rubric = state.currentRubric);
     }
 
 }
