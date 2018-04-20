@@ -10,9 +10,9 @@ export class JsonbinHttpService {
     constructor(private http: HttpClient) {}
 
     public getRubric(uuid: string): Observable<RubricInterface> {
-        return this.get(`${this.rootUrl}/b/${uuid}`).map((result: RubricInterface) => {
-            return {...result, uuid};
-        });
+        return this.get(`${this.rootUrl}/b/${uuid}`)
+            // Set the rubric's uuid from the request
+            .map((result: RubricInterface) => ({...result, uuid}));
     }
 
     private get(url: string): Observable<object> {

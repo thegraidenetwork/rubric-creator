@@ -21,7 +21,7 @@ export class LocalStorageService implements GetRubricsDataInterface {
     }
 
     private set<T>(key: string, value: T): Observable<boolean> {
-        return this.localStorage.setItem<T>(key, value);
+        return this.localStorage.setItem(key, value);
     }
 
 }
