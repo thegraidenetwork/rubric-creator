@@ -17,7 +17,7 @@ While this product is freely available on the web, you may also want to customiz
 
 ### Prerequisites
 - Node 7.0+
-- NPM 3.0+
+- NPM 5.0+
 
 ### Installation
 
@@ -38,6 +38,10 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ### Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+### Linting
+
+Run `ng lint` to execute the linter via [TSLint](https://palantir.github.io/tslint/).
 
 ## License
 
