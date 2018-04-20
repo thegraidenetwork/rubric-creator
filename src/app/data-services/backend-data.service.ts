@@ -1,4 +1,3 @@
-import { BackendDataInterface } from './interfaces/backend-data.interface';
 import { RubricInterface } from '../object-interfaces/rubric.interface';
 import { JsonbinHttpService } from './clients/jsonbin-http.service';
 import { LocalStorageService } from './clients/local-storage.service';
@@ -6,10 +5,11 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { defaultRubrics } from './data/defaultRubrics';
-import { Subject } from 'rxjs/Subject';
+import { GetRubricDataInterface } from './interfaces/get-rubric-data.interface';
+import { GetRubricsDataInterface } from './interfaces/get-rubrics-data.interface';
 
 @Injectable()
-export class BackendDataService implements BackendDataInterface {
+export class BackendDataService implements GetRubricDataInterface, GetRubricsDataInterface {
     private rubrics = new BehaviorSubject<Array<RubricInterface>>(defaultRubrics);
     private _rubrics: Array<RubricInterface> = defaultRubrics;
 
@@ -18,8 +18,8 @@ export class BackendDataService implements BackendDataInterface {
         private localStorage: LocalStorageService
     ) {}
 
-    public getRubric(uuid: string): Subject<RubricInterface> {
-        this.jsonbin.getRubric(uuid).subscribe(rubric => this.pushOrUpdate(rubric));
+    public getRubric(uuid: string): Observable<RubricInterface> {
+        this.jsonbin.getRubric(uuid).subscribe(rubric => this.pushOrUpdateRubric(rubric));
 
         return this.getRubrics().map(rubrics => rubrics.find(rubric => rubric.uuid === uuid));
     }
@@ -32,7 +32,7 @@ export class BackendDataService implements BackendDataInterface {
         return this.rubrics;
     }
 
-    private pushOrUpdate(rubric: RubricInterface): void {
+    private pushOrUpdateRubric(rubric: RubricInterface): void {
         let updated = false;
 
         this._rubrics = this._rubrics.map((existingRubric: RubricInterface) => {

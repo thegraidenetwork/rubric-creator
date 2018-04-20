@@ -4,7 +4,7 @@ import * as faker from 'faker';
 import { JsonbinHttpService } from './jsonbin-http.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-describe('LocalStorageService', () => {
+describe('JsonbinHttpService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [JsonbinHttpService],
@@ -18,8 +18,8 @@ describe('LocalStorageService', () => {
             let result;
             const uuid = faker.random.uuid();
             const response = {
-                name: faker.random.words(),
                 description: faker.random.words(),
+                name: faker.random.words(),
             };
 
             service.getRubric(uuid).subscribe(data => result = data);

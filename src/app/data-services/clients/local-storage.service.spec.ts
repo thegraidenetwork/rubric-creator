@@ -36,8 +36,8 @@ describe('LocalStorageService', () => {
         [LocalStorageService],
         (service: LocalStorageService) => {
             const rubrics = [{
-                uuid: faker.random.uuid(),
                 name: faker.random.words(),
+                uuid: faker.random.uuid(),
             }];
             spyOn(mockLocalStorage, 'setItem').and.callThrough();
 

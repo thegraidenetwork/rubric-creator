@@ -1,8 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PageAlertComponent } from './page-alert.component';
 
-describe('PageAlertComponent', () => {
+xdescribe('PageAlertComponent', () => {
   let component: PageAlertComponent;
   let fixture: ComponentFixture<PageAlertComponent>;
 
