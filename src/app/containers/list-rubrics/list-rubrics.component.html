@@ -1,19 +1,21 @@
-<div class="row">
-    <div class="col-xs-12">
-        <h1>Available Rubrics</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Available Rubrics</h1>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-        <ul *ngIf="rubrics">
-            <li *ngFor="let rubric of rubrics">
-                <a [routerLink]="['/rubrics', rubric.uuid]">{{ rubric.name }}</a>
-            </li>
-        </ul>
+    <div class="row">
+        <div class="col-xs-12">
+            <ul *ngIf="rubrics">
+                <li *ngFor="let rubric of rubrics">
+                    <a [routerLink]="['/rubrics', rubric.uuid]">{{ rubric.name }}</a>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-        <a [routerLink]="'/rubrics/create'" class="btn btn-primary">Create New Rubric</a>
+    <div class="row">
+        <div class="col-xs-12">
+            <a [routerLink]="'/rubrics/create'" class="btn btn-primary">Create New Rubric</a>
+        </div>
     </div>
 </div>

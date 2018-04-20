@@ -21,6 +21,9 @@ import { LocalStorageService } from './data-services/clients/local-storage.servi
 import { PageAlertComponent } from './components/page-alert/page-alert.component';
 import { BackendDataService } from './data-services/backend-data.service';
 import { Nl2brPipe } from './pipes/nl2br.pipe';
+import { RubricHeaderComponent } from './components/rubric-header/rubric-header.component';
+import { RubricTableHeadComponent } from './components/rubric-table-head/rubric-table-head.component';
+import { RubricTableBodyComponent } from './components/rubric-table-body/rubric-table-body.component';
 
 @NgModule({
     bootstrap: [
@@ -35,6 +38,9 @@ import { Nl2brPipe } from './pipes/nl2br.pipe';
         ListRubricsComponent,
         PageAlertComponent,
         Nl2brPipe,
+        RubricHeaderComponent,
+        RubricTableHeadComponent,
+        RubricTableBodyComponent,
     ],
     imports: [
         appRoutes,
