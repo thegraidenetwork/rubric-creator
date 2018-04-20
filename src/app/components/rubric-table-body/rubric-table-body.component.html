@@ -1,14 +1,14 @@
-<tr *ngFor="let component of rubric.components; let index = index;">
-    <th>
+<tr valign="top" *ngFor="let component of rubric.components; let index = index;">
+    <th [ngStyle]="componentWidth()">
         {{ component.name }}
         <div *ngIf="component.description" class="caption"
              [innerHtml]="component.description | nl2br"></div>
     </th>
-    <td *ngFor="let level of component.levels">
+    <td *ngFor="let level of component.levels" [ngStyle]="componentWidth()">
         <div [ngSwitch]="!!(level.label)">
             <div *ngSwitchCase="true">
                 <h5>{{ level.label }}</h5>
-                <div class="caption">
+                <div>
                     Points: {{ level.score }}
                 </div>
             </div>

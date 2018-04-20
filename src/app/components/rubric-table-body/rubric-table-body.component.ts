@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BaseRubricComponent } from '../base/base-rubric.component';
 import { RubricsStateInterface } from '../../store/rubrics.state';
@@ -12,6 +12,8 @@ const MAXIMUM_WIDTH = 100;
     templateUrl: './rubric-table-body.component.html',
 })
 export class RubricTableBodyComponent extends BaseRubricComponent {
+    @Input() public responsive = true;
+
     public constructor(protected store: Store<RubricsStateInterface>) {
         super(store);
     }
@@ -20,7 +22,9 @@ export class RubricTableBodyComponent extends BaseRubricComponent {
         return new Array(this.rubric.maxLevelsCount - component.levels.length);
     }
 
-    public componentWidth(): string {
-        return `${(MAXIMUM_WIDTH / (this.rubric.maxLevelsCount + 1))}%`;
+    public componentWidth(): object {
+        return this.responsive ?
+            {'min-width': '15em'} :
+            {width: `${(MAXIMUM_WIDTH / (this.rubric.maxLevelsCount + 1))}%`};
     }
 }

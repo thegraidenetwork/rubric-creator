@@ -13,7 +13,9 @@ export class RubricHeaderComponent extends BaseRubricComponent implements OnInit
         super(store);
     }
 
-    public downloadRubric(): false {
+    public printRubric(): false {
+        window.print();
+
         return false;
     }
 }

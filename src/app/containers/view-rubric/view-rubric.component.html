@@ -7,12 +7,17 @@
     <div *ngIf="rubric; else loading" id="rubric">
         <rc-rubric-header></rc-rubric-header>
         <div class="row">
-            <div class="table-responsive">
+            <div class="table-responsive d-print-none">
                 <table class="table table-striped">
                     <thead rc-rubric-table-head></thead>
                     <tbody rc-rubric-table-body></tbody>
                 </table>
             </div>
+
+            <table class="d-none d-print-block">
+                <thead rc-rubric-table-head></thead>
+                <tbody rc-rubric-table-body [responsive]="false"></tbody>
+            </table>
         </div>
     </div>
     <ng-template #loading>
