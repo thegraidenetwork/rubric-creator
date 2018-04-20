@@ -27,7 +27,11 @@ export class PageAlertComponent extends BaseComponent implements OnInit {
         this.store.takeUntil(this.ngUnsubscribe)
             .pipe(select('rubrics'))
             .subscribe((state: RubricsStateInterface) => {
-                state.error !== undefined ? this.showError(state.error.message) : this.clearAlert();
+                if (state.error !== undefined) {
+                    this.showError(state.error.message);
+                }  else {
+                    this.clearAlert();
+                }
             });
         this.router.events.subscribe(event => {
             this.clearAlert();

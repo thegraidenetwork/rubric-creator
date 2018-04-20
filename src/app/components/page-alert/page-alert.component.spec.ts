@@ -7,8 +7,8 @@ describe('PageAlertComponent', () => {
   let fixture: ComponentFixture<PageAlertComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PageAlertComponent ]
+    void TestBed.configureTestingModule({
+      declarations: [ PageAlertComponent ],
     })
     .compileComponents();
   }));
