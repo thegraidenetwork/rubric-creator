@@ -1,20 +1,39 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" [routerLink]="'/'">Rubric Creator</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" [routerLink]="'/'" (click)="navbarCollapsed = true">
+        <img width="30" height="30" src="/assets/pencil.png" alt="By The Graide Network">
+        Rubric Creator
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            (click)="navbarCollapsed = !navbarCollapsed"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" [routerLink]="'/'">Home</a>
+                <a class="nav-link"
+                   (click)="navbarCollapsed = true"
+                   [routerLinkActive]="'active'"
+                   [routerLinkActiveOptions]="{exact: true}"
+                   [routerLink]="'/'">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" [routerLink]="'/rubrics'">Rubrics</a>
+                <a class="nav-link"
+                   (click)="navbarCollapsed = true"
+                   [routerLinkActive]="'active'"
+                   [routerLinkActiveOptions]="{exact: true}"
+                   [routerLink]="'/rubrics'">Rubrics</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" [routerLink]="'/rubrics/create'">Create</a>
+                <a class="nav-link"
+                   (click)="navbarCollapsed = true"
+                   [routerLinkActive]="'active'"
+                   [routerLinkActiveOptions]="{exact: true}"
+                   [routerLink]="'/rubrics/create'">Create</a>
             </li>
         </ul>
     </div>

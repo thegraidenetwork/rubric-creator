@@ -5,6 +5,12 @@ html {
 body {
     margin-bottom: 60px; /* Margin bottom by footer height */
 }
+a {
+    color: #19AE54;
+}
+.btn-primary {
+    background-color: #19AE54;
+}
 .main-container {
     margin-top: 20px;
 }
