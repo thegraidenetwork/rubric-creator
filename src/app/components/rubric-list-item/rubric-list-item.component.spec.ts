@@ -1,8 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RubricListItemComponent } from './rubric-list-item.component';
 
-describe('RubricListItemComponent', () => {
+xdescribe('RubricListItemComponent', () => {
   let component: RubricListItemComponent;
   let fixture: ComponentFixture<RubricListItemComponent>;
 

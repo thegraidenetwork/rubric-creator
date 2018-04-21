@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NavbarComponent } from './navbar.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 describe('NavbarComponent', () => {
     let component: NavbarComponent;
@@ -24,6 +25,7 @@ describe('NavbarComponent', () => {
             ],
             imports: [
                 RouterTestingModule,
+                NgbModule,
             ],
             schemas: [
                 CUSTOM_ELEMENTS_SCHEMA,
@@ -36,6 +38,6 @@ describe('NavbarComponent', () => {
 
     it('should show site title in navbar', () => {
         const compiled = fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('a.navbar-brand').textContent).toBe('Rubric Creator');
+        expect(compiled.querySelector('a.navbar-brand').textContent).toContain('Rubric Creator');
     });
 });
