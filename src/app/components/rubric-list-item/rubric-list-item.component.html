@@ -1,1 +1,9 @@
-<p><a [routerLink]="['/rubrics', rubric.uuid]">{{ rubric.name }}</a></p>
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title"><a [routerLink]="['/rubrics', rubric.uuid]">{{ rubric.name }}</a></h5>
+        <h6 *ngIf="rubric.created_at" class="card-subtitle mb-2 text-muted">
+            Created: {{ rubric.created_at }}
+        </h6>
+        <p *ngIf="rubric.description" class="card-text" [innerHtml]="rubric.description | nl2br"></p>
+    </div>
+</div>
