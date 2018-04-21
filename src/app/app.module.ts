@@ -27,6 +27,7 @@ import { RubricTableBodyComponent } from './components/rubric-table-body/rubric-
 import { RubricListItemComponent } from './components/rubric-list-item/rubric-list-item.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { RubricDefinitionQuoteComponent } from './components/rubric-definition-quote/rubric-definition-quote.component';
+import { CreateRubricComponent } from './containers/create-rubric/create-rubric.component';
 
 @NgModule({
     bootstrap: [
@@ -47,6 +48,7 @@ import { RubricDefinitionQuoteComponent } from './components/rubric-definition-q
         RubricListItemComponent,
         BreadcrumbComponent,
         RubricDefinitionQuoteComponent,
+        CreateRubricComponent,
     ],
     imports: [
         appRoutes,

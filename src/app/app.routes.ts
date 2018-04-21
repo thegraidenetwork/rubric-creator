@@ -4,6 +4,7 @@ import { PageNotFoundComponent } from './containers/page-not-found/page-not-foun
 import { HomeComponent } from './containers/home/home.component';
 import { ViewRubricComponent } from './containers/view-rubric/view-rubric.component';
 import { ListRubricsComponent } from './containers/list-rubrics/list-rubrics.component';
+import { CreateRubricComponent } from './containers/create-rubric/create-rubric.component';
 
 const routes: Routes = [
     {
@@ -16,7 +17,7 @@ const routes: Routes = [
     },
     {
         path: 'rubrics/create',
-        component: HomeComponent,
+        component: CreateRubricComponent,
     },
     {
         path: 'rubrics/:rubric_uuid',
