@@ -12,7 +12,7 @@ import { BreadcrumbInterface } from '../../object-interfaces/breadcrumb.interfac
     templateUrl: './list-rubrics.component.html',
 })
 export class ListRubricsComponent extends BaseComponent implements OnInit {
-    public rubrics: Array<RubricInterface> = undefined;
+    public rubrics: Array<RubricInterface> | undefined = undefined;
     private breadcrumbs: Array<BreadcrumbInterface> = [
         {
             path: '/',

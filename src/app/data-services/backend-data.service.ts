@@ -18,15 +18,19 @@ export class BackendDataService implements GetRubricDataInterface, GetRubricsDat
         private localStorage: LocalStorageService
     ) {}
 
-    public getRubric(uuid: string): Observable<RubricInterface> {
+    public getRubric(uuid: string): Observable<RubricInterface | undefined> {
         this.jsonbin.getRubric(uuid).subscribe(rubric => this.pushOrUpdateRubric(rubric));
 
-        return this.getRubrics().map(rubrics => rubrics.find(rubric => rubric.uuid === uuid));
+        return this.getRubrics()
+            .map(rubrics => rubrics !== undefined ?
+                rubrics.find(rubric => rubric.uuid === uuid) :
+                undefined
+            );
     }
 
-    public getRubrics(): Observable<Array<RubricInterface>> {
+    public getRubrics(): Observable<Array<RubricInterface> | undefined> {
         this.localStorage.getRubrics()
-            .filter(rubrics => rubrics !== null)
+            .filter(rubrics => rubrics !== undefined)
             .subscribe(rubrics => this.setRubrics(rubrics));
 
         return this.rubrics;
@@ -52,9 +56,11 @@ export class BackendDataService implements GetRubricDataInterface, GetRubricsDat
         this.setRubrics(this._rubrics);
     }
 
-    private setRubrics(rubrics: Array<RubricInterface>): void {
-        this._rubrics = rubrics;
-        this.rubrics.next(rubrics);
-        this.localStorage.setRubrics(rubrics).subscribe();
+    private setRubrics(rubrics: Array<RubricInterface> | undefined): void {
+        if (rubrics !== undefined) {
+            this._rubrics = rubrics;
+            this.rubrics.next(rubrics);
+            this.localStorage.setRubrics(rubrics).subscribe();
+        }
     }
 }

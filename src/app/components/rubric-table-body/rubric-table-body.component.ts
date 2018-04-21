@@ -18,13 +18,28 @@ export class RubricTableBodyComponent extends BaseRubricComponent {
         super(store);
     }
 
-    public emptyElements(component: ComponentInterface): Array<any> {
-        return new Array(this.rubric.maxLevelsCount - component.levels.length);
+    public emptyElements(component: ComponentInterface): Array<number> {
+        if (this.rubric !== undefined && this.rubric.maxLevelsCount !== undefined) {
+            return new Array(this.rubric.maxLevelsCount - component.levels.length);
+        }
+
+        return [];
     }
 
     public componentWidth(): object {
-        return this.responsive ?
-            {'min-width': '15em'} :
-            {width: `${(MAXIMUM_WIDTH / (this.rubric.maxLevelsCount + 1))}%`};
+        if (this.responsive) {
+            return {'min-width': '15em'};
+        } else {
+            return {width: this.getWidthPercentage()};
+        }
+    }
+
+    private getWidthPercentage(): string {
+        let maxLevelsCount = 1;
+        if (this.rubric !== undefined && this.rubric.maxLevelsCount !== undefined) {
+            maxLevelsCount = this.rubric.maxLevelsCount + 1;
+        }
+
+        return `${(MAXIMUM_WIDTH / maxLevelsCount)}%`;
     }
 }

@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RubricTableHeadComponent } from './rubric-table-head.component';
 
 describe('RubricTableHeadComponent', () => {
@@ -7,10 +6,9 @@ describe('RubricTableHeadComponent', () => {
   let fixture: ComponentFixture<RubricTableHeadComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ RubricTableHeadComponent ]
-    })
-    .compileComponents();
+    void TestBed.configureTestingModule({
+      declarations: [ RubricTableHeadComponent ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,5 +1,5 @@
 import { RubricsStateInterface } from './rubrics.state';
-import { RubricsActionsUnion, RubricsActionTypes, SetBreadcrumbs } from './rubrics.actions';
+import { RubricsActionsUnion, RubricsActionTypes } from './rubrics.actions';
 import { RubricInterface } from '../object-interfaces/rubric.interface';
 
 function getMaxLevelsCount(rubric: RubricInterface): number {
@@ -11,7 +11,7 @@ function getMaxLevelsCount(rubric: RubricInterface): number {
 export function rubricsReducer(state: RubricsStateInterface, action: RubricsActionsUnion): RubricsStateInterface {
     switch (action.type) {
         case RubricsActionTypes.GetRubricSuccess:
-            const maxLevelsCount = getMaxLevelsCount(action.payload as RubricInterface);
+            const maxLevelsCount = getMaxLevelsCount(action.payload);
 
             return {
                 ...state,

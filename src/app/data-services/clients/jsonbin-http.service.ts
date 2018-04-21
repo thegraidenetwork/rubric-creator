@@ -2,9 +2,10 @@ import { RubricInterface } from '../../object-interfaces/rubric.interface';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { GetRubricDataInterface } from '../interfaces/get-rubric-data.interface';
 
 @Injectable()
-export class JsonbinHttpService {
+export class JsonbinHttpService implements GetRubricDataInterface {
     private readonly rootUrl = 'https://api.jsonbin.io';
 
     constructor(private http: HttpClient) {}

@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'nl2br',
 })
 export class Nl2brPipe implements PipeTransform {
-    public transform(value: string): string {
-        return value === undefined ? value : value.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+    public transform(value: string | undefined): string | undefined {
+        return value === undefined ? undefined : value.replace(/(?:\r\n|\r|\n)/g, '<br/>');
     }
 }

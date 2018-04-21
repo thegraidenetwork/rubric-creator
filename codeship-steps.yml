@@ -1,0 +1,14 @@
+- type: serial
+  steps:
+  - type: parallel
+    steps:
+      # Run the linter
+      - service: frontend
+        command: ng lint
+      # Run the tests
+      - service: frontend
+        command: ng test --browsers Chrome_no_sandbox --watch false
+      # Ensure AOT build works
+      - service: frontend
+        command: ng build --aot true
+        exclude: ^(master|develop)

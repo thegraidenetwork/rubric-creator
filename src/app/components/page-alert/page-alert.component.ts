@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
     templateUrl: './page-alert.component.html',
 })
 export class PageAlertComponent extends BaseComponent implements OnInit {
-    public showAlert = false;
-    public alertMessage: string = undefined;
-    public alertClass: string = undefined;
+    public showAlert: boolean = false;
+    public alertMessage: string | undefined = undefined;
+    public alertClass: string | undefined = undefined;
     private readonly errorClass = 'alert-danger';
     private readonly successClass = 'alert-success';
 

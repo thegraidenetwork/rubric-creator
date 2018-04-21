@@ -8,7 +8,7 @@ import { GetRubricsDataInterface } from '../interfaces/get-rubrics-data.interfac
 export class LocalStorageService implements GetRubricsDataInterface {
     constructor(private localStorage: LocalStorage) {}
 
-    public getRubrics(): Observable<Array<RubricInterface>> {
+    public getRubrics(): Observable<Array<RubricInterface> | undefined> {
         return this.get<Array<RubricInterface>>('rubrics');
     }
 
@@ -16,8 +16,10 @@ export class LocalStorageService implements GetRubricsDataInterface {
         return this.set<Array<RubricInterface>>('rubrics', rubrics);
     }
 
-    private get<T>(key: string): Observable<T> {
-        return this.localStorage.getItem<T>(key);
+    private get<T>(key: string): Observable<T | undefined> {
+        return this.localStorage.getItem<T>(key)
+            // Converts null to undefined because we don't like null
+            .map((rubrics: T | null) => rubrics === null ? undefined : rubrics);
     }
 
     private set<T>(key: string, value: T): Observable<boolean> {

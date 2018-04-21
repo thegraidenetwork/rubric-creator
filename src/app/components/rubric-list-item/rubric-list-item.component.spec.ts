@@ -7,10 +7,9 @@ describe('RubricListItemComponent', () => {
   let fixture: ComponentFixture<RubricListItemComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ RubricListItemComponent ]
-    })
-    .compileComponents();
+    void TestBed.configureTestingModule({
+      declarations: [ RubricListItemComponent ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

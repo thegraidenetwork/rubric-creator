@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
     templateUrl: './breadcrumb.component.html',
 })
 export class BreadcrumbComponent extends BaseComponent implements OnInit {
-    public breadcrumbs: Array<BreadcrumbInterface>;
+    public breadcrumbs: Array<BreadcrumbInterface> | undefined;
 
     constructor(
         private store: Store<RubricsStateInterface>,

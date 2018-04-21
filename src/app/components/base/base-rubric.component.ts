@@ -5,7 +5,7 @@ import { select, Store } from '@ngrx/store';
 import { RubricsStateInterface } from '../../store/rubrics.state';
 
 export abstract class BaseRubricComponent extends BaseComponent implements OnInit {
-    public rubric: RubricInterface;
+    public rubric: RubricInterface | undefined;
 
     protected constructor(protected store: Store<RubricsStateInterface>) {
         super();

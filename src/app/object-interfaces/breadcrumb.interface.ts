@@ -1,5 +1,5 @@
 export interface BreadcrumbInterface {
-    path: string;
+    path: string | undefined;
     selected: boolean;
     text: string;
 }
