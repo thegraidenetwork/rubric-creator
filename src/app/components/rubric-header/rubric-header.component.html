@@ -1,4 +1,4 @@
-<div class="row">
+<div *ngIf="rubric" class="row">
     <div class="col-12">
         <h1 class="mb-3">{{ rubric.name }}</h1>
         <p *ngIf="rubric.description" [innerHTML]="rubric.description | nl2br"></p>
