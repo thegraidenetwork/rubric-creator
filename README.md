@@ -29,7 +29,7 @@ Navigate to `http://localhost:4200/`. The app will automatically reload if you c
 
 ### Building
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build and the `--aot` flag for ahead-of-time compilation (recommended); 
 
 ### Running unit tests
 
@@ -42,6 +42,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ### Linting
 
 Run `ng lint` to execute the linter via [TSLint](https://palantir.github.io/tslint/).
+
+## Deploying
+
+Coming soon!
 
 ## License
 

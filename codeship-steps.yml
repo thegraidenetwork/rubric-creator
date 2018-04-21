@@ -8,6 +8,9 @@
       # Run the tests
       - service: frontend
         command: ng test --browsers Chrome_no_sandbox --watch false
+#      # Run e2e tests
+#      - service: frontend
+#        command: ng e2e --aot true
       # Ensure AOT build works
       - service: frontend
         command: ng build --aot true
