@@ -2,7 +2,7 @@
    class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{ rubric.name }}</h5>
-        <small>{{ rubric.created_at }}</small>
+        <small>{{ rubric.created_at | date: 'mediumDate' }}</small>
     </div>
     <p *ngIf="rubric.description" class="mb-1" [innerHtml]="rubric.description | nl2br"></p>
 </a>
