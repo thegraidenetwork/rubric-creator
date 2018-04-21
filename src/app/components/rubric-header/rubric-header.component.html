@@ -3,10 +3,8 @@
         <h1 class="mb-3">{{ rubric.name }}</h1>
         <p *ngIf="rubric.description" [innerHTML]="rubric.description | nl2br"></p>
         <p>
-            <button
-                    (click)="printRubric()"
-                    class="btn btn-secondary btn-sm"
-            ><span class="mr-1 oi oi-print"></span> Print | Download
+            <button (click)="printRubric()" class="btn btn-secondary btn-sm">
+                <span class="mr-1 oi oi-print"></span> Print | Download
             </button>
         </p>
     </div>

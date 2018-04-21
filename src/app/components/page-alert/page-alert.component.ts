@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class PageAlertComponent extends BaseComponent implements OnInit {
     public showAlert: boolean = false;
-    public alertMessage: string | undefined = undefined;
-    public alertClass: string | undefined = undefined;
+    public alertMessage: string | undefined;
+    public alertClass: string | undefined;
     private readonly errorClass = 'alert-danger';
     private readonly successClass = 'alert-success';
 
@@ -29,8 +29,6 @@ export class PageAlertComponent extends BaseComponent implements OnInit {
             .subscribe((state: RubricsStateInterface) => {
                 if (state.error !== undefined) {
                     this.showError(state.error.message);
-                }  else {
-                    this.clearAlert();
                 }
             });
 

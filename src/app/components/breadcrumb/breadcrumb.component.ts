@@ -4,6 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { RubricsStateInterface } from '../../store/rubrics.state';
 import { BaseComponent } from '../base/base.component';
 import { Router } from '@angular/router';
+import { SetBreadcrumbs } from '../../store/rubrics.actions';
 
 @Component({
     selector: 'rc-breadcrumb',
@@ -25,6 +26,6 @@ export class BreadcrumbComponent extends BaseComponent implements OnInit {
             .pipe(select('rubrics'))
             .subscribe((state: RubricsStateInterface) => this.breadcrumbs = state.breadcrumbs);
 
-        this.router.events.subscribe(() => this.breadcrumbs = undefined);
+        this.router.events.subscribe(() => this.store.dispatch(new SetBreadcrumbs(undefined)));
     }
 }

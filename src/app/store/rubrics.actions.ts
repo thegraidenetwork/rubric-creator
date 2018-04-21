@@ -46,7 +46,7 @@ export class GetRubricsError implements Action {
 
 export class SetBreadcrumbs implements Action {
     public readonly type = RubricsActionTypes.SetBreadcrumbs;
-    constructor(public payload: Array<BreadcrumbInterface>) {}
+    constructor(public payload: Array<BreadcrumbInterface> | undefined) {}
 }
 
 export type RubricsActionsUnion =
