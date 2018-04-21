@@ -6,7 +6,7 @@ import { appRoutes } from './app.routes';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { AboutComponent } from './containers/about/about.component';
+import { HomeComponent } from './containers/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JsonbinHttpService } from './data-services/clients/jsonbin-http.service';
 import { StoreModule } from '@ngrx/store';
@@ -24,6 +24,8 @@ import { Nl2brPipe } from './pipes/nl2br.pipe';
 import { RubricHeaderComponent } from './components/rubric-header/rubric-header.component';
 import { RubricTableHeadComponent } from './components/rubric-table-head/rubric-table-head.component';
 import { RubricTableBodyComponent } from './components/rubric-table-body/rubric-table-body.component';
+import { RubricListItemComponent } from './components/rubric-list-item/rubric-list-item.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 @NgModule({
     bootstrap: [
@@ -33,7 +35,7 @@ import { RubricTableBodyComponent } from './components/rubric-table-body/rubric-
         AppComponent,
         PageNotFoundComponent,
         NavbarComponent,
-        AboutComponent,
+        HomeComponent,
         ViewRubricComponent,
         ListRubricsComponent,
         PageAlertComponent,
@@ -41,6 +43,8 @@ import { RubricTableBodyComponent } from './components/rubric-table-body/rubric-
         RubricHeaderComponent,
         RubricTableHeadComponent,
         RubricTableBodyComponent,
+        RubricListItemComponent,
+        BreadcrumbComponent,
     ],
     imports: [
         appRoutes,

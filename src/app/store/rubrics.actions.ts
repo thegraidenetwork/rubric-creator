@@ -2,6 +2,7 @@
 import { Action } from '@ngrx/store';
 import { RubricInterface } from '../object-interfaces/rubric.interface';
 import { DisplayableErrorInterface } from '../object-interfaces/displayable-error.interface';
+import { BreadcrumbInterface } from '../object-interfaces/breadcrumb.interface';
 
 export enum RubricsActionTypes {
     GetRubric = 'Get Rubric',
@@ -10,6 +11,7 @@ export enum RubricsActionTypes {
     GetRubrics = 'Get Rubrics',
     GetRubricsSuccess = 'Get Rubrics Success',
     GetRubricsError = 'Get Rubrics Error',
+    SetBreadcrumbs = 'Set Breadcrumbs',
 }
 
 export class GetRubric implements Action {
@@ -42,10 +44,16 @@ export class GetRubricsError implements Action {
     constructor(public payload: DisplayableErrorInterface) {}
 }
 
+export class SetBreadcrumbs implements Action {
+    public readonly type = RubricsActionTypes.SetBreadcrumbs;
+    constructor(public payload: Array<BreadcrumbInterface>) {}
+}
+
 export type RubricsActionsUnion =
     | GetRubric
     | GetRubricSuccess
     | GetRubricError
     | GetRubrics
     | GetRubricsSuccess
-    | GetRubricsError;
+    | GetRubricsError
+    | SetBreadcrumbs;

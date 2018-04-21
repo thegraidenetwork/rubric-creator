@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { RubricsStateInterface } from '../../store/rubrics.state';
 import { BaseComponent } from '../base/base.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'rc-page-alert',
@@ -33,9 +33,8 @@ export class PageAlertComponent extends BaseComponent implements OnInit {
                     this.clearAlert();
                 }
             });
-        this.router.events.subscribe(event => {
-            this.clearAlert();
-        });
+
+        this.router.events.subscribe(() => this.clearAlert());
     }
 
     public showError(message: string): void {

@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="col-xs">
-        <h1 id="title">{{ rubric.name }}</h1>
+    <div class="col-12">
+        <h1 class="text-center">{{ rubric.name }}</h1>
         <p *ngIf="rubric.description" [innerHTML]="rubric.description | nl2br"></p>
         <p>
             <button

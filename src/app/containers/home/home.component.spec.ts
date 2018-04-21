@@ -1,15 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AboutComponent } from './about.component';
+import { HomeComponent } from './home.component';
 
 describe('AboutComponent', () => {
-    let component: AboutComponent;
-    let fixture: ComponentFixture<AboutComponent>;
+    let component: HomeComponent;
+    let fixture: ComponentFixture<HomeComponent>;
 
     beforeEach(async(() => {
         const successfulCompileCallback = (): void => {
-            fixture = TestBed.createComponent(AboutComponent);
+            fixture = TestBed.createComponent(HomeComponent);
             component = fixture.componentInstance;
             fixture.detectChanges();
         };
@@ -20,7 +20,7 @@ describe('AboutComponent', () => {
 
         TestBed.configureTestingModule({
             declarations: [
-                AboutComponent,
+                HomeComponent,
             ],
             imports: [
                 RouterTestingModule,

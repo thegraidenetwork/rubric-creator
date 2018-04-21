@@ -1,14 +1,14 @@
 import { RouterModule, Routes } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 import { PageNotFoundComponent } from './containers/page-not-found/page-not-found.component';
-import { AboutComponent } from './containers/about/about.component';
+import { HomeComponent } from './containers/home/home.component';
 import { ViewRubricComponent } from './containers/view-rubric/view-rubric.component';
 import { ListRubricsComponent } from './containers/list-rubrics/list-rubrics.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: AboutComponent,
+        component: HomeComponent,
     },
     {
         path: 'rubrics',
@@ -16,7 +16,7 @@ const routes: Routes = [
     },
     {
         path: 'rubrics/create',
-        component: AboutComponent,
+        component: HomeComponent,
     },
     {
         path: 'rubrics/:rubric_uuid',

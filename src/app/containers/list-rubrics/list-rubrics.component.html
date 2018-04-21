@@ -1,20 +1,19 @@
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
-            <h1>Available Rubrics</h1>
+        <div class="col-12">
+            <h1 class="text-center">Available Rubrics</h1>
+        </div>
+    </div>
+    <div *ngIf="rubrics" class="row">
+        <div class="col-12">
+            <rc-rubric-list-item *ngFor="let rubric of rubrics" [rubric]="rubric"></rc-rubric-list-item>
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
-            <ul *ngIf="rubrics">
-                <li *ngFor="let rubric of rubrics">
-                    <a [routerLink]="['/rubrics', rubric.uuid]">{{ rubric.name }}</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
+            <p>
+                A scoring rubric is an attempt to communicate expectations of quality around a task. In many cases, scoring rubrics are used to delineate consistent criteria for grading. Because the criteria are public, a scoring rubric allows teachers and students alike to evaluate criteria, which can be complex and subjective. A scoring rubric can also provide a basis for self-evaluation, reflection, and peer review. It is aimed at accurate and fair assessment, fostering understanding, and indicating a way to proceed with subsequent learning/teaching. - Wikipedia - https://en.wikipedia.org/wiki/Rubric_(academic)
+            </p>
             <a [routerLink]="'/rubrics/create'" class="btn btn-primary">Create New Rubric</a>
         </div>
     </div>

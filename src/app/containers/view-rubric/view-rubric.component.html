@@ -1,9 +1,4 @@
 <div class="container">
-    <div class="row mb-3">
-        <div class="col-xs">
-            <a [routerLink]="'../'">&#171; All Rubrics</a>
-        </div>
-    </div>
     <div *ngIf="rubric; else loading" id="rubric">
         <rc-rubric-header></rc-rubric-header>
         <div class="row">
