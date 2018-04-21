@@ -16,6 +16,7 @@ describe('PageAlertComponent', () => {
 
     beforeEach(async(() => {
         void TestBed.configureTestingModule({
+            declarations: [PageAlertComponent],
             imports: [
                 StoreModule.forRoot(
                     {rubrics: rubricsReducer},
@@ -23,7 +24,6 @@ describe('PageAlertComponent', () => {
                 ),
                 RouterTestingModule,
             ],
-            declarations: [PageAlertComponent],
         }).compileComponents();
 
         store = TestBed.get(Store);
@@ -56,7 +56,7 @@ describe('PageAlertComponent', () => {
 
         store.dispatch(action);
 
-        router.navigateByUrl('/');
+        void router.navigateByUrl('/');
 
         expect(component.alertMessage).toBeUndefined();
         expect(component.alertClass).toBeUndefined();

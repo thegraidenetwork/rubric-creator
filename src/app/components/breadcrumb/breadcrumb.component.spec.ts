@@ -16,6 +16,7 @@ describe('BreadcrumbComponent', () => {
 
     beforeEach(async(() => {
         void TestBed.configureTestingModule({
+            declarations: [BreadcrumbComponent],
             imports: [
                 StoreModule.forRoot(
                     {rubrics: rubricsReducer},
@@ -23,7 +24,6 @@ describe('BreadcrumbComponent', () => {
                 ),
                 RouterTestingModule,
             ],
-            declarations: [BreadcrumbComponent],
         }).compileComponents();
 
         store = TestBed.get(Store);
@@ -41,8 +41,8 @@ describe('BreadcrumbComponent', () => {
     it('should set breadcrumbs when set in store', () => {
         const breadcrumbs = [{
             path: faker.lorem.word(),
-            text: faker.lorem.word(),
             selected: faker.random.boolean(),
+            text: faker.lorem.word(),
         }];
         const action = new SetBreadcrumbs(breadcrumbs);
 
@@ -54,7 +54,7 @@ describe('BreadcrumbComponent', () => {
     it('should clear breadcrumbs when route changes', () => {
         const action = new SetBreadcrumbs(undefined);
 
-        router.navigateByUrl('/');
+        void router.navigateByUrl('/');
 
         expect(store.dispatch).toHaveBeenCalledWith(action);
     });

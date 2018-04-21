@@ -16,15 +16,15 @@ describe('PageAlertComponent', () => {
 
     beforeEach(async(() => {
         void TestBed.configureTestingModule({
+            declarations: [
+                RubricHeaderComponent,
+                Nl2brPipe,
+            ],
             imports: [
                 StoreModule.forRoot(
                     {rubrics: rubricsReducer},
                     {initialState: getInitialState}
                 ),
-            ],
-            declarations: [
-                RubricHeaderComponent,
-                Nl2brPipe,
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
@@ -44,8 +44,8 @@ describe('PageAlertComponent', () => {
 
     it('should show rubric name and description when loaded', () => {
         const rubric: RubricInterface = {
-            name: faker.lorem.words(),
             description: faker.lorem.words(),
+            name: faker.lorem.words(),
             uuid: faker.random.uuid(),
         };
         const action = new GetRubricSuccess(rubric);
