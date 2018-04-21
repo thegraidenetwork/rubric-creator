@@ -11,4 +11,3 @@
       # Ensure AOT build works
       - service: frontend
         command: ng build --aot true
-        exclude: ^(master|develop)
