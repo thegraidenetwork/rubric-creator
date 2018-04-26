@@ -36,6 +36,10 @@ export class BackendDataService implements GetRubricDataInterface, GetRubricsDat
         return this.rubrics;
     }
 
+    public createRubric(rubric: RubricInterface): Observable<RubricInterface> {
+        return this.jsonbin.createRubric(rubric);
+    }
+
     private pushOrUpdateRubric(rubric: RubricInterface): void {
         let updated = false;
 

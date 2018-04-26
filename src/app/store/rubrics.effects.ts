@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { GetRubric, GetRubrics, RubricsActionTypes } from './rubrics.actions';
+import { CreateRubric, GetRubric, GetRubrics, RubricsActionTypes } from './rubrics.actions';
 import { Action } from '@ngrx/store';
 import { DisplayableErrorInterface } from '../object-interfaces/displayable-error.interface';
 import { BackendDataService } from '../data-services/backend-data.service';
@@ -17,9 +17,26 @@ export class RubricsEffects {
     public getRubric: Observable<Action> = this.actions
         .ofType<GetRubric>(RubricsActionTypes.GetRubric)
         .mergeMap(action => {
-            return this.backendData.getRubric(action.payload)
-                .map(data => ({type: RubricsActionTypes.GetRubricSuccess, payload: data}))
-                .catch(err => of({type: RubricsActionTypes.GetRubricError, payload: _generateDisplayableError(err)}));
+            if (action.payload !== undefined) {
+                // Get rubric by uuid
+                return this.backendData.getRubric(action.payload)
+                    .map(data => ({
+                        type: RubricsActionTypes.GetRubricSuccess,
+                        payload: data,
+                    }))
+                    .catch(err => of({
+                        type: RubricsActionTypes.GetRubricError,
+                        payload: _generateDisplayableError(err),
+                    }));
+            } else {
+                // Or generate an empty rubric
+                return of({
+                    type: RubricsActionTypes.GetRubricSuccess,
+                    payload: {
+                        name: '',
+                    },
+                });
+            }
         });
 
     @Effect()
@@ -27,8 +44,29 @@ export class RubricsEffects {
         .ofType<GetRubrics>(RubricsActionTypes.GetRubrics)
         .mergeMap(action => {
             return this.backendData.getRubrics()
-                .map(data => ({type: RubricsActionTypes.GetRubricsSuccess, payload: data}))
-                .catch(err => of({type: RubricsActionTypes.GetRubricsError, payload: _generateDisplayableError(err)}));
+                .map(data => ({
+                    type: RubricsActionTypes.GetRubricsSuccess,
+                    payload: data,
+                }))
+                .catch(err => of({
+                    type: RubricsActionTypes.GetRubricsError,
+                    payload: _generateDisplayableError(err),
+                }));
+        });
+
+    @Effect()
+    public createRubric: Observable<Action> = this.actions
+        .ofType<CreateRubric>(RubricsActionTypes.CreateRubric)
+        .mergeMap(action => {
+            return this.backendData.createRubric(action.payload)
+                .map(data => ({
+                    type: RubricsActionTypes.CreateRubricSuccess,
+                    payload: data,
+                }))
+                .catch(err => of({
+                    type: RubricsActionTypes.CreateRubricError,
+                    payload: _generateDisplayableError(err),
+                }));
         });
 
     constructor(

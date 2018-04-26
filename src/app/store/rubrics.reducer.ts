@@ -10,6 +10,7 @@ function getMaxLevelsCount(rubric: RubricInterface): number {
 
 export function rubricsReducer(state: RubricsStateInterface, action: RubricsActionsUnion): RubricsStateInterface {
     switch (action.type) {
+        case RubricsActionTypes.CreateRubricSuccess:
         case RubricsActionTypes.GetRubricSuccess:
             const maxLevelsCount = getMaxLevelsCount(action.payload);
 
@@ -26,6 +27,7 @@ export function rubricsReducer(state: RubricsStateInterface, action: RubricsActi
                 error: undefined,
             };
 
+        case RubricsActionTypes.CreateRubricError:
         case RubricsActionTypes.GetRubricError:
         case RubricsActionTypes.GetRubricsError:
             return {
@@ -41,12 +43,11 @@ export function rubricsReducer(state: RubricsStateInterface, action: RubricsActi
                 currentRubric: undefined,
             };
 
-        case RubricsActionTypes.GetRubrics:
-            return state;
-
         case RubricsActionTypes.SetBreadcrumbs:
             return {...state, breadcrumbs: action.payload};
 
+        case RubricsActionTypes.GetRubrics:
+        case RubricsActionTypes.CreateRubric:
         default:
             return state;
     }

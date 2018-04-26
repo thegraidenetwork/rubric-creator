@@ -11,12 +11,15 @@ export enum RubricsActionTypes {
     GetRubrics = 'Get Rubrics',
     GetRubricsSuccess = 'Get Rubrics Success',
     GetRubricsError = 'Get Rubrics Error',
+    CreateRubric = 'Create Rubric',
+    CreateRubricSuccess = 'Create Rubric Success',
+    CreateRubricError = 'Create Rubric Error',
     SetBreadcrumbs = 'Set Breadcrumbs',
 }
 
 export class GetRubric implements Action {
     public readonly type = RubricsActionTypes.GetRubric;
-    constructor(public payload: string) {}
+    constructor(public payload?: string) {}
 }
 
 export class GetRubricSuccess implements Action {
@@ -44,6 +47,21 @@ export class GetRubricsError implements Action {
     constructor(public payload: DisplayableErrorInterface) {}
 }
 
+export class CreateRubric implements Action {
+    public readonly type = RubricsActionTypes.CreateRubric;
+    constructor(public payload: RubricInterface) {}
+}
+
+export class CreateRubricSuccess implements Action {
+    public readonly type = RubricsActionTypes.CreateRubricSuccess;
+    constructor(public payload: RubricInterface) {}
+}
+
+export class CreateRubricError implements Action {
+    public readonly type = RubricsActionTypes.CreateRubricError;
+    constructor(public payload: DisplayableErrorInterface) {}
+}
+
 export class SetBreadcrumbs implements Action {
     public readonly type = RubricsActionTypes.SetBreadcrumbs;
     constructor(public payload: Array<BreadcrumbInterface> | undefined) {}
@@ -56,4 +74,7 @@ export type RubricsActionsUnion =
     | GetRubrics
     | GetRubricsSuccess
     | GetRubricsError
+    | CreateRubric
+    | CreateRubricSuccess
+    | CreateRubricError
     | SetBreadcrumbs;
