@@ -6,9 +6,61 @@ import { CreateRubric, GetRubric, GetRubrics, RubricsActionTypes } from './rubri
 import { Action } from '@ngrx/store';
 import { DisplayableErrorInterface } from '../object-interfaces/displayable-error.interface';
 import { BackendDataService } from '../data-services/backend-data.service';
+import { RubricInterface } from '../object-interfaces/rubric.interface';
 
 function _generateDisplayableError(error?: object): DisplayableErrorInterface {
     return {message: 'Whoops! Something went wrong and data could not be loaded. Try refreshing the page.'};
+}
+
+function _getEmptyRubric(): RubricInterface {
+    return {
+        name: '',
+        description: '',
+        components: [
+            {
+                name: '',
+                levels: [
+                    {
+                        score: 4,
+                        description: '',
+                    },
+                    {
+                        score: 3,
+                        description: '',
+                    },
+                    {
+                        score: 2,
+                        description: '',
+                    },
+                    {
+                        score: 1,
+                        description: '',
+                    },
+                ],
+            },
+            {
+                name: '',
+                levels: [
+                    {
+                        score: 4,
+                        description: '',
+                    },
+                    {
+                        score: 3,
+                        description: '',
+                    },
+                    {
+                        score: 2,
+                        description: '',
+                    },
+                    {
+                        score: 1,
+                        description: '',
+                    },
+                ],
+            },
+        ],
+    };
 }
 
 @Injectable()
@@ -32,9 +84,7 @@ export class RubricsEffects {
                 // Or generate an empty rubric
                 return of({
                     type: RubricsActionTypes.GetRubricSuccess,
-                    payload: {
-                        name: '',
-                    },
+                    payload: _getEmptyRubric(),
                 });
             }
         });

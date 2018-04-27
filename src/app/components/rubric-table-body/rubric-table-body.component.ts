@@ -19,7 +19,10 @@ export class RubricTableBodyComponent extends BaseRubricComponent {
     }
 
     public emptyElements(component: ComponentInterface): Array<number> {
-        if (this.rubric !== undefined && this.rubric.maxLevelsCount !== undefined) {
+        if (
+            this.rubric !== undefined &&
+            this.rubric.maxLevelsCount !== undefined
+        ) {
             return new Array(this.rubric.maxLevelsCount - component.levels.length);
         }
 

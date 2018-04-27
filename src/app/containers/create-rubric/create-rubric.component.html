@@ -1,3 +1,19 @@
-<p>
-  create-rubric works!
-</p>
+<div class="container">
+    <div *ngIf="rubric; else loading" id="rubric">
+        <rc-edit-rubric-header></rc-edit-rubric-header>
+        <div class="row">
+            <table class="table table-striped">
+                <thead rc-rubric-table-head></thead>
+                <tbody rc-edit-rubric-table-body></tbody>
+            </table>
+        </div>
+        <button (click)="saveRubric()" [disabled]="!isValid()"></button>
+    </div>
+    <ng-template #loading>
+        <div class="row">
+            <div class="col-xs">
+                <div class="angular-placeholder">Loading...</div>
+            </div>
+        </div>
+    </ng-template>
+</div>

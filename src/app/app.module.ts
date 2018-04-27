@@ -28,6 +28,10 @@ import { RubricListItemComponent } from './components/rubric-list-item/rubric-li
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { RubricDefinitionQuoteComponent } from './components/rubric-definition-quote/rubric-definition-quote.component';
 import { CreateRubricComponent } from './containers/create-rubric/create-rubric.component';
+import { EditRubricHeaderComponent } from './components/edit-rubric-header/edit-rubric-header.component';
+import { EditRubricTableHeadComponent } from './components/edit-rubric-table-head/edit-rubric-table-head.component';
+import { EditRubricTableBodyComponent } from './components/edit-rubric-table-body/edit-rubric-table-body.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     bootstrap: [
@@ -49,11 +53,15 @@ import { CreateRubricComponent } from './containers/create-rubric/create-rubric.
         BreadcrumbComponent,
         RubricDefinitionQuoteComponent,
         CreateRubricComponent,
+        EditRubricHeaderComponent,
+        EditRubricTableHeadComponent,
+        EditRubricTableBodyComponent,
     ],
     imports: [
         appRoutes,
         BrowserModule,
         NgbModule.forRoot(),
+        FormsModule,
         RouterModule,
         HttpClientModule,
         StoreModule.forRoot(

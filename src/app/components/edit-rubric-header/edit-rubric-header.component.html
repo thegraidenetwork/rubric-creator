@@ -1,0 +1,25 @@
+<div *ngIf="rubric" class="row">
+    <div class="col-12">
+        <h1>Create New Rubric</h1>
+        <div class="form-group">
+            <label for="rubric-name">Name</label>
+            <input
+                    id="rubric-name"
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="rubric.name"
+                    placeholder="A short but descriptive name for your rubric"
+                    required
+            />
+        </div>
+        <div class="form-group">
+            <label for="rubric-description">Description</label>
+            <textarea
+                    id="rubric-description"
+                    class="form-control"
+                    [(ngModel)]="rubric.description"
+                    placeholder="A longer, optional description"
+            ></textarea>
+        </div>
+    </div>
+</div>
