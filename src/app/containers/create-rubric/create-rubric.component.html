@@ -2,10 +2,12 @@
     <div *ngIf="rubric; else loading" id="rubric">
         <rc-edit-rubric-header></rc-edit-rubric-header>
         <div class="row">
-            <table class="table table-striped">
-                <thead rc-rubric-table-head></thead>
-                <tbody rc-edit-rubric-table-body></tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead rc-rubric-table-head></thead>
+                    <tbody rc-edit-rubric-table-body></tbody>
+                </table>
+            </div>
         </div>
         <button (click)="saveRubric()" [disabled]="!isValid()"></button>
     </div>

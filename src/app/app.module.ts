@@ -29,7 +29,6 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 import { RubricDefinitionQuoteComponent } from './components/rubric-definition-quote/rubric-definition-quote.component';
 import { CreateRubricComponent } from './containers/create-rubric/create-rubric.component';
 import { EditRubricHeaderComponent } from './components/edit-rubric-header/edit-rubric-header.component';
-import { EditRubricTableHeadComponent } from './components/edit-rubric-table-head/edit-rubric-table-head.component';
 import { EditRubricTableBodyComponent } from './components/edit-rubric-table-body/edit-rubric-table-body.component';
 import { FormsModule } from '@angular/forms';
 
@@ -54,7 +53,6 @@ import { FormsModule } from '@angular/forms';
         RubricDefinitionQuoteComponent,
         CreateRubricComponent,
         EditRubricHeaderComponent,
-        EditRubricTableHeadComponent,
         EditRubricTableBodyComponent,
     ],
     imports: [

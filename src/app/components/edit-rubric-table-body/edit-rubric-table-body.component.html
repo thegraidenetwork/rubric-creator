@@ -1,22 +1,39 @@
 <ng-container *ngIf="rubric">
-  <tr valign="top" *ngFor="let component of rubric.components">
-    <th [ngStyle]="componentWidth()">
-      {{ component.name }}
-      <div *ngIf="component.description" class="caption"
-           [innerHtml]="component.description | nl2br"></div>
-    </th>
-    <td *ngFor="let level of component.levels" [ngStyle]="componentWidth()">
-      <div *ngIf="level.label">
-        <h5>{{ level.label }}</h5>
-        <div>
-          Points: {{ level.score }}
-        </div>
-      </div>
-      <div *ngIf="!level.label">
-        <h5>{{ level.score }}</h5>
-      </div>
-      <div class="text-muted" *ngIf="level.description" [innerHTML]="level.description | nl2br"></div>
-    </td>
-    <td *ngFor="let emptyElement of emptyElements(component)"></td>
-  </tr>
+    <tr valign="top" *ngFor="let component of rubric.components; let i = index">
+        <th class="component-input-col" [ngStyle]="componentWidth()">
+            <div class="form-group">
+                <label for="component-{{ i + 1 }}-name">Component {{ i + 1 }} Name</label>
+                <input
+                        id="component-{{ i + 1 }}-name"
+                        type="text"
+                        class="form-control form-control-sm"
+                        [(ngModel)]="component.name"
+                        placeholder="Name"
+                        required
+                />
+            </div>
+            <div class="form-group">
+                <label for="component-{{ i + 1 }}-description">Component {{ i + 1 }} Description</label>
+                <textarea
+                        id="component-{{ i + 1 }}-description"
+                        class="form-control form-control-sm"
+                        [(ngModel)]="component.description"
+                        placeholder="Description"
+                ></textarea>
+            </div>
+        </th>
+        <td *ngFor="let level of component.levels" [ngStyle]="componentWidth()">
+            <div *ngIf="level.label">
+                <h5>{{ level.label }}</h5>
+                <div>
+                    Points: {{ level.score }}
+                </div>
+            </div>
+            <div *ngIf="!level.label">
+                <h5>{{ level.score }}</h5>
+            </div>
+            <div class="text-muted" *ngIf="level.description" [innerHTML]="level.description | nl2br"></div>
+        </td>
+        <td *ngFor="let emptyElement of emptyElements(component)"></td>
+    </tr>
 </ng-container>
