@@ -6,6 +6,7 @@ export interface RubricsStateInterface {
     currentRubric: RubricInterface | undefined;
     allRubrics: Array<RubricInterface> | undefined;
     error: DisplayableErrorInterface | undefined;
+    saving: boolean;
     breadcrumbs: Array<BreadcrumbInterface> | undefined;
 }
 
@@ -15,6 +16,7 @@ export function getInitialState(): {rubrics: RubricsStateInterface} {
             currentRubric: undefined,
             allRubrics: undefined,
             error: undefined,
+            saving: false,
             breadcrumbs: undefined,
         },
     };

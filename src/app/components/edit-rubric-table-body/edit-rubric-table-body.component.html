@@ -2,37 +2,61 @@
     <tr valign="top" *ngFor="let component of rubric.components; let i = index">
         <th class="component-input-col" [ngStyle]="componentWidth()">
             <div class="form-group">
-                <label for="component-{{ i + 1 }}-name">Component {{ i + 1 }} Name</label>
+                <label for="component-{{ i + 1 }}-name">
+                    Component {{ i + 1 }} Name<span class="text-danger">*</span>
+                </label>
                 <input
                         id="component-{{ i + 1 }}-name"
                         type="text"
                         class="form-control form-control-sm"
                         [(ngModel)]="component.name"
-                        placeholder="Name"
+                        (ngModelChange)="updateRubric()"
                         required
                 />
             </div>
             <div class="form-group">
-                <label for="component-{{ i + 1 }}-description">Component {{ i + 1 }} Description</label>
+                <label for="component-{{ i + 1 }}-description">Description</label>
                 <textarea
                         id="component-{{ i + 1 }}-description"
                         class="form-control form-control-sm"
                         [(ngModel)]="component.description"
-                        placeholder="Description"
+                        (ngModelChange)="updateRubric()"
                 ></textarea>
             </div>
         </th>
-        <td *ngFor="let level of component.levels" [ngStyle]="componentWidth()">
-            <div *ngIf="level.label">
-                <h5>{{ level.label }}</h5>
-                <div>
-                    Points: {{ level.score }}
-                </div>
+        <td *ngFor="let level of component.levels; let j = index" [ngStyle]="componentWidth()">
+            <div class="form-group">
+                <label for="component-{{ i + 1 }}-level-{{ j + 1 }}-score">
+                    Score<span class="text-danger">*</span>
+                </label>
+                <input
+                        id="component-{{ i + 1 }}-level-{{ j + 1 }}-score"
+                        type="number"
+                        class="form-control form-control-sm"
+                        [(ngModel)]="level.score"
+                        (ngModelChange)="updateRubric()"
+                        required
+                />
             </div>
-            <div *ngIf="!level.label">
-                <h5>{{ level.score }}</h5>
+            <div class="form-group">
+                <label for="component-{{ i + 1 }}-level-{{ j + 1 }}-label">Label</label>
+                <input
+                        id="component-{{ i + 1 }}-level-{{ j + 1 }}-label"
+                        type="number"
+                        class="form-control form-control-sm"
+                        [(ngModel)]="level.label"
+                        (ngModelChange)="updateRubric()"
+                />
             </div>
-            <div class="text-muted" *ngIf="level.description" [innerHTML]="level.description | nl2br"></div>
+            <div class="form-group">
+                <label for="component-{{ i + 1 }}-level-{{ j + 1 }}-description">Description</label>
+                <textarea
+                        id="component-{{ i + 1 }}-level-{{ j + 1 }}-description"
+                        class="form-control form-control-sm"
+                        [(ngModel)]="level.description"
+                        (ngModelChange)="updateRubric()"
+                ></textarea>
+            </div>
         </td>
         <td *ngFor="let emptyElement of emptyElements(component)"></td>
     </tr>

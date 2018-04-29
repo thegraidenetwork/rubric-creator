@@ -1,5 +1,5 @@
 <div class="container">
-    <div *ngIf="rubric; else loading" id="rubric">
+    <form *ngIf="rubric; else loading" id="rubric">
         <rc-edit-rubric-header></rc-edit-rubric-header>
         <div class="row">
             <div class="table-responsive">
@@ -9,8 +9,8 @@
                 </table>
             </div>
         </div>
-        <button (click)="saveRubric()" [disabled]="!isValid()"></button>
-    </div>
+        <rc-edit-rubric-save-button></rc-edit-rubric-save-button>
+    </form>
     <ng-template #loading>
         <div class="row">
             <div class="col-xs">

@@ -1,5 +1,5 @@
 export interface LevelInterface {
-    description: string;
+    description?: string;
     label?: string;
-    score: number;
+    score?: number;
 }

@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { CreateRubric, GetRubric, GetRubrics, RubricsActionTypes } from './rubrics.actions';
+import { CreateRubric, CreateRubricSuccess, GetRubric, GetRubrics, RubricsActionTypes } from './rubrics.actions';
 import { Action } from '@ngrx/store';
 import { DisplayableErrorInterface } from '../object-interfaces/displayable-error.interface';
 import { BackendDataService } from '../data-services/backend-data.service';
 import { RubricInterface } from '../object-interfaces/rubric.interface';
+import { Router } from '@angular/router';
 
 function _generateDisplayableError(error?: object): DisplayableErrorInterface {
     return {message: 'Whoops! Something went wrong and data could not be loaded. Try refreshing the page.'};
@@ -119,8 +120,14 @@ export class RubricsEffects {
                 }));
         });
 
+    @Effect({dispatch: false})
+    public createRubricSuccess: Observable<Action> = this.actions
+        .ofType<CreateRubricSuccess>(RubricsActionTypes.CreateRubricSuccess)
+        .do(action => this.router.navigateByUrl(`/rubrics/${action.payload.uuid}`));
+
     constructor(
         private backendData: BackendDataService,
-        private actions: Actions
+        private actions: Actions,
+        private router: Router
     ) {}
 }
