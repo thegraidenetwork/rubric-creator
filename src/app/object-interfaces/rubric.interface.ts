@@ -6,5 +6,6 @@ export interface RubricInterface {
     description?: string;
     maxLevelsCount?: number;
     name: string;
+    private?: boolean;
     uuid?: string;
 }

@@ -1,0 +1,11 @@
+<div class="row" *ngIf="rubric">
+    <div class="col mb-4">
+        <p><span class="text-danger">*</span>Indicates required field.</p>
+        <button
+                type="submit"
+                class="btn btn-primary btn-block btn-lg"
+                (click)="saveRubric()"
+                [disabled]="!isValid()"
+        >{{ saveButtonText }} <span *ngIf="isValid()" class="ml-1 oi oi-check"></span></button>
+    </div>
+</div>

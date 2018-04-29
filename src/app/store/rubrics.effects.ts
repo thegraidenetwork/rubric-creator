@@ -15,8 +15,6 @@ function _generateDisplayableError(error?: object): DisplayableErrorInterface {
 
 function _getEmptyRubric(): RubricInterface {
     return {
-        name: '',
-        description: '',
         components: [
             {
                 name: '',
@@ -61,6 +59,10 @@ function _getEmptyRubric(): RubricInterface {
                 ],
             },
         ],
+        created_at: new Date().toISOString(),
+        description: '',
+        name: '',
+        private: true,
     };
 }
 
