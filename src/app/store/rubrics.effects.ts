@@ -6,64 +6,11 @@ import { CreateRubric, CreateRubricSuccess, GetRubric, GetRubrics, RubricsAction
 import { Action } from '@ngrx/store';
 import { DisplayableErrorInterface } from '../object-interfaces/displayable-error.interface';
 import { BackendDataService } from '../data-services/backend-data.service';
-import { RubricInterface } from '../object-interfaces/rubric.interface';
+import { emptyRubric, RubricInterface } from '../object-interfaces/rubric.interface';
 import { Router } from '@angular/router';
 
 function _generateDisplayableError(error?: object): DisplayableErrorInterface {
     return {message: 'Whoops! Something went wrong and data could not be loaded. Try refreshing the page.'};
-}
-
-function _getEmptyRubric(): RubricInterface {
-    return {
-        components: [
-            {
-                name: '',
-                levels: [
-                    {
-                        score: 4,
-                        description: '',
-                    },
-                    {
-                        score: 3,
-                        description: '',
-                    },
-                    {
-                        score: 2,
-                        description: '',
-                    },
-                    {
-                        score: 1,
-                        description: '',
-                    },
-                ],
-            },
-            {
-                name: '',
-                levels: [
-                    {
-                        score: 4,
-                        description: '',
-                    },
-                    {
-                        score: 3,
-                        description: '',
-                    },
-                    {
-                        score: 2,
-                        description: '',
-                    },
-                    {
-                        score: 1,
-                        description: '',
-                    },
-                ],
-            },
-        ],
-        created_at: new Date().toISOString(),
-        description: '',
-        name: '',
-        private: true,
-    };
 }
 
 @Injectable()
@@ -76,18 +23,18 @@ export class RubricsEffects {
                 // Get rubric by uuid
                 return this.backendData.getRubric(action.payload)
                     .map(data => ({
-                        type: RubricsActionTypes.GetRubricSuccess,
                         payload: data,
+                        type: RubricsActionTypes.GetRubricSuccess,
                     }))
                     .catch(err => of({
-                        type: RubricsActionTypes.GetRubricError,
                         payload: _generateDisplayableError(err),
+                        type: RubricsActionTypes.GetRubricError,
                     }));
             } else {
                 // Or generate an empty rubric
                 return of({
+                    payload: emptyRubric,
                     type: RubricsActionTypes.GetRubricSuccess,
-                    payload: _getEmptyRubric(),
                 });
             }
         });
@@ -98,12 +45,12 @@ export class RubricsEffects {
         .mergeMap(action => {
             return this.backendData.getRubrics()
                 .map(data => ({
-                    type: RubricsActionTypes.GetRubricsSuccess,
                     payload: data,
+                    type: RubricsActionTypes.GetRubricsSuccess,
                 }))
                 .catch(err => of({
-                    type: RubricsActionTypes.GetRubricsError,
                     payload: _generateDisplayableError(err),
+                    type: RubricsActionTypes.GetRubricsError,
                 }));
         });
 
@@ -113,19 +60,19 @@ export class RubricsEffects {
         .mergeMap(action => {
             return this.backendData.createRubric(action.payload)
                 .map(data => ({
-                    type: RubricsActionTypes.CreateRubricSuccess,
                     payload: data,
+                    type: RubricsActionTypes.CreateRubricSuccess,
                 }))
                 .catch(err => of({
-                    type: RubricsActionTypes.CreateRubricError,
                     payload: _generateDisplayableError(err),
+                    type: RubricsActionTypes.CreateRubricError,
                 }));
         });
 
     @Effect({dispatch: false})
     public createRubricSuccess: Observable<Action> = this.actions
         .ofType<CreateRubricSuccess>(RubricsActionTypes.CreateRubricSuccess)
-        .do(action => this.router.navigateByUrl(`/rubrics/${action.payload.uuid}`));
+        .do(action => void this.router.navigateByUrl(`/rubrics/${action.payload.uuid}`));
 
     constructor(
         private backendData: BackendDataService,
