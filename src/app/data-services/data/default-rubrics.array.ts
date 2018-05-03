@@ -1,6 +1,6 @@
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
 
-export const defaultRubrics: Array<RubricInterface> = [
+export const defaultRubricsArray: Array<RubricInterface> = [
     {
         name: 'EOC Expository Writing Rubric - English I',
         uuid: '5ad54f770f8cf5632c4a9497',

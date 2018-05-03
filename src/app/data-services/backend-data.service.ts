@@ -4,14 +4,14 @@ import { LocalStorageService } from './clients/local-storage.service';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { defaultRubrics } from './data/defaultRubrics';
+import { defaultRubricsArray } from './data/default-rubrics.array';
 import { GetRubricDataInterface } from './interfaces/get-rubric-data.interface';
 import { GetRubricsDataInterface } from './interfaces/get-rubrics-data.interface';
 
 @Injectable()
 export class BackendDataService implements GetRubricDataInterface, GetRubricsDataInterface {
-    private rubrics = new BehaviorSubject<Array<RubricInterface>>(defaultRubrics);
-    private _rubrics: Array<RubricInterface> = defaultRubrics;
+    private rubrics = new BehaviorSubject<Array<RubricInterface>>(defaultRubricsArray);
+    private _rubrics: Array<RubricInterface> = defaultRubricsArray;
 
     constructor(
         private jsonbin: JsonbinHttpService,

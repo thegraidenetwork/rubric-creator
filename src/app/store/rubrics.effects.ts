@@ -6,8 +6,8 @@ import { CreateRubric, CreateRubricSuccess, GetRubric, GetRubrics, RubricsAction
 import { Action } from '@ngrx/store';
 import { DisplayableErrorInterface } from '../object-interfaces/displayable-error.interface';
 import { BackendDataService } from '../data-services/backend-data.service';
-import { emptyRubric, RubricInterface } from '../object-interfaces/rubric.interface';
 import { Router } from '@angular/router';
+import { emptyRubricObject } from '../data-services/data/empty-rubric.object';
 
 function _generateDisplayableError(error?: object): DisplayableErrorInterface {
     return {message: 'Whoops! Something went wrong and data could not be loaded. Try refreshing the page.'};
@@ -33,7 +33,7 @@ export class RubricsEffects {
             } else {
                 // Or generate an empty rubric
                 return of({
-                    payload: emptyRubric,
+                    payload: emptyRubricObject,
                     type: RubricsActionTypes.GetRubricSuccess,
                 });
             }
