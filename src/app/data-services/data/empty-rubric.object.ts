@@ -1,29 +1,8 @@
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
+import { emptyComponentObject } from './empty-component.object';
 
 export const emptyRubricObject: RubricInterface = {
-    components: [
-        {
-            levels: [
-                {
-                    description: '',
-                    score: 4,
-                },
-                {
-                    description: '',
-                    score: 3,
-                },
-                {
-                    description: '',
-                    score: 2,
-                },
-                {
-                    description: '',
-                    score: 1,
-                },
-            ],
-            name: '',
-        },
-    ],
+    components: [emptyComponentObject],
     created_at: new Date().toISOString(),
     description: '',
     name: '',
