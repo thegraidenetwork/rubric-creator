@@ -1,8 +1,7 @@
 import { RubricInterface } from '../object-interfaces/rubric.interface';
 
-export function getMaxLevelsFromRubric(rubric: RubricInterface | undefined): number {
+export function getMaxLevelsFromRubric(rubric: RubricInterface): number {
     if (
-        rubric !== undefined &&
         rubric.components !== undefined &&
         rubric.components.length > 0
     )  {
