@@ -11,7 +11,7 @@ a {
 a:hover {
     color: #2DBF74;
 }
-.btn-primary {
+.btn-primary, .btn-primary:active, .btn-primary:not(:disabled):not(.disabled):active {
     background-color: #19AE54;
     border-color: #19AE54;
 }

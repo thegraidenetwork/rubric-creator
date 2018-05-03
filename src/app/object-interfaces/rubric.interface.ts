@@ -7,5 +7,6 @@ export interface RubricInterface {
     maxLevelsCount?: number;
     name: string;
     private?: boolean;
+    totalPoints?: number;
     uuid?: string;
 }
