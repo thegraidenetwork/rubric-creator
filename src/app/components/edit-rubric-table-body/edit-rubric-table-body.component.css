@@ -1,7 +1,6 @@
-.delete-component {
-    display: none;
+.level-actions {
+    float: right;
 }
-
-tr:hover .delete-component {
-    display: block;
+.level-actions .btn-sm {
+    font-size: .7rem;
 }
