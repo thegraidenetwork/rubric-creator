@@ -28,4 +28,11 @@ export class EditRubricTableBodyComponent extends BaseEditRubricComponent {
     public componentWidth(): object {
         return {'min-width': '15em'};
     }
+
+    public removeComponent(index: number): void {
+        if (this.rubric !== undefined && this.rubric.components !== undefined) {
+            this.rubric.components = this.rubric.components.filter((c, i) =>  i !== index);
+            this.updateRubric();
+        }
+    }
 }

@@ -23,8 +23,17 @@
                         (ngModelChange)="updateRubric()"
                 ></textarea>
             </div>
+            <div class="delete-component form-group">
+                <button class="btn btn-danger btn-sm btn-block" (click)="removeComponent(i)">
+                    <span class="oi oi-x"></span> Remove
+                </button>
+            </div>
         </th>
         <td *ngFor="let level of component.levels; let j = index" [ngStyle]="componentWidth()">
+            <button type="button" class="close" aria-label="Deleve Level">
+                <span aria-hidden="true">&times;</span>
+                <span class="oi oi-plus"></span>
+            </button>
             <div class="form-group">
                 <label for="component-{{ i + 1 }}-level-{{ j + 1 }}-score">
                     Score<span class="text-danger">*</span>

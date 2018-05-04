@@ -1,0 +1,7 @@
+.delete-component {
+    display: none;
+}
+
+tr:hover .delete-component {
+    display: block;
+}
