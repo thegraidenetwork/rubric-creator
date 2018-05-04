@@ -1,7 +1,6 @@
 # Angular base image
 FROM teracy/angular-cli:1.5.0
 RUN npm update -g @angular/cli@~1.7.4
-
 WORKDIR /angular
 
 # Install packages

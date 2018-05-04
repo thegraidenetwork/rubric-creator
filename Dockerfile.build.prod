@@ -1,0 +1,22 @@
+# Angular base image
+FROM teracy/angular-cli:1.5.0
+RUN npm update -g @angular/cli@~1.7.4
+WORKDIR /angular
+
+# Install packages
+COPY ./package.json /angular/package.json
+COPY ./package-lock.json /angular/package-lock.json
+RUN npm install --silent
+
+# Add code
+COPY ./ /angular
+
+# Run the build process
+RUN ng build --prod --aot true --deploy-url https://tgn-rubric-creator-prod.azureedge.net/
+
+# Next stage: Azure CLI
+FROM azuresdk/azure-cli-python
+ENV AZURE_ENDPOINT_NAME=tgn-rubric-creator-prod
+ENV AZURE_CONTAINER_NAME=rubric-creator-prod
+ENV AZURE_CACHE_CONTROL="no-cache, no-store, must-revalidate"
+COPY --from=0 /angular/dist /dist

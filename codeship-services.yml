@@ -2,3 +2,9 @@ version: "3.5"
 services:
   frontend:
     build: ./
+  cdn-prod-deployer:
+    build: ./
+    dockerfile: ./Dockerfile.build.prod
+    encrypted_env_file: .env.encrypted
+    volumes:
+      - ./docker:/docker

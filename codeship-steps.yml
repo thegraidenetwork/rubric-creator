@@ -14,3 +14,7 @@
       # Ensure AOT build works
       - service: frontend
         command: ng build --aot true
+  # Deploy to master via CDN
+  - service: cdn-prod-deployer
+    command: bash /docker/execute.sh
+    tag: master
