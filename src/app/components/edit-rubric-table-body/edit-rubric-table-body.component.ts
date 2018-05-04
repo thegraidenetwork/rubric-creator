@@ -40,8 +40,7 @@ export class EditRubricTableBodyComponent extends BaseEditRubricComponent {
 
     public addLevel(componentIndex: number, levelIndex: number): void {
         if (
-            this.rubric !== undefined && this.rubric.components !== undefined &&
-            typeof this.rubric.components[componentIndex] !== 'undefined'
+            this.rubric !== undefined && this.rubric.components !== undefined
         ) {
             const newLevel = this.getPreviousLevel(componentIndex, levelIndex);
             this.rubric.components[componentIndex].levels.splice(levelIndex, 0, newLevel);
@@ -52,8 +51,7 @@ export class EditRubricTableBodyComponent extends BaseEditRubricComponent {
     public removeLevel(componentIndex: number, levelIndex: number): void {
         if (
             this.rubric !== undefined && this.rubric.components !== undefined &&
-            this.rubric.components[componentIndex].levels.length > 0 &&
-            typeof this.rubric.components[componentIndex].levels[levelIndex] !== 'undefined'
+            this.rubric.components[componentIndex].levels.length > 0
         ) {
             this.rubric.components[componentIndex].levels = this.rubric.components[componentIndex].levels
                 .filter((c, i) =>  i !== levelIndex);
@@ -64,8 +62,7 @@ export class EditRubricTableBodyComponent extends BaseEditRubricComponent {
     private getPreviousLevel(componentIndex: number, levelIndex: number): LevelInterface {
         if (
             this.rubric !== undefined && this.rubric.components !== undefined &&
-            this.rubric.components[componentIndex].levels.length > 0 &&
-            typeof this.rubric.components[componentIndex].levels[levelIndex - 1] !== 'undefined'
+            this.rubric.components[componentIndex].levels.length > 0
         ) {
             return {...this.rubric.components[componentIndex].levels[levelIndex - 1]};
         }
