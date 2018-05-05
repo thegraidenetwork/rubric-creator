@@ -6,9 +6,9 @@ import { GetRubric } from '../../store/rubrics.actions';
 
 @Component({
     selector: 'rc-create-rubric',
-    templateUrl: './create-rubric.component.html',
+    templateUrl: './edit-rubric.component.html',
 })
-export class CreateRubricComponent extends BaseRubricComponent implements OnInit {
+export class EditRubricComponent extends BaseRubricComponent implements OnInit {
 
     constructor(protected store: Store<RubricsStateInterface>) {
         super(store);
