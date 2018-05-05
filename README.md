@@ -7,9 +7,7 @@ Create and share rubrics for grading papers. Made for teachers by [The Graide Ne
 [![npm version](https://badge.fury.io/js/ngx-bing-spellchecker.svg)](https://badge.fury.io/js/ngx-bing-spellchecker)
 -->
 
-<!-- Screenshot goes here
-![](https://i.imgur.com/kcChKUt.gif)
--->
+![](http://g.recordit.co/Q4Dc61Z3jM.gif)
 
 ## Development
 
@@ -27,10 +25,6 @@ While this product is freely available on the web, you may also want to customiz
 
 Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-### Building
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build and the `--aot` flag for ahead-of-time compilation (recommended); 
-
 ### Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
@@ -43,9 +37,31 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 Run `ng lint` to execute the linter via [TSLint](https://palantir.github.io/tslint/).
 
+### Building
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build and the `--aot` flag for ahead-of-time compilation (recommended).
+
+## Contributing
+
+Contributions are welcome and encouraged to this open source project. Please be sure to [submit an issue on Github](https://github.com/thegraidenetwork/rubric-creator/issues) to solicit discussion before jumping in as someone else might be working on the same thing.
+
 ## Deploying
 
-Coming soon!
+Once you have built the files, you can copy them into a file hosting service like Azure's Blob Storage or Amazon S3.
+
+- [Tutorial for Azure](https://blog.lifeishao.com/2017/05/24/serving-your-static-sites-with-azure-blob-and-cdn/)
+- [Tutorial for S3](https://johnlouros.com/blog/host-your-angular-app-in-aws-s3)
+
+## Special Thanks
+
+This project was built on the back of many great open source projects. Here are a few of them:
+
+- [Angular](https://angular.io/)
+- [NGRX Store, Effects](https://github.com/ngrx/platform)
+- [@ngx-pwa/local-storage](https://www.npmjs.com/package/@ngx-pwa/local-storage)
+- [JSONbin.io](https://jsonbin.io/)
+- [Bootstrap](https://getbootstrap.com/)
+- [iconic icons](https://useiconic.com/open/)
 
 ## License
 

@@ -5,19 +5,16 @@
         </div>
     </div>
     <div *ngIf="rubrics" class="row">
-        <div class="col-lg-8">
+        <div class="col">
             <rc-rubric-list-item
                 class="list-group"
                 *ngFor="let rubric of rubrics"
                 [rubric]="rubric"
             ></rc-rubric-list-item>
         </div>
-        <div class="col-lg-4">
-            <rc-rubric-definition-quote></rc-rubric-definition-quote>
-        </div>
     </div>
     <div class="row">
-        <div class="col-12 text-center">
+        <div class="col text-center">
             <p class="mt-4">Don't see a rubric that works for your class?</p>
             <a [routerLink]="'/rubrics/create'" class="btn btn-primary btn-lg mb-4">
                 <span class="mr-1 oi oi-plus" style="font-size: .9em;"></span> Create A New Rubric
