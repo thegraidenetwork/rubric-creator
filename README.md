@@ -7,7 +7,7 @@ Create and share rubrics for grading papers. Made for teachers by [The Graide Ne
 [![npm version](https://badge.fury.io/js/ngx-bing-spellchecker.svg)](https://badge.fury.io/js/ngx-bing-spellchecker)
 -->
 
-![](http://g.recordit.co/Q4Dc61Z3jM.gif)
+![](https://i.imgur.com/Q6xO1eV.gifv)
 
 ## Development
 
