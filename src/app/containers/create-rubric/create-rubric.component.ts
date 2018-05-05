@@ -6,7 +6,6 @@ import { GetRubric } from '../../store/rubrics.actions';
 
 @Component({
     selector: 'rc-create-rubric',
-    styleUrls: ['./create-rubric.component.css'],
     templateUrl: './create-rubric.component.html',
 })
 export class CreateRubricComponent extends BaseRubricComponent implements OnInit {

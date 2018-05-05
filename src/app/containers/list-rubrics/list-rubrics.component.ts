@@ -8,7 +8,6 @@ import { BreadcrumbInterface } from '../../object-interfaces/breadcrumb.interfac
 
 @Component({
     selector: 'rc-list-rubrics',
-    styleUrls: ['./list-rubrics.component.css'],
     templateUrl: './list-rubrics.component.html',
 })
 export class ListRubricsComponent extends BaseComponent implements OnInit {

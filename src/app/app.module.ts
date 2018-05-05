@@ -32,6 +32,7 @@ import { EditRubricTableBodyComponent } from './components/edit-rubric-table-bod
 import { FormsModule } from '@angular/forms';
 import { EditRubricSaveButtonComponent } from './components/edit-rubric-save-button/edit-rubric-save-button.component';
 import { EditRubricTableBottomComponent } from './components/edit-rubric-table-bottom/edit-rubric-table-bottom.component';
+import { HomeJumbotronComponent } from './components/home-jumbotron/home-jumbotron.component';
 
 @NgModule({
     bootstrap: [
@@ -56,6 +57,7 @@ import { EditRubricTableBottomComponent } from './components/edit-rubric-table-b
         EditRubricTableBodyComponent,
         EditRubricSaveButtonComponent,
         EditRubricTableBottomComponent,
+        HomeJumbotronComponent,
     ],
     imports: [
         appRoutes,
