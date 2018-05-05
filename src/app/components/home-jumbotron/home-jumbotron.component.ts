@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'rc-home-jumbotron',
-  templateUrl: './home-jumbotron.component.html',
-  styleUrls: ['./home-jumbotron.component.css']
+    selector: 'rc-home-jumbotron',
+    styleUrls: ['./home-jumbotron.component.css'],
+    templateUrl: './home-jumbotron.component.html',
 })
-export class HomeJumbotronComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class HomeJumbotronComponent {
 }
