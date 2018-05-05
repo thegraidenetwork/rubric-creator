@@ -3,11 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GetRubricDataInterface } from '../interfaces/get-rubric-data.interface';
-
-interface JsonbinCreateResponseInterface {
-    id: string;
-    data: RubricInterface;
-}
+import { JsonbinCreateResponseInterface } from '../../object-interfaces/jsonbin-create-response.interface';
 
 @Injectable()
 export class JsonbinHttpService implements GetRubricDataInterface {
