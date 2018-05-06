@@ -1,20 +1,24 @@
 <div class="jumbotron">
-  <h1 class="display-4">Rubric Creator</h1>
-  <p class="lead">
-    A free tool designed to help you create and share scoring rubrics.
-    Build your first rubric in seconds, or customize an existing rubric from our library.
-  </p>
-  <hr class="my-4">
-  <p>
-    Made for educators by
-    <a href="https://www.thegraidenetwork.com/" target="_blank">The Graide Network</a>.
-  </p>
-  <a class="btn btn-primary btn-lg" [routerLink]="['/rubrics', 'create']" role="button">
-    <span class="mr-1 oi oi-plus"></span>
-    Create Rubric
-  </a>
-  <a class="btn btn-secondary btn-lg" [routerLink]="['/rubrics']" role="button">
-    <span class="mr-1 oi oi-list"></span>
-    View Rubrics
-  </a>
+    <h1 class="display-4">Rubric Creator</h1>
+    <p class="lead">
+        A free tool designed to help you create and share scoring rubrics.
+        Build your first rubric in seconds, or customize an existing rubric from our library.
+    </p>
+    <hr class="my-4">
+    <p>
+        Made for educators by
+        <a href="https://www.thegraidenetwork.com/" target="_blank">The Graide Network</a>.
+    </p>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary btn-lg mb-1" [routerLink]="['/rubrics', 'create']" role="button">
+                <span class="mr-1 oi oi-plus"></span>
+                Create Rubric
+            </a>
+            <a class="btn btn-secondary btn-lg mb-1" [routerLink]="['/rubrics']" role="button">
+                <span class="mr-1 oi oi-list"></span>
+                View Rubrics
+            </a>
+        </div>
+    </div>
 </div>
