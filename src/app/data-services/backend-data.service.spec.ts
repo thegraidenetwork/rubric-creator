@@ -3,14 +3,17 @@ import * as faker from 'faker';
 import { BackendDataService } from './backend-data.service';
 import { LocalStorageService } from './clients/local-storage.service';
 import { JsonbinHttpService } from './clients/jsonbin-http.service';
+import { MockLocalStorageService } from './clients/local-storage.service.mock';
+import { MockJsonbinHttpService } from './clients/jsonbin-http.service.mock';
+import { RubricInterface } from '../object-interfaces/rubric.interface';
 
-xdescribe('BackendDataService', () => {
-    let mockLocalStorageService;
-    let mockJsonbinHttpService;
+describe('BackendDataService', () => {
+    let mockLocalStorageService: MockLocalStorageService;
+    let mockJsonbinHttpService: MockJsonbinHttpService;
 
     beforeEach(() => {
-        mockLocalStorageService = {};
-        mockJsonbinHttpService = {};
+        mockLocalStorageService = new MockLocalStorageService();
+        mockJsonbinHttpService = new MockJsonbinHttpService();
 
         TestBed.configureTestingModule({
             providers: [
@@ -30,21 +33,39 @@ xdescribe('BackendDataService', () => {
     it('should get single rubric by uuid', inject(
         [BackendDataService],
         (service: BackendDataService) => {
-            //
+            const uuid = faker.random.uuid();
+            spyOn(mockLocalStorageService, 'getRubrics').and.callThrough();
+            spyOn(mockJsonbinHttpService, 'getRubric').and.callThrough();
+
+            const results = service.getRubric(uuid);
+
+            expect(mockLocalStorageService.getRubrics).toHaveBeenCalledTimes(1);
+            expect(mockJsonbinHttpService.getRubric).toHaveBeenCalledTimes(1);
         }
     ));
 
-    it('should get rubrics when not null', inject(
+    it('should get rubrics when returned from localstorage', inject(
         [BackendDataService],
         (service: BackendDataService) => {
-            //
+            spyOn(mockLocalStorageService, 'getRubrics').and.callThrough();
+
+            const results = service.getRubrics();
+
+            expect(mockLocalStorageService.getRubrics).toHaveBeenCalledTimes(1);
         }
     ));
 
-    it('should get default rubrics when null', inject(
+    it('should create rubric with jsonbin service', inject(
         [BackendDataService],
         (service: BackendDataService) => {
-            //
+            spyOn(mockJsonbinHttpService, 'createRubric').and.callThrough();
+            const rubric: RubricInterface = {
+                name: faker.lorem.words(),
+            };
+
+            const result = service.createRubric(rubric);
+
+            expect(mockJsonbinHttpService.createRubric).toHaveBeenCalledTimes(1);
         }
     ));
 });
