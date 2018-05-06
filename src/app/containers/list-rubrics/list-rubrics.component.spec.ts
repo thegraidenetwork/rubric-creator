@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { rubricsReducer } from '../../store/rubrics.reducer';
 import { getInitialState, RubricsStateInterface } from '../../store/rubrics.state';
 import { Store, StoreModule } from '@ngrx/store';
-import * as faker from "faker";
+import * as faker from 'faker';
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
 import { GetRubricSuccess } from '../../store/rubrics.actions';
 

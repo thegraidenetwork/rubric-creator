@@ -5,7 +5,7 @@ import { Store, StoreModule } from '@ngrx/store';
 import { rubricsReducer } from '../../store/rubrics.reducer';
 import { getInitialState, RubricsStateInterface } from '../../store/rubrics.state';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import * as faker from "faker";
+import * as faker from 'faker';
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
 import { GetRubricSuccess } from '../../store/rubrics.actions';
 
