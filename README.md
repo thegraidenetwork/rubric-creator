@@ -25,6 +25,15 @@ While this product is freely available on the web, you may also want to customiz
 
 Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+If you want to test the service worker or offline functionality:
+
+- Build the files for production: `ng build --prod`.
+- Install Node HTTP Server globally (should just need to do once): `npm install -g http-server`.
+- Navigate to the dist folder: `cd dist`.
+- And run the server: `http-server -c-1 .`.
+
+Your app should be running in production mode at `http://localhost:8080/`.
+
 ### Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
