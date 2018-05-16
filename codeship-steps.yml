@@ -13,7 +13,7 @@
 #        command: ng e2e --aot true
       # Ensure AOT build works
       - service: frontend
-        command: ng build --aot true
+        command: ng build --prod --aot true
   # Deploy to master via CDN
   - service: cdn-prod-deployer
     command: bash /docker/execute.sh
