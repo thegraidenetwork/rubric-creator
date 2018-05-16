@@ -1,7 +1,7 @@
 {
-  "name": "Rubric Creator",
-  "short_name": "RC",
-  "description": "A free rubric creation tool for teachers and educators. Brought to you by The Graide Network.",
+  "name": "Rubric Creator by Graide",
+  "short_name": "Rubric Creator",
+  "description": "A free rubric creation tool for teachers and educators. Brought to you by Graide.",
   "icons": [{
     "src": "assets/icon-128.png",
     "sizes": "128x128",
