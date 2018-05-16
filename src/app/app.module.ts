@@ -33,6 +33,8 @@ import { FormsModule } from '@angular/forms';
 import { EditRubricSaveButtonComponent } from './components/edit-rubric-save-button/edit-rubric-save-button.component';
 import { EditRubricTableBottomComponent } from './components/edit-rubric-table-bottom/edit-rubric-table-bottom.component';
 import { HomeJumbotronComponent } from './components/home-jumbotron/home-jumbotron.component';
+import { environment } from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
     bootstrap: [
@@ -72,6 +74,7 @@ import { HomeJumbotronComponent } from './components/home-jumbotron/home-jumbotr
         ),
         EffectsModule.forRoot([RubricsEffects]),
         LocalStorageModule,
+        environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
     ],
     providers: [
         JsonbinHttpService,
