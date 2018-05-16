@@ -1,0 +1,25 @@
+<div *ngIf="rubric" class="mb-3">
+    <h4>Components ({{ rubric.components.length }})</h4>
+    <ngb-accordion #acc="ngbAccordion" activeIds="toggle-0">
+        <ngb-panel *ngFor="let component of rubric.components; let i = index" [id]="'toggle-' + i">
+            <ng-template ngbPanelTitle>
+                <h5>{{ component.name }}</h5>
+                <p *ngIf="component.description" class="text-secondary">{{ component.description }}</p>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item disabled">
+                        <h5 class="text-center">Levels ({{ component.levels.length }})</h5>
+                    </li>
+                    <li *ngFor="let level of component.levels" class="list-group-item">
+                        <h5 class="d-flex justify-content-between align-items-center">
+                            {{ level.label }}
+                            <span class="badge badge-primary badge-pill">{{ level.score }}</span>
+                        </h5>
+                        <p>{{ level.description }}</p>
+                    </li>
+                </ul>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
+</div>

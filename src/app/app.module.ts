@@ -35,6 +35,7 @@ import { EditRubricTableBottomComponent } from './components/edit-rubric-table-b
 import { HomeJumbotronComponent } from './components/home-jumbotron/home-jumbotron.component';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { RubricViewMobileComponent } from './components/rubric-view-mobile/rubric-view-mobile.component';
 
 @NgModule({
     bootstrap: [
@@ -60,6 +61,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
         EditRubricSaveButtonComponent,
         EditRubricTableBottomComponent,
         HomeJumbotronComponent,
+        RubricViewMobileComponent,
     ],
     imports: [
         appRoutes,
