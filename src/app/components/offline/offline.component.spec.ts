@@ -1,24 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HomeComponent } from './home.component';
+import { OfflineComponent } from './offline.component';
 
-describe('HomeComponent', () => {
-    let component: HomeComponent;
-    let fixture: ComponentFixture<HomeComponent>;
+describe('OfflineComponent', () => {
+    let component: OfflineComponent;
+    let fixture: ComponentFixture<OfflineComponent>;
 
     beforeEach(async(() => {
         const successfulCompileCallback = (): void => {
-            fixture = TestBed.createComponent(HomeComponent);
+            fixture = TestBed.createComponent(OfflineComponent);
             component = fixture.componentInstance;
             fixture.detectChanges();
         };
 
         const failedCompileCallback = (): void => {
-            throw new Error('HomeComponent could not be compiled.');
+            throw new Error('OfflineComponent could not be compiled.');
         };
 
         TestBed.configureTestingModule({
-            declarations: [HomeComponent],
+            declarations: [OfflineComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents().then(
             successfulCompileCallback,

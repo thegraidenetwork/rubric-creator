@@ -1,22 +1,23 @@
 <div class="container">
-    <form *ngIf="rubric; else loading" id="rubric">
-        <rc-edit-rubric-header></rc-edit-rubric-header>
-        <div class="row">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead rc-rubric-table-head></thead>
-                    <tbody rc-edit-rubric-table-body></tbody>
-                </table>
+    <ng-container *ngIf="connected; else offline">
+        <form *ngIf="rubric; else loading" id="rubric">
+            <rc-edit-rubric-header></rc-edit-rubric-header>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead rc-rubric-table-head></thead>
+                        <tbody rc-edit-rubric-table-body></tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <rc-edit-rubric-table-bottom></rc-edit-rubric-table-bottom>
-        <rc-edit-rubric-save-button></rc-edit-rubric-save-button>
-    </form>
+            <rc-edit-rubric-table-bottom></rc-edit-rubric-table-bottom>
+            <rc-edit-rubric-save-button></rc-edit-rubric-save-button>
+        </form>
+    </ng-container>
+    <ng-template #offline>
+        <rc-offline></rc-offline>
+    </ng-template>
     <ng-template #loading>
-        <div class="row">
-            <div class="col">
-                <div class="angular-placeholder">Loading...</div>
-            </div>
-        </div>
+        <rc-loading></rc-loading>
     </ng-template>
 </div>

@@ -8,6 +8,7 @@ export interface RubricsStateInterface {
     error: DisplayableErrorInterface | undefined;
     saving: boolean;
     breadcrumbs: Array<BreadcrumbInterface> | undefined;
+    connected: boolean;
 }
 
 export function getInitialState(): {rubrics: RubricsStateInterface} {
@@ -18,6 +19,7 @@ export function getInitialState(): {rubrics: RubricsStateInterface} {
             error: undefined,
             saving: false,
             breadcrumbs: undefined,
+            connected: true,
         },
     };
 }
