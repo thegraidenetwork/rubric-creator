@@ -11,6 +11,7 @@ export class ConnectionService {
     constructor(private store: Store<RubricsStateInterface>) {}
 
     public init(): void {
+        // Creates a stream of true/false values depending on the connection status
         merge(
             of(navigator.onLine),
             fromEvent(window, 'online').map(() => true),
