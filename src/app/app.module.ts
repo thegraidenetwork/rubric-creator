@@ -39,6 +39,7 @@ import { RubricViewMobileComponent } from './components/rubric-view-mobile/rubri
 import { OfflineComponent } from './components/offline/offline.component';
 import { ConnectionService } from './services/connection.service';
 import { LoadingComponent } from './components/loading/loading.component';
+import { CreateRubricButtonComponent } from './components/create-rubric-button/create-rubric-button.component';
 
 @NgModule({
     bootstrap: [
@@ -67,6 +68,7 @@ import { LoadingComponent } from './components/loading/loading.component';
         HomeJumbotronComponent,
         RubricViewMobileComponent,
         LoadingComponent,
+        CreateRubricButtonComponent,
     ],
     imports: [
         appRoutes,

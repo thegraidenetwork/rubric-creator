@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
-- Offline support, progressive web app.
+- Limited offline support, progressive web app.
 
 ### Fixed
 - Mobile styling for view rubric page.
