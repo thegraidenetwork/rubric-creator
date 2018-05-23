@@ -12,7 +12,7 @@ RUN npm install --silent
 COPY ./ /angular
 
 # Run the build process
-RUN ng build --prod --aot true --deploy-url https://rubriccreator.com/
+RUN ng build --prod --aot true --deploy-url https://www.rubriccreator.com/
 
 # Next stage: Azure CLI
 FROM azuresdk/azure-cli-python
