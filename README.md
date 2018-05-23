@@ -1,6 +1,6 @@
-# Rubric Creator
+# Rubric Creator by [The Graide Network](https://www.thegraidenetwork.com/)
 
-Create and share rubrics for grading papers. Made for teachers by [The Graide Network](https://www.thegraidenetwork.com/).
+Create and share scoring rubrics for grading papers. Made for educators by [The Graide Network](https://www.thegraidenetwork.com/) and available for free at [rubriccreator.com](https://rubriccreator.com).
 
 <!-- Badges will go here
 [ ![Codeship Status for thegraidenetwork/ngx-bing-spellchecker](https://app.codeship.com/projects/8c3e2310-a6c5-0135-9962-3a5d1d8055ee/status?branch=master)](https://app.codeship.com/projects/255625)
