@@ -90,6 +90,14 @@ import { CreateRubricButtonComponent } from './components/create-rubric-button/c
         LocalStorageService,
         BackendDataService,
         ConnectionService,
+        {
+            provide: Window,
+            useValue: window,
+        },
+        {
+            provide: Navigator,
+            useValue: navigator,
+        },
     ],
 })
 export class AppModule {
