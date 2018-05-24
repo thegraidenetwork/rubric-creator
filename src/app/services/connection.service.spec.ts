@@ -3,21 +3,20 @@ import { ConnectionService } from './connection.service';
 import { Store, StoreModule } from '@ngrx/store';
 import { getInitialState, RubricsStateInterface } from '../store/rubrics.state';
 import { rubricsReducer } from '../store/rubrics.reducer';
+import { WindowRef } from './window-ref.service';
+import { NavigatorRef } from './navigator-ref.service';
 
 describe('ConnectionService', () => {
-    let testNavigator = {onLine: true};
+    let testNavigator = {nativeNavigator: {onLine: true}};
     let store: Store<RubricsStateInterface>;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
                 ConnectionService,
+                WindowRef,
                 {
-                    provide: Window,
-                    useValue: window,
-                },
-                {
-                    provide: Navigator,
+                    provide: NavigatorRef,
                     useValue: testNavigator,
                 },
             ],
@@ -30,7 +29,7 @@ describe('ConnectionService', () => {
         });
 
         store = TestBed.get(Store);
-        testNavigator = TestBed.get(Navigator);
+        testNavigator = TestBed.get(NavigatorRef);
     });
 
     it('should toggle as navigator.onLine changes', fakeAsync(inject([ConnectionService], (service: ConnectionService) => {
@@ -38,7 +37,7 @@ describe('ConnectionService', () => {
 
         service.init();
 
-        testNavigator.onLine = false;
+        testNavigator.nativeNavigator.onLine = false;
         service.init();
 
         expect(store.dispatch).toHaveBeenCalledTimes(2);

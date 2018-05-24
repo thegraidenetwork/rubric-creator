@@ -40,6 +40,8 @@ import { OfflineComponent } from './components/offline/offline.component';
 import { ConnectionService } from './services/connection.service';
 import { LoadingComponent } from './components/loading/loading.component';
 import { CreateRubricButtonComponent } from './components/create-rubric-button/create-rubric-button.component';
+import { WindowRef } from './services/window-ref.service';
+import { NavigatorRef } from './services/navigator-ref.service';
 
 @NgModule({
     bootstrap: [
@@ -90,14 +92,8 @@ import { CreateRubricButtonComponent } from './components/create-rubric-button/c
         LocalStorageService,
         BackendDataService,
         ConnectionService,
-        {
-            provide: Window,
-            useValue: window,
-        },
-        {
-            provide: Navigator,
-            useValue: navigator,
-        },
+        WindowRef,
+        NavigatorRef,
     ],
 })
 export class AppModule {
