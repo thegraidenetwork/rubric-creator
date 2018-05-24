@@ -6,6 +6,7 @@ import { RubricsStateInterface } from '../../store/rubrics.state';
 
 export abstract class BaseRubricComponent extends BaseComponent implements OnInit {
     public rubric: RubricInterface | undefined;
+    public connected: boolean = true;
 
     protected constructor(protected store: Store<RubricsStateInterface>) {
         super();
@@ -14,6 +15,9 @@ export abstract class BaseRubricComponent extends BaseComponent implements OnIni
     public ngOnInit(): void {
         this.store.takeUntil(this.ngUnsubscribe)
             .pipe(select('rubrics'))
-            .subscribe((state: RubricsStateInterface) => this.rubric = state.currentRubric);
+            .subscribe((state: RubricsStateInterface) => {
+                this.rubric = state.currentRubric;
+                this.connected = state.connected;
+            });
     }
 }

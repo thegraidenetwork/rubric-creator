@@ -8,6 +8,7 @@ import { DisplayableErrorInterface } from '../object-interfaces/displayable-erro
 import { BackendDataService } from '../data-services/backend-data.service';
 import { Router } from '@angular/router';
 import { emptyRubricObject } from '../data-services/data/empty-rubric.object';
+import { ConnectionService } from '../services/connection.service';
 
 function _generateDisplayableError(error?: object): DisplayableErrorInterface {
     return {message: 'Whoops! Something went wrong and data could not be loaded. Try refreshing the page.'};
@@ -77,6 +78,9 @@ export class RubricsEffects {
     constructor(
         private backendData: BackendDataService,
         private actions: Actions,
-        private router: Router
-    ) {}
+        private router: Router,
+        private connection: ConnectionService
+    ) {
+        this.connection.init();
+    }
 }

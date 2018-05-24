@@ -36,6 +36,12 @@ import { HomeJumbotronComponent } from './components/home-jumbotron/home-jumbotr
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { RubricViewMobileComponent } from './components/rubric-view-mobile/rubric-view-mobile.component';
+import { OfflineComponent } from './components/offline/offline.component';
+import { ConnectionService } from './services/connection.service';
+import { LoadingComponent } from './components/loading/loading.component';
+import { CreateRubricButtonComponent } from './components/create-rubric-button/create-rubric-button.component';
+import { WindowRef } from './services/window-ref.service';
+import { NavigatorRef } from './services/navigator-ref.service';
 
 @NgModule({
     bootstrap: [
@@ -46,6 +52,7 @@ import { RubricViewMobileComponent } from './components/rubric-view-mobile/rubri
         PageNotFoundComponent,
         NavbarComponent,
         HomeComponent,
+        OfflineComponent,
         ViewRubricComponent,
         ListRubricsComponent,
         PageAlertComponent,
@@ -62,6 +69,8 @@ import { RubricViewMobileComponent } from './components/rubric-view-mobile/rubri
         EditRubricTableBottomComponent,
         HomeJumbotronComponent,
         RubricViewMobileComponent,
+        LoadingComponent,
+        CreateRubricButtonComponent,
     ],
     imports: [
         appRoutes,
@@ -82,6 +91,9 @@ import { RubricViewMobileComponent } from './components/rubric-view-mobile/rubri
         JsonbinHttpService,
         LocalStorageService,
         BackendDataService,
+        ConnectionService,
+        WindowRef,
+        NavigatorRef,
     ],
 })
 export class AppModule {
