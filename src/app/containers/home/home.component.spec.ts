@@ -26,7 +26,7 @@ describe('HomeComponent', () => {
         );
     }));
 
-    xit('should show page title in header tag', () => {
+    it('should create component', () => {
         expect(component).toBeTruthy();
     });
 });

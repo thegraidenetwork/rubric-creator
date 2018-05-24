@@ -26,7 +26,10 @@ describe('OfflineComponent', () => {
         );
     }));
 
-    xit('should show page title in header tag', () => {
+    it('should create component', () => {
+        const header = fixture.nativeElement.querySelector('h1');
+
         expect(component).toBeTruthy();
+        expect(header.textContent).toContain('Looks Like You\'re Offline');
     });
 });

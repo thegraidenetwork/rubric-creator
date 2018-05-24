@@ -8,14 +8,18 @@ import { ConnectionLost, ConnectionMade } from '../store/rubrics.actions';
 
 @Injectable()
 export class ConnectionService {
-    constructor(private store: Store<RubricsStateInterface>) {}
+    constructor(
+        private store: Store<RubricsStateInterface>,
+        private navigator: Navigator,
+        private window: Window
+    ) {}
 
     public init(): void {
         // Creates a stream of true/false values depending on the connection status
         merge(
-            of(navigator.onLine),
-            fromEvent(window, 'online').map(() => true),
-            fromEvent(window, 'offline').map(() => false)
+            of(this.navigator.onLine),
+            fromEvent(this.window, 'online').map(() => true),
+            fromEvent(this.window, 'offline').map(() => false)
         ).subscribe(connected => connected ?
             this.store.dispatch(new ConnectionMade()) :
             this.store.dispatch(new ConnectionLost())
