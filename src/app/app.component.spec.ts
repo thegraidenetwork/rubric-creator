@@ -22,12 +22,12 @@ describe('AppComponent', () => {
         };
 
         TestBed.configureTestingModule({
-            declarations: [
-                AppComponent,
-            ],
             providers: [
                 Angulartics2GoogleAnalytics,
                 Angulartics2Intercom,
+            ],
+            declarations: [
+                AppComponent,
             ],
             imports: [
                 RouterTestingModule,
