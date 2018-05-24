@@ -1,3 +1,5 @@
 export const environment = {
-  production: true,
+    googleAnalyticsId: 'UA-64768458-4',
+    intercomId: 'fwfluyay',
+    production: true,
 };
