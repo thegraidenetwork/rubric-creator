@@ -2,6 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { Angulartics2Intercom } from 'angulartics2/intercom';
+import { Angulartics2Module } from 'angulartics2';
 
 describe('AppComponent', () => {
     let component: AppComponent;
@@ -22,8 +25,16 @@ describe('AppComponent', () => {
             declarations: [
                 AppComponent,
             ],
+            providers: [
+                Angulartics2GoogleAnalytics,
+                Angulartics2Intercom,
+            ],
             imports: [
                 RouterTestingModule,
+                Angulartics2Module.forRoot([
+                    Angulartics2GoogleAnalytics,
+                    Angulartics2Intercom,
+                ]),
             ],
             schemas: [
                 CUSTOM_ELEMENTS_SCHEMA,

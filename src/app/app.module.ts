@@ -36,6 +36,9 @@ import { HomeJumbotronComponent } from './components/home-jumbotron/home-jumbotr
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { RubricViewMobileComponent } from './components/rubric-view-mobile/rubric-view-mobile.component';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { Angulartics2Intercom } from 'angulartics2/intercom';
 
 @NgModule({
     bootstrap: [
@@ -77,6 +80,10 @@ import { RubricViewMobileComponent } from './components/rubric-view-mobile/rubri
         EffectsModule.forRoot([RubricsEffects]),
         LocalStorageModule,
         environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
+        Angulartics2Module.forRoot([
+            Angulartics2GoogleAnalytics,
+            Angulartics2Intercom,
+        ]),
     ],
     providers: [
         JsonbinHttpService,
