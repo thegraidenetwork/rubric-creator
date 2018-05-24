@@ -20,9 +20,12 @@ export class ConnectionService {
             of(this.navigator.onLine),
             fromEvent(this.window, 'online').map(() => true),
             fromEvent(this.window, 'offline').map(() => false)
-        ).subscribe(connected => connected ?
-            this.store.dispatch(new ConnectionMade()) :
-            this.store.dispatch(new ConnectionLost())
-        );
+        ).subscribe(connected => {
+            if (connected) {
+                this.store.dispatch(new ConnectionMade());
+            } else {
+                this.store.dispatch(new ConnectionLost());
+            }
+        });
     }
 }
