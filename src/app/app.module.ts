@@ -39,6 +39,12 @@ import { RubricViewMobileComponent } from './components/rubric-view-mobile/rubri
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Angulartics2Intercom } from 'angulartics2/intercom';
+import { OfflineComponent } from './components/offline/offline.component';
+import { ConnectionService } from './services/connection.service';
+import { LoadingComponent } from './components/loading/loading.component';
+import { CreateRubricButtonComponent } from './components/create-rubric-button/create-rubric-button.component';
+import { WindowRef } from './services/window-ref.service';
+import { NavigatorRef } from './services/navigator-ref.service';
 
 @NgModule({
     bootstrap: [
@@ -49,6 +55,7 @@ import { Angulartics2Intercom } from 'angulartics2/intercom';
         PageNotFoundComponent,
         NavbarComponent,
         HomeComponent,
+        OfflineComponent,
         ViewRubricComponent,
         ListRubricsComponent,
         PageAlertComponent,
@@ -65,6 +72,8 @@ import { Angulartics2Intercom } from 'angulartics2/intercom';
         EditRubricTableBottomComponent,
         HomeJumbotronComponent,
         RubricViewMobileComponent,
+        LoadingComponent,
+        CreateRubricButtonComponent,
     ],
     imports: [
         appRoutes,
@@ -89,6 +98,9 @@ import { Angulartics2Intercom } from 'angulartics2/intercom';
         JsonbinHttpService,
         LocalStorageService,
         BackendDataService,
+        ConnectionService,
+        WindowRef,
+        NavigatorRef,
     ],
 })
 export class AppModule {

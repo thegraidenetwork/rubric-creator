@@ -1,4 +1,4 @@
-<div *ngIf="rubric" class="mb-3">
+<div *ngIf="rubric && rubric.components && rubric.components.length > 0" class="mb-3">
     <h4>Components ({{ rubric.components.length }})</h4>
     <ngb-accordion #acc="ngbAccordion" activeIds="toggle-0">
         <ngb-panel *ngFor="let component of rubric.components; let i = index" [id]="'toggle-' + i">

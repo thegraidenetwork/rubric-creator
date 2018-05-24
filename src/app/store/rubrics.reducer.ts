@@ -55,6 +55,12 @@ export function rubricsReducer(state: RubricsStateInterface, action: RubricsActi
         case RubricsActionTypes.CreateRubric:
             return {...state, saving: true};
 
+        case RubricsActionTypes.ConnectionMade:
+            return {...state, connected: true};
+
+        case RubricsActionTypes.ConnectionLost:
+            return {...state, connected: false};
+
         case RubricsActionTypes.GetRubrics:
         default:
             return state;
