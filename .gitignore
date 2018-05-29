@@ -35,6 +35,7 @@ yarn-error.log
 testem.log
 /typings
 .env
+codeship.aes
 
 # e2e
 /e2e/*.js
