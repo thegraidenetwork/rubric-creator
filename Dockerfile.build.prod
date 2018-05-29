@@ -16,7 +16,4 @@ RUN ng build --prod --aot true --deploy-url https://www.rubriccreator.com/
 
 # Next stage: Azure CLI
 FROM azuresdk/azure-cli-python
-ENV AZURE_ENDPOINT_NAME=tgn-rubric-creator-prod
-ENV AZURE_CONTAINER_NAME=rubric-creator-prod
-ENV AZURE_CACHE_CONTROL="no-cache, no-store, must-revalidate"
 COPY --from=0 /angular/dist /dist
