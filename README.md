@@ -56,9 +56,9 @@ Contributions are welcome and encouraged to this open source project. Please be 
 
 ## Deploying
 
-Once you have built the files, you can copy them into a file hosting service like Azure's Blob Storage or Amazon S3.
+Once you have built the files, you can copy them into a file hosting service like Azure's Blob Storage or Amazon S3. The following tutorials should help you get started:
 
-- [Tutorial for Azure](https://blog.lifeishao.com/2017/05/24/serving-your-static-sites-with-azure-blob-and-cdn/)
+- [Tutorial for Azure](https://blog.codeship.com/serving-an-angular-app-on-azures-cdn-with-codeship-and-docker/)
 - [Tutorial for S3](https://johnlouros.com/blog/host-your-angular-app-in-aws-s3)
 
 ## Special Thanks
