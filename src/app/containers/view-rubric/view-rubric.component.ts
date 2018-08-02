@@ -46,7 +46,7 @@ export class ViewRubricComponent extends BaseRubricComponent implements OnInit {
         this.store.takeUntil(this.ngUnsubscribe)
             .pipe(select('rubrics'))
             .subscribe((state: RubricsStateInterface) => {
-                const title = state.currentRubric ?
+                const title = state.currentRubric !== undefined ?
                     `${state.currentRubric.name} | Rubric Creator` :
                     getInitialState().rubrics.pageTitle;
                 if (state.pageTitle !== title) {
