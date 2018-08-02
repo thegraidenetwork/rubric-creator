@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RubricsStateInterface } from '../../store/rubrics.state';
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
 import { BaseComponent } from '../../components/base/base.component';
-import { GetRubrics, SetBreadcrumbs } from '../../store/rubrics.actions';
+import { GetRubrics, SetBreadcrumbs, SetPageTitle } from '../../store/rubrics.actions';
 import { BreadcrumbInterface } from '../../object-interfaces/breadcrumb.interface';
 
 @Component({
@@ -24,6 +24,7 @@ export class ListRubricsComponent extends BaseComponent implements OnInit {
             text: 'Rubrics',
         },
     ];
+    private title: string = 'All Rubrics | Rubric Creator';
 
     constructor(private store: Store<RubricsStateInterface>) {
         super();
@@ -36,6 +37,7 @@ export class ListRubricsComponent extends BaseComponent implements OnInit {
 
         this.store.dispatch(new GetRubrics());
         this.store.dispatch(new SetBreadcrumbs(this.breadcrumbs));
+        this.store.dispatch(new SetPageTitle(this.title));
     }
 
 }

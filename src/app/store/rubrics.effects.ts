@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { CreateRubric, CreateRubricSuccess, GetRubric, GetRubrics, RubricsActionTypes } from './rubrics.actions';
+import { CreateRubric, CreateRubricSuccess, GetRubric, GetRubrics, RubricsActionTypes, SetPageTitle } from './rubrics.actions';
 import { Action } from '@ngrx/store';
 import { DisplayableErrorInterface } from '../object-interfaces/displayable-error.interface';
 import { BackendDataService } from '../data-services/backend-data.service';
 import { Router } from '@angular/router';
 import { emptyRubricObject } from '../data-services/data/empty-rubric.object';
 import { ConnectionService } from '../services/connection.service';
+import { Title } from '@angular/platform-browser';
 
 function _generateDisplayableError(error?: object): DisplayableErrorInterface {
     return {message: 'Whoops! Something went wrong and data could not be loaded. Try refreshing the page.'};
@@ -75,11 +76,17 @@ export class RubricsEffects {
         .ofType<CreateRubricSuccess>(RubricsActionTypes.CreateRubricSuccess)
         .do(action => void this.router.navigateByUrl(`/rubrics/${action.payload.uuid}`));
 
+    @Effect({dispatch: false})
+    public setPageTitle: Observable<Action> = this.actions
+        .ofType<SetPageTitle>(RubricsActionTypes.SetPageTitle)
+        .do(action => this.titleService.setTitle(action.payload));
+
     constructor(
         private backendData: BackendDataService,
         private actions: Actions,
         private router: Router,
-        private connection: ConnectionService
+        private connection: ConnectionService,
+        private titleService: Title
     ) {
         this.connection.init();
     }

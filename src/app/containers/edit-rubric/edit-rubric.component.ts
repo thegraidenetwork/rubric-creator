@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseRubricComponent } from '../../components/base/base-rubric.component';
 import { Store } from '@ngrx/store';
 import { RubricsStateInterface } from '../../store/rubrics.state';
-import { GetRubric, SetBreadcrumbs } from '../../store/rubrics.actions';
+import { GetRubric, SetBreadcrumbs, SetPageTitle } from '../../store/rubrics.actions';
 import { BreadcrumbInterface } from '../../object-interfaces/breadcrumb.interface';
 
 @Component({
@@ -27,12 +27,14 @@ export class EditRubricComponent extends BaseRubricComponent implements OnInit {
             text: 'Create',
         },
     ];
+    private title: string = 'Create New Rubric | Rubric Creator';
 
     constructor(protected store: Store<RubricsStateInterface>) {
         super(store);
     }
 
     public ngOnInit(): void {
+        this.store.dispatch(new SetPageTitle(this.title));
         this.store.dispatch(new SetBreadcrumbs(this.breadcrumbs));
         this.store.dispatch(new GetRubric());
         super.ngOnInit();

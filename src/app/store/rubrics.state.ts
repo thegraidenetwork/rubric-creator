@@ -8,6 +8,7 @@ export interface RubricsStateInterface {
     error: DisplayableErrorInterface | undefined;
     saving: boolean;
     breadcrumbs: Array<BreadcrumbInterface> | undefined;
+    pageTitle: string;
     connected: boolean;
 }
 
@@ -19,6 +20,7 @@ export function getInitialState(): {rubrics: RubricsStateInterface} {
             error: undefined,
             saving: false,
             breadcrumbs: undefined,
+            pageTitle: 'Rubric Creator by The Graide Network',
             connected: true,
         },
     };

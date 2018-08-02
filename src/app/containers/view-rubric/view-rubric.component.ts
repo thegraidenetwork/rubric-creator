@@ -1,8 +1,8 @@
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
-import { RubricsStateInterface } from '../../store/rubrics.state';
+import { getInitialState, RubricsStateInterface } from '../../store/rubrics.state';
 import { ActivatedRoute, Params } from '@angular/router';
-import { GetRubric, SetBreadcrumbs } from '../../store/rubrics.actions';
+import { GetRubric, SetBreadcrumbs, SetPageTitle } from '../../store/rubrics.actions';
 import { BaseRubricComponent } from '../../components/base/base-rubric.component';
 import { BreadcrumbInterface } from '../../object-interfaces/breadcrumb.interface';
 
@@ -42,6 +42,17 @@ export class ViewRubricComponent extends BaseRubricComponent implements OnInit {
             this.store.dispatch(new GetRubric(params['rubric_uuid'] as string));
         });
         this.store.dispatch(new SetBreadcrumbs(this.breadcrumbs));
+
+        this.store.takeUntil(this.ngUnsubscribe)
+            .pipe(select('rubrics'))
+            .subscribe((state: RubricsStateInterface) => {
+                const title = state.currentRubric ?
+                    `${state.currentRubric.name} | Rubric Creator` :
+                    getInitialState().rubrics.pageTitle;
+                if (state.pageTitle !== title) {
+                    this.store.dispatch(new SetPageTitle(title));
+                }
+            });
     }
 
 }

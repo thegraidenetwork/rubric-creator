@@ -16,6 +16,7 @@ export enum RubricsActionTypes {
     CreateRubricSuccess = 'Create Rubric Success',
     CreateRubricError = 'Create Rubric Error',
     SetBreadcrumbs = 'Set Breadcrumbs',
+    SetPageTitle = 'Set Page Title',
     ConnectionMade = 'Connection Made',
     ConnectionLost = 'Connection Lost',
 }
@@ -75,6 +76,11 @@ export class SetBreadcrumbs implements Action {
     constructor(public payload: Array<BreadcrumbInterface> | undefined) {}
 }
 
+export class SetPageTitle implements Action {
+    public readonly type = RubricsActionTypes.SetPageTitle;
+    constructor(public payload: string) {}
+}
+
 export class ConnectionMade implements Action {
     public readonly type = RubricsActionTypes.ConnectionMade;
     constructor(public payload?: undefined) {}
@@ -97,5 +103,6 @@ export type RubricsActionsUnion =
     | CreateRubricSuccess
     | CreateRubricError
     | SetBreadcrumbs
+    | SetPageTitle
     | ConnectionMade
     | ConnectionLost;

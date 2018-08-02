@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HomeComponent } from './home.component';
+import { StoreModule } from '@ngrx/store';
+import { rubricsReducer } from '../../store/rubrics.reducer';
+import { getInitialState } from '../../store/rubrics.state';
 
 describe('HomeComponent', () => {
     let component: HomeComponent;
@@ -19,6 +22,12 @@ describe('HomeComponent', () => {
 
         TestBed.configureTestingModule({
             declarations: [HomeComponent],
+            imports: [
+                StoreModule.forRoot(
+                    {rubrics: rubricsReducer},
+                    {initialState: getInitialState}
+                ),
+            ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents().then(
             successfulCompileCallback,

@@ -52,6 +52,9 @@ export function rubricsReducer(state: RubricsStateInterface, action: RubricsActi
         case RubricsActionTypes.SetBreadcrumbs:
             return {...state, breadcrumbs: action.payload};
 
+        case RubricsActionTypes.SetPageTitle:
+            return {...state, pageTitle: action.payload};
+
         case RubricsActionTypes.CreateRubric:
             return {...state, saving: true};
 

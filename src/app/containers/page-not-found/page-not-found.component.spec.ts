@@ -2,6 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PageNotFoundComponent } from './page-not-found.component';
+import { StoreModule } from '@ngrx/store';
+import { rubricsReducer } from '../../store/rubrics.reducer';
+import { getInitialState } from '../../store/rubrics.state';
 
 describe('PageNotFoundComponent', () => {
     let component: PageNotFoundComponent;
@@ -24,6 +27,10 @@ describe('PageNotFoundComponent', () => {
             ],
             imports: [
                 RouterTestingModule,
+                StoreModule.forRoot(
+                    {rubrics: rubricsReducer},
+                    {initialState: getInitialState}
+                ),
             ],
             schemas: [
                 CUSTOM_ELEMENTS_SCHEMA,
