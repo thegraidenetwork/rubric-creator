@@ -4,9 +4,21 @@ import { LocalStorageService } from './clients/local-storage.service';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { defaultRubricsArray } from './data/default-rubrics.array';
+import { defaultRubricIds, defaultRubricsArray } from './data/default-rubrics.array';
 import { GetRubricDataInterface } from './interfaces/get-rubric-data.interface';
 import { GetRubricsDataInterface } from './interfaces/get-rubrics-data.interface';
+
+const filterCustomRubrics = (rubrics: Array<RubricInterface>): Array<RubricInterface> => {
+    return rubrics.filter(
+        rubric => (rubric.uuid !== undefined) ?
+            !defaultRubricIds.includes(rubric.uuid) :
+            false
+    );
+};
+
+const appendDefaultRubrics = (rubrics: Array<RubricInterface> | undefined): Array<RubricInterface> | undefined => {
+    return (rubrics !== undefined) ? defaultRubricsArray.concat(rubrics) : rubrics;
+};
 
 @Injectable()
 export class BackendDataService implements GetRubricDataInterface, GetRubricsDataInterface {
@@ -22,16 +34,14 @@ export class BackendDataService implements GetRubricDataInterface, GetRubricsDat
         this.jsonbin.getRubric(uuid).subscribe(rubric => this.pushOrUpdateRubric(rubric));
 
         return this.getRubrics()
-            .map(rubrics => rubrics !== undefined ?
-                rubrics.find(rubric => rubric.uuid === uuid) :
-                undefined
-            );
+            .map(rubrics => rubrics.find(rubric => rubric.uuid === uuid));
     }
 
-    public getRubrics(): Observable<Array<RubricInterface> | undefined> {
+    public getRubrics(): Observable<Array<RubricInterface>> {
         this.localStorage.getRubrics()
             .filter(rubrics => rubrics !== undefined)
-            .subscribe(rubrics => this.setRubrics(rubrics));
+            .map(appendDefaultRubrics)
+            .subscribe(this.setRubrics);
 
         return this.rubrics;
     }
@@ -61,11 +71,14 @@ export class BackendDataService implements GetRubricDataInterface, GetRubricsDat
         this.setRubrics(this._rubrics);
     }
 
-    private setRubrics(rubrics: Array<RubricInterface> | undefined): void {
-        if (rubrics !== undefined) {
-            this._rubrics = rubrics;
-            this.rubrics.next(rubrics);
-            this.localStorage.setRubrics(rubrics).subscribe();
-        }
+    private setRubrics = (rubrics: Array<RubricInterface>): void => {
+        this._rubrics = rubrics;
+        this.rubrics.next(rubrics);
+        this.saveCustomRubricsToLocalStorage(rubrics);
+    };
+
+    private saveCustomRubricsToLocalStorage(rubrics: Array<RubricInterface>): void {
+        const customRubrics = filterCustomRubrics(rubrics);
+        this.localStorage.setRubrics(customRubrics).subscribe();
     }
 }

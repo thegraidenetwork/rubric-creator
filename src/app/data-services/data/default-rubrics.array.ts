@@ -27,3 +27,14 @@ export const defaultRubricsArray: Array<RubricInterface> = [
         uuid: '5af0c34fc83f6d4cc7348fb7',
     },
 ];
+
+export const defaultRubricIds = defaultRubricsArray.reduce(
+    (arr: Array<string>, def: RubricInterface) => {
+        if (def.uuid !== undefined) {
+            arr.push(def.uuid);
+        }
+
+        return arr;
+    },
+    []
+);
