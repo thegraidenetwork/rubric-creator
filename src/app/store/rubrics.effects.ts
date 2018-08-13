@@ -2,7 +2,16 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { CreateRubric, CreateRubricSuccess, GetRubric, GetRubrics, RubricsActionTypes, SetPageTitle } from './rubrics.actions';
+import {
+    CreateRubric,
+    CreateRubricSuccess,
+    DeleteRubric,
+    DeleteRubricSuccess,
+    GetRubric,
+    GetRubrics,
+    RubricsActionTypes,
+    SetPageTitle,
+} from './rubrics.actions';
 import { Action } from '@ngrx/store';
 import { DisplayableErrorInterface } from '../object-interfaces/displayable-error.interface';
 import { BackendDataService } from '../data-services/backend-data.service';
@@ -75,6 +84,26 @@ export class RubricsEffects {
     public createRubricSuccess: Observable<Action> = this.actions
         .ofType<CreateRubricSuccess>(RubricsActionTypes.CreateRubricSuccess)
         .do(action => void this.router.navigateByUrl(`/rubrics/${action.payload.uuid}`));
+
+    @Effect()
+    public deleteRubric: Observable<Action> = this.actions
+        .ofType<DeleteRubric>(RubricsActionTypes.DeleteRubric)
+        .mergeMap(action => {
+            return this.backendData.deleteRubric(action.payload)
+                .map(data => ({
+                    payload: data,
+                    type: RubricsActionTypes.DeleteRubricSuccess,
+                }))
+                .catch(err => of({
+                    payload: _generateDisplayableError(err),
+                    type: RubricsActionTypes.DeleteRubricError,
+                }));
+        });
+
+    @Effect({dispatch: false})
+    public deleteRubricSuccess: Observable<Action> = this.actions
+        .ofType<DeleteRubricSuccess>(RubricsActionTypes.DeleteRubricSuccess)
+        .do(() => void this.router.navigateByUrl('/rubrics'));
 
     @Effect({dispatch: false})
     public setPageTitle: Observable<Action> = this.actions

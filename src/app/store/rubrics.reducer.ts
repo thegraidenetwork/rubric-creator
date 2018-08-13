@@ -16,6 +16,14 @@ function _resetRubric(rubric: RubricInterface | undefined): RubricInterface | un
     return rubric;
 }
 
+function _removeRubric(uuid?: string, rubrics?: Array<RubricInterface>): Array<RubricInterface> | undefined {
+    if (rubrics !== undefined && uuid !== undefined) {
+        return rubrics.filter(rubric => rubric.uuid !== uuid);
+    }
+
+    return rubrics;
+}
+
 export function rubricsReducer(state: RubricsStateInterface, action: RubricsActionsUnion): RubricsStateInterface {
     switch (action.type) {
         case RubricsActionTypes.GetRubricSuccess:
@@ -29,21 +37,32 @@ export function rubricsReducer(state: RubricsStateInterface, action: RubricsActi
             };
 
         case RubricsActionTypes.GetRubricsSuccess:
+        case RubricsActionTypes.DeleteRubricSuccess:
             return {
                 ...state,
                 allRubrics: action.payload,
+                deleting: false,
                 error: undefined,
             };
 
         case RubricsActionTypes.CreateRubricError:
         case RubricsActionTypes.GetRubricError:
         case RubricsActionTypes.GetRubricsError:
+        case RubricsActionTypes.DeleteRubricError:
             return {
                 ...state,
                 currentRubric: undefined,
                 allRubrics: undefined,
                 error: action.payload,
                 saving: false,
+                deleting: false,
+            };
+
+        case RubricsActionTypes.DeleteRubric:
+            return {
+                ...state,
+                currentRubric: undefined,
+                deleting: true,
             };
 
         case RubricsActionTypes.GetRubric:

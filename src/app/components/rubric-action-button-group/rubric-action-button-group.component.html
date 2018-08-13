@@ -1,6 +1,6 @@
 <div class="btn-group d-print-none" [class.float-md-right]="floatRight" role="group" aria-label="Action buttons">
-  <button type="button" class="btn btn-secondary">
-    <span [ngbTooltip]="'Copy Link'" class="oi oi-link-intact" (click)="copyLink()"></span>
+  <button (click)="copyLink()" type="button" class="btn btn-secondary">
+    <span [ngbTooltip]="'Copy Link'" class="oi oi-link-intact"></span>
   </button>
   <button type="button" class="btn btn-secondary">
     <span [ngbTooltip]="'Duplicate Rubric'" class="oi oi-clipboard"></span>
@@ -11,8 +11,8 @@
   <button *ngIf="rubric.private" type="button" class="btn btn-secondary">
     <span [ngbTooltip]="'Edit Rubric'" class="oi oi-pencil"></span>
   </button>
-  <button *ngIf="rubric.private" type="button" class="btn btn-secondary">
-    <span [ngbTooltip]="'Delete Rubric'" class="oi oi-trash" (click)="deleteRubric()"></span>
+  <button *ngIf="rubric.private" type="button" class="btn btn-secondary" (click)="openDeleteRubricModal()">
+    <span [ngbTooltip]="'Delete Rubric'" class="oi oi-trash"></span>
   </button>
   <button *ngIf="rubric.created_at" [class.extra-wide]="!rubric.private"
           type="button" class="d-none d-lg-block btn btn-outline-secondary disabled btn-date">

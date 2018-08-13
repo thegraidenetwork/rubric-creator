@@ -41,7 +41,7 @@ export class BackendDataService implements GetRubricDataInterface, GetRubricsDat
         this.localStorage.getRubrics()
             .filter(rubrics => rubrics !== undefined)
             .map(appendDefaultRubrics)
-            .subscribe(this.setRubrics);
+            .subscribe(rubrics => this.setRubrics(rubrics));
 
         return this.rubrics;
     }
@@ -49,6 +49,17 @@ export class BackendDataService implements GetRubricDataInterface, GetRubricsDat
     public createRubric(rubric: RubricInterface): Observable<RubricInterface> {
         return this.jsonbin.createRubric(rubric)
             .do(newRubric => this.pushOrUpdateRubric(newRubric));
+    }
+
+    public deleteRubric(uuid?: string): Observable<Array<RubricInterface>> {
+        if (uuid !== undefined) {
+            const filteredRubrics = this._rubrics.filter(rubric => rubric.uuid !== uuid);
+            const resp = this.saveCustomRubricsToLocalStorage(filteredRubrics);
+
+            return resp.map(() => filteredRubrics);
+        }
+
+        throw new Error('Rubric could not be deleted.');
     }
 
     private pushOrUpdateRubric(rubric: RubricInterface): void {
@@ -71,14 +82,20 @@ export class BackendDataService implements GetRubricDataInterface, GetRubricsDat
         this.setRubrics(this._rubrics);
     }
 
-    private setRubrics = (rubrics: Array<RubricInterface>): void => {
-        this._rubrics = rubrics;
-        this.rubrics.next(rubrics);
-        this.saveCustomRubricsToLocalStorage(rubrics);
+    private setRubrics = (rubrics?: Array<RubricInterface>): void => {
+        if (rubrics !== undefined) {
+            this._rubrics = rubrics;
+            this.rubrics.next(rubrics);
+
+            this.saveCustomRubricsToLocalStorage(rubrics);
+        }
     };
 
-    private saveCustomRubricsToLocalStorage(rubrics: Array<RubricInterface>): void {
+    private saveCustomRubricsToLocalStorage(rubrics: Array<RubricInterface>): Observable<boolean> {
         const customRubrics = filterCustomRubrics(rubrics);
-        this.localStorage.setRubrics(customRubrics).subscribe();
+        const storageResponse = this.localStorage.setRubrics(customRubrics);
+        storageResponse.subscribe();
+
+        return storageResponse;
     }
 }
