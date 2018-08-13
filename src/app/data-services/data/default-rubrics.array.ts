@@ -2,29 +2,34 @@ import { RubricInterface } from '../../object-interfaces/rubric.interface';
 
 export const defaultRubricsArray: Array<RubricInterface> = [
     {
-        created_at: '2018-05-01 19:11:10',
-        name: 'AP Psychology Final - Free Response Questions',
-        uuid: '5af0bf130fb4d74cdf23d79f/1',
+        created_at: '2018-08-07 16:59:23',
+        description: 'Common Core State Standards-based history essay rubric for grades 9-12. Created by The Graide Network.',
+        name: 'History Essay Rubric (High School)',
+        uuid: '5b719172e013915146d41141',
     },
     {
-        created_at: '2018-04-25 20:04:23',
-        name: 'AP Literature - 2017 Question 3',
-        uuid: '5af0c23d7a973f4ce57837b4',
+        created_at: '2018-08-07 16:29:42',
+        description: 'Common Core State Standards-based narrative essay rubric for grades 9-12. Created by The Graide Network.',
+        name: 'Narrative Essay Rubric (High School)',
+        uuid: '5b7192472878011e8d6a70a3',
     },
     {
-        created_at: '2018-04-25 18:31:40',
-        name: 'AP Language - 2014 Question 2',
-        uuid: '5af0c2b8c83f6d4cc7348fb5',
+        created_at: '2018-08-07 16:17:15',
+        description: 'Common Core State Standards-based persuasive essay rubric for grades 9-12. Created by The Graide Network.',
+        name: 'Persuasive Essay Rubric (High School)',
+        uuid: '5b7192ae7b212953679045d0',
     },
     {
-        created_at: '2018-04-26 19:33:28',
-        name: 'Sophomore English Research Project',
-        uuid: '5af0c3057a973f4ce57837b6',
+        created_at: '2018-08-07 16:00:47',
+        description: 'Common Core State Standards-based expository essay rubric for grades 9-12. Created by The Graide Network.',
+        name: 'Expository Essay Rubric (High School)',
+        uuid: '5b7192d8e013915146d411a5',
     },
     {
-        created_at: '2018-04-13 14:11:41',
-        name: 'High School English - Persuasive Writing',
-        uuid: '5af0c34fc83f6d4cc7348fb7',
+        created_at: '2018-08-07 15:55:24',
+        description: 'Common Core State Standards-based argumentative essay rubric for grades 9-12. Created by The Graide Network.',
+        name: 'Argumentative Essay Rubric (High School)',
+        uuid: '5b7192f6e013915146d411a8',
     },
 ];
 
