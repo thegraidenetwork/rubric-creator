@@ -20,6 +20,7 @@ export abstract class BaseEditRubricComponent extends BaseRubricComponent implem
 
     public updateRubric(): void {
         if (this.rubric !== undefined) {
+            this.rubric.private = true;
             this.store.dispatch(new UpdateCurrentRubric(this.rubric));
         }
     }

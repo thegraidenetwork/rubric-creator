@@ -5,23 +5,11 @@ import { getTotalPointsFromRubric } from '../functions/get-total-points-from-rub
 import { RubricInterface } from '../object-interfaces/rubric.interface';
 
 function _resetRubric(rubric: RubricInterface | undefined): RubricInterface | undefined {
-    if (rubric !== undefined) {
-        return {
-            ...rubric,
-            maxLevelsCount: getMaxLevelsFromRubric(rubric),
-            totalPoints: getTotalPointsFromRubric(rubric),
-        };
-    }
-
-    return rubric;
-}
-
-function _removeRubric(uuid?: string, rubrics?: Array<RubricInterface>): Array<RubricInterface> | undefined {
-    if (rubrics !== undefined && uuid !== undefined) {
-        return rubrics.filter(rubric => rubric.uuid !== uuid);
-    }
-
-    return rubrics;
+    return (rubric !== undefined) ? {
+        ...rubric,
+        maxLevelsCount: getMaxLevelsFromRubric(rubric),
+        totalPoints: getTotalPointsFromRubric(rubric),
+    } : rubric;
 }
 
 export function rubricsReducer(state: RubricsStateInterface, action: RubricsActionsUnion): RubricsStateInterface {

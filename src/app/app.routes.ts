@@ -20,6 +20,10 @@ const routes: Routes = [
         component: EditRubricComponent,
     },
     {
+        path: 'rubrics/:rubric_uuid/duplicate',
+        component: EditRubricComponent,
+    },
+    {
         path: 'rubrics/:rubric_uuid',
         component: ViewRubricComponent,
     },

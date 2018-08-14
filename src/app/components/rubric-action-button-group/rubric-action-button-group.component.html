@@ -3,7 +3,10 @@
     <span *ngIf="!copied" [ngbTooltip]="'Copy Link'" class="oi oi-link-intact"></span>
     <span *ngIf="copied" [ngbTooltip]="'Link Copied!'" class="oi oi-check"></span>
   </button>
-  <button type="button" class="btn btn-secondary">
+  <button *ngIf="rubric.uuid"
+          type="button"
+          class="btn btn-secondary"
+          [routerLink]="'/rubrics/' + rubric.uuid + '/duplicate'">
     <span [ngbTooltip]="'Duplicate Rubric'" class="oi oi-layers"></span>
   </button>
   <button *ngIf="showPrint" type="button" class="btn btn-secondary" (click)="printRubric()">
