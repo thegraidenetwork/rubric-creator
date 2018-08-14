@@ -5,8 +5,8 @@ import { DeleteRubricModalComponent } from '../delete-rubric-modal/delete-rubric
 
 @Component({
     selector: 'rc-rubric-action-button-group',
-    templateUrl: './rubric-action-button-group.component.html',
     styleUrls: ['./rubric-action-button-group.component.css'],
+    templateUrl: './rubric-action-button-group.component.html',
 })
 export class RubricActionButtonGroupComponent {
     @Input() public floatRight: boolean = false;

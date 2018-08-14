@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { rubricsReducer } from '../../store/rubrics.reducer';
 import { getInitialState } from '../../store/rubrics.state';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('EditRubricComponent', () => {
     let component: EditRubricComponent;
@@ -19,6 +20,7 @@ describe('EditRubricComponent', () => {
                     {rubrics: rubricsReducer},
                     {initialState: getInitialState}
                 ),
+                RouterTestingModule,
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();

@@ -29,8 +29,8 @@ export function rubricsReducer(state: RubricsStateInterface, action: RubricsActi
             return {
                 ...state,
                 allRubrics: action.payload,
-                deleting: false,
                 error: undefined,
+                deleting: false,
             };
 
         case RubricsActionTypes.CreateRubricError:

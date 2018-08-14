@@ -8,8 +8,8 @@ import { DeleteRubric } from '../../store/rubrics.actions';
 
 @Component({
     selector: 'rc-delete-rubric-modal',
-    templateUrl: './delete-rubric-modal.component.html',
     styleUrls: ['./delete-rubric-modal.component.css'],
+    templateUrl: './delete-rubric-modal.component.html',
 })
 export class DeleteRubricModalComponent extends BaseComponent implements OnInit {
     @Input() public rubric: RubricInterface;

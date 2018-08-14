@@ -79,6 +79,9 @@ import { DeleteRubricModalComponent } from './components/delete-rubric-modal/del
         RubricActionButtonGroupComponent,
         DeleteRubricModalComponent,
     ],
+    entryComponents: [
+        DeleteRubricModalComponent,
+    ],
     imports: [
         appRoutes,
         BrowserModule,
@@ -105,9 +108,6 @@ import { DeleteRubricModalComponent } from './components/delete-rubric-modal/del
         ConnectionService,
         WindowRef,
         NavigatorRef,
-    ],
-    entryComponents: [
-        DeleteRubricModalComponent,
     ],
 })
 export class AppModule {
