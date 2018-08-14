@@ -1,15 +1,13 @@
 <div class="btn-group d-print-none" [class.float-md-right]="floatRight" role="group" aria-label="Action buttons">
   <button (click)="copyLink()" type="button" class="btn btn-secondary">
-    <span [ngbTooltip]="'Copy Link'" class="oi oi-link-intact"></span>
+    <span *ngIf="!copied" [ngbTooltip]="'Copy Link'" class="oi oi-link-intact"></span>
+    <span *ngIf="copied" [ngbTooltip]="'Link Copied!'" class="oi oi-check"></span>
   </button>
   <button type="button" class="btn btn-secondary">
-    <span [ngbTooltip]="'Duplicate Rubric'" class="oi oi-clipboard"></span>
+    <span [ngbTooltip]="'Duplicate Rubric'" class="oi oi-layers"></span>
   </button>
   <button *ngIf="showPrint" type="button" class="btn btn-secondary" (click)="printRubric()">
     <span [ngbTooltip]="'Print/Download Rubric'" class="oi oi-print"></span>
-  </button>
-  <button *ngIf="rubric.private" type="button" class="btn btn-secondary">
-    <span [ngbTooltip]="'Edit Rubric'" class="oi oi-pencil"></span>
   </button>
   <button *ngIf="rubric.private" type="button" class="btn btn-secondary" (click)="openDeleteRubricModal()">
     <span [ngbTooltip]="'Delete Rubric'" class="oi oi-trash"></span>
