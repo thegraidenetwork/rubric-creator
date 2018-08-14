@@ -45,6 +45,8 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { CreateRubricButtonComponent } from './components/create-rubric-button/create-rubric-button.component';
 import { WindowRef } from './services/window-ref.service';
 import { NavigatorRef } from './services/navigator-ref.service';
+import { RubricActionButtonGroupComponent } from './components/rubric-action-button-group/rubric-action-button-group.component';
+import { DeleteRubricModalComponent } from './components/delete-rubric-modal/delete-rubric-modal.component';
 
 @NgModule({
     bootstrap: [
@@ -74,6 +76,11 @@ import { NavigatorRef } from './services/navigator-ref.service';
         RubricViewMobileComponent,
         LoadingComponent,
         CreateRubricButtonComponent,
+        RubricActionButtonGroupComponent,
+        DeleteRubricModalComponent,
+    ],
+    entryComponents: [
+        DeleteRubricModalComponent,
     ],
     imports: [
         appRoutes,

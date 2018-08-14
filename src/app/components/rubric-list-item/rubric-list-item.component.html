@@ -1,11 +1,18 @@
-<a [routerLink]="['/rubrics', rubric.uuid]"
-   class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{ rubric.name }}</h5>
-        <span *ngIf="rubric.private" class="oi oi-lock-locked"></span>
+<span class="list-group-item list-group-item-action flex-column align-items-start mb-3 p-3">
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <a [routerLink]="['/rubrics', rubric.uuid]"><h5 class="mb-2">{{ rubric.name }}</h5></a>
+        </div>
+        <div class="col-md-6">
+            <rc-rubric-action-button-group
+                    [rubric]="rubric"
+                    [floatRight]="true"
+            ></rc-rubric-action-button-group>
+        </div>
     </div>
-    <p *ngIf="rubric.created_at">
-        <small>{{ rubric.created_at | date: 'mediumDate' }}</small>
-    </p>
-    <p *ngIf="rubric.description" class="mb-1" [innerHtml]="rubric.description | nl2br"></p>
-</a>
+    <div class="row">
+        <div class="col">
+            <p *ngIf="rubric.description" class="mb-1" [innerHtml]="rubric.description | nl2br"></p>
+        </div>
+    </div>
+</span>

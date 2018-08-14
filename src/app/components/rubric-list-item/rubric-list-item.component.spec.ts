@@ -5,6 +5,7 @@ import { Nl2brPipe } from '../../pipes/nl2br.pipe';
 import * as faker from 'faker';
 import { ComponentInterface } from '../../object-interfaces/component.interface';
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('RubricListItemComponent', () => {
     let component: RubricListItemComponent;
@@ -16,7 +17,8 @@ describe('RubricListItemComponent', () => {
                 RubricListItemComponent,
                 Nl2brPipe,
             ],
-            imports: [RouterTestingModule],
+            imports: [ RouterTestingModule ],
+            schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
         }).compileComponents();
     }));
 

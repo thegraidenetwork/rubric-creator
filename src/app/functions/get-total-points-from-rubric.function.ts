@@ -7,9 +7,8 @@ export function getTotalPointsFromRubric(rubric: RubricInterface): number {
         rubric.components !== undefined &&
         rubric.components.length > 0
     )  {
-        rubric.components.forEach(component => {
-            component.levels.forEach(level => totalPoints += level.score !== undefined ? level.score : 0);
-        });
+        rubric.components.forEach(component => component.levels
+            .forEach(level => totalPoints += level.score !== undefined ? Number(level.score) : 0));
     }
 
     return totalPoints;

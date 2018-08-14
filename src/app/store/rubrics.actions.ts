@@ -11,6 +11,9 @@ export enum RubricsActionTypes {
     GetRubrics = 'Get Rubrics',
     GetRubricsSuccess = 'Get Rubrics Success',
     GetRubricsError = 'Get Rubrics Error',
+    DeleteRubric = 'Delete Rubric',
+    DeleteRubricSuccess = 'Delete Rubric Success',
+    DeleteRubricError = 'Delete Rubric Error',
     UpdateCurrentRubric = 'Update Current Rubric',
     CreateRubric = 'Create Rubric',
     CreateRubricSuccess = 'Create Rubric Success',
@@ -48,6 +51,21 @@ export class GetRubricsSuccess implements Action {
 
 export class GetRubricsError implements Action {
     public readonly type = RubricsActionTypes.GetRubricsError;
+    constructor(public payload: DisplayableErrorInterface) {}
+}
+
+export class DeleteRubric implements Action {
+    public readonly type = RubricsActionTypes.DeleteRubric;
+    constructor(public payload?: string) {}
+}
+
+export class DeleteRubricSuccess implements Action {
+    public readonly type = RubricsActionTypes.DeleteRubricSuccess;
+    constructor(public payload: Array<RubricInterface>) {}
+}
+
+export class DeleteRubricError implements Action {
+    public readonly type = RubricsActionTypes.DeleteRubricError;
     constructor(public payload: DisplayableErrorInterface) {}
 }
 
@@ -98,6 +116,9 @@ export type RubricsActionsUnion =
     | GetRubrics
     | GetRubricsSuccess
     | GetRubricsError
+    | DeleteRubric
+    | DeleteRubricSuccess
+    | DeleteRubricError
     | UpdateCurrentRubric
     | CreateRubric
     | CreateRubricSuccess

@@ -1,11 +1,15 @@
 <div *ngIf="rubric" class="row">
     <div class="col">
-        <h1 class="mb-3">{{ rubric.name }}</h1>
-        <p *ngIf="rubric.description" [innerHTML]="rubric.description | nl2br"></p>
-        <p>
-            <button (click)="printRubric()" class="btn btn-secondary btn-sm">
-                <span class="mr-1 oi oi-print"></span> Print | Download
-            </button>
-        </p>
+        <h1 class="mb-3">{{ rubric?.name }}</h1>
+        <p *ngIf="rubric?.description" [innerHTML]="rubric?.description | nl2br"></p>
+        <div class="row mb-3">
+            <div class="col">
+                <rc-rubric-action-button-group
+                        [rubric]="rubric"
+                        [showPrint]="true"
+                        [floatRight]="false"
+                ></rc-rubric-action-button-group>
+            </div>
+        </div>
     </div>
 </div>

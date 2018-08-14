@@ -12,10 +12,4 @@ export class RubricHeaderComponent extends BaseRubricComponent implements OnInit
     constructor(protected store: Store<RubricsStateInterface>) {
         super(store);
     }
-
-    public printRubric(): false {
-        window.print();
-
-        return false;
-    }
 }
