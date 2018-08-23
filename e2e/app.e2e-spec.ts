@@ -7,7 +7,7 @@ describe('rubric-creator App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display welcome message on home page', () => {
     page.navigateTo();
     void expect(page.getHeaderText()).toEqual('Rubric Creator');
   });
