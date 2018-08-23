@@ -10,9 +10,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Limited offline support, progressive web app.
 - Google Analytics support.
 - Intercom support.
+- Protractor tests.
 
 ### Fixed
 - Mobile styling for view rubric page.
+- Default rubrics can be changed.
 
 ## [0.1.0] - 2018-05-07
 
