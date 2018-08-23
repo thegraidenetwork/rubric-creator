@@ -8,7 +8,7 @@ import { NavigationEnd, Router } from '@angular/router';
     styleUrls: ['./app.component.css'],
     templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
     constructor(
         private angulartics2GoogleTagManager: Angulartics2GoogleAnalytics,
         private angulartics2Intercom: Angulartics2Intercom,
@@ -18,6 +18,6 @@ export class AppComponent implements OnInit{
     public ngOnInit(): void {
         this.router.events
             .filter(event => event instanceof NavigationEnd)
-            .subscribe(() => void window.scrollTo(0, 0));
+            .subscribe(() => window.scrollTo(0, 0));
     }
 }
