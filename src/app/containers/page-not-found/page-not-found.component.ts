@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RubricsStateInterface } from '../../store/rubrics.state';
-import { GetRubric, SetBreadcrumbs, SetPageTitle } from '../../store/rubrics.actions';
+import { SetPageTitle } from '../../store/rubrics.actions';
 
 @Component({
     selector: 'rc-page-not-found',

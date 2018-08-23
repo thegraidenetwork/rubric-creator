@@ -1,6 +1,5 @@
 import { RubricInterface } from '../object-interfaces/rubric.interface';
 import { DisplayableErrorInterface } from '../object-interfaces/displayable-error.interface';
-import { BreadcrumbInterface } from '../object-interfaces/breadcrumb.interface';
 
 export interface RubricsStateInterface {
     currentRubric: RubricInterface | undefined;
@@ -8,7 +7,6 @@ export interface RubricsStateInterface {
     error: DisplayableErrorInterface | undefined;
     saving: boolean;
     deleting: boolean;
-    breadcrumbs: Array<BreadcrumbInterface> | undefined;
     pageTitle: string;
     connected: boolean;
 }
@@ -21,7 +19,6 @@ export function getInitialState(): {rubrics: RubricsStateInterface} {
             error: undefined,
             saving: false,
             deleting: false,
-            breadcrumbs: undefined,
             pageTitle: 'Rubric Creator by The Graide Network',
             connected: true,
         },

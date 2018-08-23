@@ -3,6 +3,7 @@ html {
     min-height: 100%;
 }
 body {
+    padding-top: 60px; /* Padding top by nav height */
     margin-bottom: 60px; /* Margin bottom by footer height */
 }
 a {

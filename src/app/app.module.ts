@@ -25,7 +25,6 @@ import { RubricHeaderComponent } from './components/rubric-header/rubric-header.
 import { RubricTableHeadComponent } from './components/rubric-table-head/rubric-table-head.component';
 import { RubricTableBodyComponent } from './components/rubric-table-body/rubric-table-body.component';
 import { RubricListItemComponent } from './components/rubric-list-item/rubric-list-item.component';
-import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { EditRubricComponent } from './containers/edit-rubric/edit-rubric.component';
 import { EditRubricHeaderComponent } from './components/edit-rubric-header/edit-rubric-header.component';
 import { EditRubricTableBodyComponent } from './components/edit-rubric-table-body/edit-rubric-table-body.component';
@@ -66,7 +65,6 @@ import { DeleteRubricModalComponent } from './components/delete-rubric-modal/del
         RubricTableHeadComponent,
         RubricTableBodyComponent,
         RubricListItemComponent,
-        BreadcrumbComponent,
         EditRubricComponent,
         EditRubricHeaderComponent,
         EditRubricTableBodyComponent,

@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RubricsStateInterface } from '../../store/rubrics.state';
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
 import { BaseComponent } from '../../components/base/base.component';
-import { GetRubrics, SetBreadcrumbs, SetPageTitle } from '../../store/rubrics.actions';
-import { BreadcrumbInterface } from '../../object-interfaces/breadcrumb.interface';
+import { GetRubrics, SetPageTitle } from '../../store/rubrics.actions';
 
 @Component({
     selector: 'rc-list-rubrics',
@@ -12,18 +11,6 @@ import { BreadcrumbInterface } from '../../object-interfaces/breadcrumb.interfac
 })
 export class ListRubricsComponent extends BaseComponent implements OnInit {
     public rubrics: Array<RubricInterface> | undefined = undefined;
-    private breadcrumbs: Array<BreadcrumbInterface> = [
-        {
-            path: '/',
-            selected: false,
-            text: 'Home',
-        },
-        {
-            path: undefined,
-            selected: true,
-            text: 'Rubrics',
-        },
-    ];
     private title: string = 'All Rubrics | Rubric Creator';
 
     constructor(private store: Store<RubricsStateInterface>) {
@@ -36,7 +23,6 @@ export class ListRubricsComponent extends BaseComponent implements OnInit {
             .subscribe((state: RubricsStateInterface) => this.rubrics = state.allRubrics);
 
         this.store.dispatch(new GetRubrics());
-        this.store.dispatch(new SetBreadcrumbs(this.breadcrumbs));
         this.store.dispatch(new SetPageTitle(this.title));
     }
 

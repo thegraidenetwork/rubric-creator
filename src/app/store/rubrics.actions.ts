@@ -2,7 +2,6 @@
 import { Action } from '@ngrx/store';
 import { RubricInterface } from '../object-interfaces/rubric.interface';
 import { DisplayableErrorInterface } from '../object-interfaces/displayable-error.interface';
-import { BreadcrumbInterface } from '../object-interfaces/breadcrumb.interface';
 
 export enum RubricsActionTypes {
     GetRubric = 'Get Rubric',
@@ -18,7 +17,6 @@ export enum RubricsActionTypes {
     CreateRubric = 'Create Rubric',
     CreateRubricSuccess = 'Create Rubric Success',
     CreateRubricError = 'Create Rubric Error',
-    SetBreadcrumbs = 'Set Breadcrumbs',
     SetPageTitle = 'Set Page Title',
     ConnectionMade = 'Connection Made',
     ConnectionLost = 'Connection Lost',
@@ -89,11 +87,6 @@ export class CreateRubricError implements Action {
     constructor(public payload: DisplayableErrorInterface) {}
 }
 
-export class SetBreadcrumbs implements Action {
-    public readonly type = RubricsActionTypes.SetBreadcrumbs;
-    constructor(public payload: Array<BreadcrumbInterface> | undefined) {}
-}
-
 export class SetPageTitle implements Action {
     public readonly type = RubricsActionTypes.SetPageTitle;
     constructor(public payload: string) {}
@@ -123,7 +116,6 @@ export type RubricsActionsUnion =
     | CreateRubric
     | CreateRubricSuccess
     | CreateRubricError
-    | SetBreadcrumbs
     | SetPageTitle
     | ConnectionMade
     | ConnectionLost;
