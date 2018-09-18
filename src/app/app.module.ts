@@ -15,7 +15,6 @@ import { ViewRubricComponent } from './containers/view-rubric/view-rubric.compon
 import { RubricsEffects } from './store/rubrics.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { getInitialState } from './store/rubrics.state';
-import { LocalStorageModule } from '@ngx-pwa/local-storage';
 import { ListRubricsComponent } from './containers/list-rubrics/list-rubrics.component';
 import { LocalStorageService } from './data-services/clients/local-storage.service';
 import { PageAlertComponent } from './components/page-alert/page-alert.component';
@@ -92,7 +91,6 @@ import { DeleteRubricModalComponent } from './components/delete-rubric-modal/del
             { initialState: getInitialState }
         ),
         EffectsModule.forRoot([RubricsEffects]),
-        LocalStorageModule,
         environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
         Angulartics2Module.forRoot([
             Angulartics2GoogleAnalytics,
