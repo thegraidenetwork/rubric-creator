@@ -1,5 +1,5 @@
 # Angular base image
-FROM teracy/angular-cli:1.5.0
+FROM teracy/angular-cli:1.7.4
 RUN npm update -g @angular/cli@~6.2.0
 WORKDIR /angular
 
