@@ -9,6 +9,21 @@
           [routerLink]="'/rubrics/' + rubric.uuid + '/duplicate'">
     <span [ngbTooltip]="'Duplicate Rubric'" class="oi oi-layers"></span>
   </button>
+  <button *ngIf="rubric.uuid"
+          (click)="favoriteRubric()"
+          type="button"
+          class="btn btn-secondary">
+    <span *ngIf="!rubric.favorite"
+          [ngbTooltip]="'Favorite Rubric'"
+          class="oi oi-star"
+          aria-label="Favorite Rubric"
+    ></span>
+    <span *ngIf="rubric.favorite"
+          [ngbTooltip]="'Rubric Favorited!'"
+          class="oi oi-star filled-star"
+          aria-label="Rubric Favorited"
+    ></span>
+  </button>
   <button *ngIf="showPrint" type="button" class="btn btn-secondary" (click)="printRubric()">
     <span [ngbTooltip]="'Print/Download Rubric'" class="oi oi-print"></span>
   </button>

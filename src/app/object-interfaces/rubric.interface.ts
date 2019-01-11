@@ -4,6 +4,7 @@ export interface RubricInterface {
     components?: Array<ComponentInterface>;
     created_at?: string;
     description?: string;
+    favorite?: boolean;
     maxLevelsCount?: number;
     name: string;
     private?: boolean;

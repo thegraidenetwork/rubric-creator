@@ -46,4 +46,8 @@ export class RubricActionButtonGroupComponent {
 
         return false;
     }
+
+    public favoriteRubric(): void {
+        console.log('Favorite Click');
+    }
 }
