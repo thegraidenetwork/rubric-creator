@@ -2,6 +2,9 @@ import { Component, Input } from '@angular/core';
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteRubricModalComponent } from '../delete-rubric-modal/delete-rubric-modal.component';
+import { Store } from '@ngrx/store';
+import { RubricsStateInterface } from '../../store/rubrics.state';
+import { FavoriteRubric } from '../../store/rubrics.actions';
 
 @Component({
     selector: 'rc-rubric-action-button-group',
@@ -15,7 +18,10 @@ export class RubricActionButtonGroupComponent {
     public copied: boolean = false;
     private baseUrl: string = 'https://www.rubriccreator.com';
 
-    constructor(private modalService: NgbModal) {}
+    constructor(
+        private modalService: NgbModal,
+        private store: Store<RubricsStateInterface>
+    ) {}
 
     public copyLink(): false {
         const selBox = document.createElement('textarea');
@@ -48,6 +54,6 @@ export class RubricActionButtonGroupComponent {
     }
 
     public favoriteRubric(): void {
-        console.log('Favorite Click');
+        this.store.dispatch(new FavoriteRubric(this.rubric.uuid));
     }
 }

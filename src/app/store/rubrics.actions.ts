@@ -92,7 +92,7 @@ export class CreateRubricError implements Action {
 
 export class FavoriteRubric implements Action {
     public readonly type = RubricsActionTypes.FavoriteRubric;
-    constructor(public payload: string) {}
+    constructor(public payload?: string) {}
 }
 
 export class FavoriteRubricSuccess implements Action {
