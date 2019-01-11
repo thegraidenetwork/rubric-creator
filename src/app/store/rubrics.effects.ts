@@ -6,7 +6,7 @@ import {
     CreateRubric,
     CreateRubricSuccess,
     DeleteRubric,
-    DeleteRubricSuccess,
+    DeleteRubricSuccess, FavoriteRubric,
     GetRubric,
     GetRubrics,
     RubricsActionTypes,
@@ -109,6 +109,21 @@ export class RubricsEffects {
     public setPageTitle: Observable<Action> = this.actions
         .ofType<SetPageTitle>(RubricsActionTypes.SetPageTitle)
         .do(action => this.titleService.setTitle(action.payload));
+
+    @Effect()
+    public favoriteRubric: Observable<Action> = this.actions
+        .ofType<FavoriteRubric>(RubricsActionTypes.FavoriteRubric)
+        .mergeMap(action => {
+            return this.backendData.favoriteRubric(action.payload)
+                .map(data => ({
+                    payload: data,
+                    type: RubricsActionTypes.FavoriteRubricSuccess,
+                }))
+                .catch(err => of({
+                    payload: _generateDisplayableError(err),
+                    type: RubricsActionTypes.FavoriteRubricError,
+                }));
+        });
 
     constructor(
         private backendData: BackendDataService,

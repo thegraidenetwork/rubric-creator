@@ -62,6 +62,29 @@ export class BackendDataService implements GetRubricDataInterface, GetRubricsDat
         throw new Error('Rubric could not be deleted.');
     }
 
+    public favoriteRubric(uuid?: string): Observable<string> {
+        if (uuid !== undefined) {
+            const mappedRubrics = this._rubrics.map(rubric => {
+                if (rubric.uuid === uuid)  {
+                    rubric.favorite = !rubric.favorite;
+                }
+
+                return rubric;
+            });
+            const resp = this.saveCustomRubricsToLocalStorage(mappedRubrics);
+
+            return resp.map((responseBoolean: boolean) => {
+                if (!responseBoolean) {
+                    throw new Error('Rubric could not be deleted.');
+                } else {
+                    return uuid;
+                }
+            });
+        }
+
+        throw new Error('Rubric could not be deleted.');
+    }
+
     private pushOrUpdateRubric(rubric: RubricInterface): void {
         let updated = false;
 

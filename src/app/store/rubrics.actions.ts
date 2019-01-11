@@ -17,6 +17,9 @@ export enum RubricsActionTypes {
     CreateRubric = 'Create Rubric',
     CreateRubricSuccess = 'Create Rubric Success',
     CreateRubricError = 'Create Rubric Error',
+    FavoriteRubric = 'Favorite Rubric',
+    FavoriteRubricSuccess = 'Favorite Rubric Success',
+    FavoriteRubricError = 'Favorite Rubric Error',
     SetPageTitle = 'Set Page Title',
     ConnectionMade = 'Connection Made',
     ConnectionLost = 'Connection Lost',
@@ -87,6 +90,21 @@ export class CreateRubricError implements Action {
     constructor(public payload: DisplayableErrorInterface) {}
 }
 
+export class FavoriteRubric implements Action {
+    public readonly type = RubricsActionTypes.FavoriteRubric;
+    constructor(public payload: string) {}
+}
+
+export class FavoriteRubricSuccess implements Action {
+    public readonly type = RubricsActionTypes.FavoriteRubricSuccess;
+    constructor(public payload: string) {}
+}
+
+export class FavoriteRubricError implements Action {
+    public readonly type = RubricsActionTypes.FavoriteRubricError;
+    constructor(public payload: DisplayableErrorInterface) {}
+}
+
 export class SetPageTitle implements Action {
     public readonly type = RubricsActionTypes.SetPageTitle;
     constructor(public payload: string) {}
@@ -116,6 +134,9 @@ export type RubricsActionsUnion =
     | CreateRubric
     | CreateRubricSuccess
     | CreateRubricError
+    | FavoriteRubric
+    | FavoriteRubricSuccess
+    | FavoriteRubricError
     | SetPageTitle
     | ConnectionMade
     | ConnectionLost;
