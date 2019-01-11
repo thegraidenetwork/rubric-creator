@@ -1,33 +1,25 @@
 <div class="btn-group d-print-none" [class.float-md-right]="floatRight" role="group">
-    <div aria-label="Action buttons">
-      <button (click)="copyLink()" type="button" class="btn btn-secondary">
-        <span *ngIf="!copied" [ngbTooltip]="'Copy Link'" class="oi oi-link-intact" aria-label="Copy Link"></span>
-        <span *ngIf="copied" [ngbTooltip]="'Link Copied!'" class="oi oi-check" aria-label="Link Copied"></span>
-      </button>
-      <button *ngIf="rubric.uuid"
-              type="button"
-              class="btn btn-secondary"
-              [routerLink]="'/rubrics/' + rubric.uuid + '/duplicate'">
-        <span [ngbTooltip]="'Duplicate Rubric'" class="oi oi-layers" aria-label="Duplicate Rubric"></span>
-      </button>
-      <button *ngIf="showPrint" type="button" class="btn btn-secondary" (click)="printRubric()">
-        <span [ngbTooltip]="'Print/Download Rubric'" class="oi oi-print" aria-label="Print/Download Rubric"></span>
-      </button>
-      <button *ngIf="rubric.private" type="button" class="btn btn-secondary" (click)="openDeleteRubricModal()">
-        <span [ngbTooltip]="'Delete Rubric'" class="oi oi-trash" aria-label="Delete Rubric"></span>
-      </button>
-      <button *ngIf="!rubric.private" type="button" class="btn btn-secondary disabled">
-        <span [ngbTooltip]="'Public'" class="oi oi-lock-unlocked" aria-label="Public"></span>
-      </button>
-      <button *ngIf="rubric.private" type="button" class="btn btn-secondary disabled">
-        <span [ngbTooltip]="'Private'" class="oi oi-lock-locked" aria-label="Private"></span>
-      </button>
-    </div>
-    <span *ngIf="rubric.created_at" 
-          [class.extra-wide]="!rubric.private" 
-          class="d-none d-lg-block btn btn-outline-secondary disabled btn-date"
-          aria-label="Date Created">
-          {{ rubric.created_at | date: 'mediumDate' }}
-    </span>
+  <button (click)="copyLink()" type="button" class="btn btn-secondary">
+    <span *ngIf="!copied" [ngbTooltip]="'Copy Link'" class="oi oi-link-intact" aria-label="Copy Link"></span>
+    <span *ngIf="copied" [ngbTooltip]="'Link Copied!'" class="oi oi-check" aria-label="Link Copied"></span>
+  </button>
+  <button *ngIf="rubric.uuid" type="button" class="btn btn-secondary" [routerLink]="'/rubrics/' + rubric.uuid + '/duplicate'">
+    <span [ngbTooltip]="'Duplicate Rubric'" class="oi oi-layers" aria-label="Duplicate Rubric"></span>
+  </button>
+  <button *ngIf="showPrint" type="button" class="btn btn-secondary" (click)="printRubric()">
+    <span [ngbTooltip]="'Print/Download Rubric'" class="oi oi-print" aria-label="Print/Download Rubric"></span>
+  </button>
+  <button *ngIf="rubric.private" type="button" class="btn btn-secondary" (click)="openDeleteRubricModal()">
+    <span [ngbTooltip]="'Delete Rubric'" class="oi oi-trash" aria-label="Delete Rubric"></span>
+  </button>
+  <span *ngIf="rubric.created_at" [class.extra-wide]="!rubric.private" class="d-none d-lg-block btn btn-outline-secondary disabled btn-date"
+    role="Date Created" tabindex="0">
+    {{ rubric.created_at | date: 'mediumDate' }}
+  </span>
+  <div *ngIf="!rubric.private" class="btn btn-secondary disabled">
+    <span [ngbTooltip]="'Public'" class="oi oi-lock-unlocked" role="Rubric Public" tabindex="0"></span>
   </div>
-  
+  <div *ngIf="rubric.private" class="btn btn-secondary disabled">
+    <span [ngbTooltip]="'Private'" class="oi oi-lock-locked" role="Rubric Private" tabindex="0"></span>
+  </div>
+</div>
