@@ -1,6 +1,11 @@
 # Angular base image
 FROM teracy/angular-cli:1.7.4
 RUN npm update -g @angular/cli@~6.2.0
+
+# Install latest version of Chrome
+RUN apt-get update && apt-get install google-chrome-stable
+
+# Angular stuff
 WORKDIR /angular
 
 # Install packages
