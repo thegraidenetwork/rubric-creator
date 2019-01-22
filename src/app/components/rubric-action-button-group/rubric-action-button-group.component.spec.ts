@@ -35,7 +35,7 @@ describe('RubricActionButtonGroupComponent', () => {
 
     it('should render buttons', () => {
         const buttons = fixture.nativeElement.querySelectorAll('button');
-        expect(buttons.length).toBeGreaterThanOrEqual(3);
-        expect(buttons.length).toBeLessThanOrEqual(7);
+        expect(buttons.length).toBeGreaterThanOrEqual(2);
+        expect(buttons.length).toBeLessThanOrEqual(4);
     });
 });
