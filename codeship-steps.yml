@@ -1,19 +1,19 @@
 - type: serial
   steps:
-  # - type: parallel
-    # steps:
-      # # Run the linter
-      # - service: frontend
-      #   command: ng lint
-      # # Run the tests
-      # - service: frontend
-      #   command: ng test --browsers Chrome_no_sandbox --watch false
-      # # Run e2e tests
-      # - service: frontend
-      #   command: ng e2e
-      # # Ensure AOT build works
-      # - service: frontend
-      #   command: ng build --prod --aot true
+  - type: parallel
+    steps:
+      # Run the linter
+      - service: frontend
+        command: ng lint
+      # Run the tests
+      - service: frontend
+        command: ng test --browsers Chrome_no_sandbox --watch false
+      # Run e2e tests
+      - service: frontend
+        command: ng e2e
+      # Ensure AOT build works
+      - service: frontend
+        command: ng build --prod --aot true
   # Push test coverage to Coveralls
   - service: frontend
     command: bash /angular/docker/coveralls.sh
