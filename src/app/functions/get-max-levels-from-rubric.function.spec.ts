@@ -5,7 +5,7 @@ import { getMaxLevelsFromRubric } from './get-max-levels-from-rubric.function';
 fdescribe('Function: getMaxLevelsFromRubric', () => {
     fit('should count max levels in rubric', () => {
         // generate a random number between 1 - 20
-        const randomNumber = () => Math.floor(Math.random() * 20) + 1;
+        const randomNumber = () => faker.random.number({ min: 1, max: 20 });
         
         // generate an array that has a random number of objects
         const generateArray = () => new Array(randomNumber()).fill({});
