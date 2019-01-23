@@ -17,6 +17,7 @@ export function rubricsReducer(state: RubricsStateInterface, action: RubricsActi
         case RubricsActionTypes.GetRubricSuccess:
         case RubricsActionTypes.UpdateCurrentRubric:
         case RubricsActionTypes.CreateRubricSuccess:
+        console.log(state);
             return {
                 ...state,
                 currentRubric: _resetRubric(action.payload),
