@@ -14,6 +14,9 @@
       # Ensure AOT build works
       - service: frontend
         command: ng build --prod --aot true
+  # Push test coverage to Coveralls
+  - service: frontend
+    command: ng test --watch=false --code-coverage --browsers Chrome_no_sandbox && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   # Deploy to master via CDN
   - service: cdn-prod-deployer
     command: bash /docker/execute.sh
