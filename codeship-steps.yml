@@ -1,7 +1,7 @@
 - type: serial
   steps:
-  - type: parallel
-    steps:
+  # - type: parallel
+    # steps:
       # # Run the linter
       # - service: frontend
       #   command: ng lint
