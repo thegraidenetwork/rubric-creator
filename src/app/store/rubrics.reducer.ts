@@ -54,19 +54,19 @@ export function rubricsReducer(state: RubricsStateInterface, action: RubricsActi
             };
 
         case RubricsActionTypes.GetRubric:
-            return { ...state, currentRubric: undefined };
+            return {...state, currentRubric: undefined};
 
         case RubricsActionTypes.SetPageTitle:
-            return { ...state, pageTitle: action.payload };
+            return {...state, pageTitle: action.payload};
 
         case RubricsActionTypes.CreateRubric:
-            return { ...state, saving: true };
+            return {...state, saving: true};
 
         case RubricsActionTypes.ConnectionMade:
-            return { ...state, connected: true };
+            return {...state, connected: true};
 
         case RubricsActionTypes.ConnectionLost:
-            return { ...state, connected: false };
+            return {...state, connected: false};
 
         case RubricsActionTypes.GetRubrics:
         default:
