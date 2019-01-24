@@ -3,6 +3,7 @@
 Create and share scoring rubrics for grading papers. Made for educators by [The Graide Network](https://www.thegraidenetwork.com/) and available for free at [rubriccreator.com](https://www.rubriccreator.com).
 
 [![Codeship Status for thegraidenetwork/rubric-creator](https://app.codeship.com/projects/95a16760-27a5-0136-f837-6ef2b9ae3ded/status?branch=master)](https://app.codeship.com/projects/287071) [![Coverage Status](https://coveralls.io/repos/github/thegraidenetwork/rubric-creator/badge.svg?branch=master)](https://coveralls.io/github/thegraidenetwork/rubric-creator?branch=master)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Latest tagged release](https://img.shields.io/github/tag/thegraidenetwork/rubric-creator.svg)](https://img.shields.io/github/tag/thegraidenetwork/rubric-creator.svg)
 
 ![](https://i.imgur.com/Q6xO1eV.gif)
 
