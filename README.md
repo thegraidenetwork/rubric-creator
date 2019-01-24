@@ -52,6 +52,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Contributions are welcome and encouraged to this open source project. Please be sure to [submit an issue on Github](https://github.com/thegraidenetwork/rubric-creator/issues) to solicit discussion before jumping in as someone else might be working on the same thing.
 
+Also be sure to read and adhere to our [code of conduct](/CODE_OF_CONDUCT.md).
+
 ## Deploying
 
 Once you have built the files, you can copy them into a file hosting service like Azure's Blob Storage or Amazon S3. The following tutorials should help you get started:
