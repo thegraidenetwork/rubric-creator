@@ -31,11 +31,7 @@ fdescribe('RubricsReducer', () => {
     it('should set currentRubric to the correct rubric', () => {
       const { rubrics: initialState } = getInitialState();
       const { GetRubricSuccess } = fromActions;
-      const rubric = {
-        maxLevelsCount: 0,
-        name: 'test',
-        totalPoints: 0,
-      };
+      const rubric = { maxLevelsCount: 0, name: 'test', totalPoints: 0 };
       const action = new GetRubricSuccess(rubric);
 
       const state = fromRubrics.rubricsReducer(initialState, action);
@@ -153,11 +149,7 @@ fdescribe('RubricsReducer', () => {
     it('should set currentRubric to the correct rubric', () => {
       const { rubrics: initialState } = getInitialState();
       const { UpdateCurrentRubric } = fromActions;
-      const rubric = {
-        maxLevelsCount: 0,
-        name: 'test',
-        totalPoints: 0,
-      };
+      const rubric = { maxLevelsCount: 0, name: 'test', totalPoints: 0 };
       const action = new UpdateCurrentRubric(rubric);
 
       const state = fromRubrics.rubricsReducer(initialState, action);
@@ -165,6 +157,32 @@ fdescribe('RubricsReducer', () => {
       void expect(state.currentRubric).toEqual(rubric);
       void expect(state.error).toEqual(undefined);
       void expect(state.saving).toEqual(false);
+    });
+  });
+
+  describe('CreateRubric action', () => {
+    it('should set saving to true', () => {
+      const { rubrics: initialState } = getInitialState();
+      const { CreateRubric } = fromActions;
+      const rubric = { maxLevelsCount: 0, name: 'test', totalPoints: 0 };
+      const action = new CreateRubric(rubric);
+
+      const state = fromRubrics.rubricsReducer(initialState, action);
+
+      void expect(state.saving).toEqual(true);
+    });
+  });
+
+  describe('CreateRubric action', () => {
+    it('should set saving to true', () => {
+      const { rubrics: initialState } = getInitialState();
+      const { CreateRubric } = fromActions;
+      const rubric = { maxLevelsCount: 0, name: 'test', totalPoints: 0 };
+      const action = new CreateRubric(rubric);
+
+      const state = fromRubrics.rubricsReducer(initialState, action);
+
+      void expect(state.saving).toEqual(true);
     });
   });
 });
