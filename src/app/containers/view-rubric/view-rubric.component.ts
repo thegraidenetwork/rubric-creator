@@ -7,7 +7,7 @@ import { BaseRubricComponent } from '../../components/base/base-rubric.component
 import { selectCurrentRubric, selectPageTitle } from '../../store/rubrics.selectors';
 import { combineLatest } from 'rxjs/internal/observable/combineLatest';
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
-import { takeUntil } from 'rxjs/operators';
+import { filter, map, takeUntil, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'rc-view-rubric',
@@ -29,18 +29,21 @@ export class ViewRubricComponent extends BaseRubricComponent implements OnInit {
         });
 
         combineLatest(
-            this.store.pipe(select(selectCurrentRubric)),
+            this.store.pipe(
+                select(selectCurrentRubric),
+                map(currentRubric => currentRubric !== undefined ?
+                    `${currentRubric.name} | Rubric Creator` :
+                    getInitialState().rubrics.pageTitle)
+            ),
             this.store.pipe(select(selectPageTitle))
         )
-        .pipe(takeUntil(this.ngUnsubscribe))
-        .subscribe(([currentRubric, pageTitle]: [RubricInterface | undefined, string]) => {
-            const title = currentRubric !== undefined ?
-                `${currentRubric.name} | Rubric Creator` :
-                getInitialState().rubrics.pageTitle;
-            if (pageTitle !== title) {
-                this.store.dispatch(new SetPageTitle(title));
-            }
-        });
+        .pipe(
+            takeUntil(this.ngUnsubscribe),
+            filter(([titleBasedOnCurrentRubric, pageTitle]: [string, string]) =>  titleBasedOnCurrentRubric !== pageTitle),
+            map(([titleBasedOnCurrentRubric, pageTitle]: [string, string]) => titleBasedOnCurrentRubric),
+            tap(titleBasedOnCurrentRubric => this.store.dispatch(new SetPageTitle(titleBasedOnCurrentRubric)))
+        )
+        .subscribe();
     }
 
 }
