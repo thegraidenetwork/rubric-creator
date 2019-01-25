@@ -3,6 +3,8 @@ import { select, Store } from '@ngrx/store';
 import { RubricsStateInterface } from '../../store/rubrics.state';
 import { BaseComponent } from '../base/base.component';
 import { Router } from '@angular/router';
+import { selectError } from '../../store/rubrics.selectors';
+import { DisplayableErrorInterface } from '../../object-interfaces/displayable-error.interface';
 
 @Component({
     selector: 'rc-page-alert',
@@ -25,10 +27,10 @@ export class PageAlertComponent extends BaseComponent implements OnInit {
 
     public ngOnInit(): void {
         this.store.takeUntil(this.ngUnsubscribe)
-            .pipe(select('rubrics'))
-            .subscribe((state: RubricsStateInterface) => {
-                if (state.error !== undefined) {
-                    this.showError(state.error.message);
+            .pipe(select(selectError))
+            .subscribe((error: DisplayableErrorInterface | undefined) => {
+                if (error !== undefined) {
+                    this.showError(error.message);
                 }
             });
 
