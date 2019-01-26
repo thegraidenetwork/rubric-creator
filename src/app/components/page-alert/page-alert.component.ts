@@ -1,9 +1,11 @@
-import { takeUntil } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { RubricsStateInterface } from '../../store/rubrics.state';
 import { BaseComponent } from '../base/base.component';
 import { Router } from '@angular/router';
+import { selectError } from '../../store/rubrics.selectors';
+import { DisplayableErrorInterface } from '../../object-interfaces/displayable-error.interface';
+import { filter, takeUntil, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'rc-page-alert',
@@ -25,12 +27,14 @@ export class PageAlertComponent extends BaseComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.store.pipe(takeUntil(this.ngUnsubscribe))
-            .pipe(select('rubrics'))
-            .subscribe((state: RubricsStateInterface) => {
-                if (state.error !== undefined) {
-                    this.showError(state.error.message);
-                }
+        this.store
+            .pipe(
+                takeUntil(this.ngUnsubscribe),
+                select(selectError),
+                filter(error => error !== undefined)
+            )
+            .subscribe((error: DisplayableErrorInterface) => {
+                this.showError(error.message);
             });
 
         this.router.events.subscribe(() => this.clearAlert());

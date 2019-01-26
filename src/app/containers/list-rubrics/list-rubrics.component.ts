@@ -5,6 +5,7 @@ import { RubricsStateInterface } from '../../store/rubrics.state';
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
 import { BaseComponent } from '../../components/base/base.component';
 import { GetRubrics, SetPageTitle } from '../../store/rubrics.actions';
+import { selectAllRubrics } from '../../store/rubrics.selectors';
 
 @Component({
     selector: 'rc-list-rubrics',
@@ -19,9 +20,14 @@ export class ListRubricsComponent extends BaseComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.store.pipe(takeUntil(this.ngUnsubscribe))
-            .pipe(select('rubrics'))
-            .subscribe((state: RubricsStateInterface) => this.rubrics = state.allRubrics);
+        this.store
+            .pipe(
+                takeUntil(this.ngUnsubscribe),
+                select(selectAllRubrics)
+            )
+            .subscribe((allRubrics: Array<RubricInterface>) => {
+                this.rubrics = allRubrics;
+            });
 
         this.store.dispatch(new GetRubrics());
         this.store.dispatch(new SetPageTitle(this.title));

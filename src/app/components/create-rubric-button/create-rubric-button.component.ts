@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { RubricsStateInterface } from '../../store/rubrics.state';
 import { BaseComponent } from '../base/base.component';
+import { selectConnected } from '../../store/rubrics.selectors';
 
 @Component({
     selector: 'rc-create-rubric-button',
@@ -16,8 +17,11 @@ export class CreateRubricButtonComponent extends BaseComponent implements OnInit
     }
 
     public ngOnInit(): void {
-        this.store.pipe(takeUntil(this.ngUnsubscribe))
-            .pipe(select('rubrics'))
-            .subscribe((state: RubricsStateInterface) => this.connected = state.connected);
+        this.store
+            .pipe(
+                takeUntil(this.ngUnsubscribe),
+                select(selectConnected)
+            )
+            .subscribe((connected: boolean) => this.connected = connected);
     }
 }
