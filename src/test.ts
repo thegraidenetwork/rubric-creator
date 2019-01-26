@@ -5,7 +5,6 @@ import {
     BrowserDynamicTestingModule,
     platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
-import './rxjs-operators';
 
 declare const require: any;
 
