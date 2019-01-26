@@ -1,9 +1,9 @@
+import { filter, map, tap } from 'rxjs/operators';
 import { RubricInterface } from '../object-interfaces/rubric.interface';
 import { JsonbinHttpService } from './clients/jsonbin-http.service';
 import { LocalStorageService } from './clients/local-storage.service';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { defaultRubricIds, defaultRubricsArray } from './data/default-rubrics.array';
 import { GetRubricDataInterface } from './interfaces/get-rubric-data.interface';
 import { GetRubricsDataInterface } from './interfaces/get-rubrics-data.interface';
@@ -28,27 +28,27 @@ export class BackendDataService implements GetRubricDataInterface, GetRubricsDat
     constructor(
         private jsonbin: JsonbinHttpService,
         private localStorage: LocalStorageService
-    ) {}
+    ) { }
 
     public getRubric(uuid: string): Observable<RubricInterface | undefined> {
         this.jsonbin.getRubric(uuid).subscribe(rubric => this.pushOrUpdateRubric(rubric));
 
-        return this.getRubrics()
-            .map(rubrics => rubrics.find(rubric => rubric.uuid === uuid));
+        return this.getRubrics().pipe(
+            map(rubrics => rubrics.find(rubric => rubric.uuid === uuid)));
     }
 
     public getRubrics(): Observable<Array<RubricInterface>> {
-        this.localStorage.getRubrics()
-            .filter(rubrics => rubrics !== undefined)
-            .map(appendDefaultRubrics)
+        this.localStorage.getRubrics().pipe(
+            filter(rubrics => rubrics !== undefined),
+            map(appendDefaultRubrics))
             .subscribe(rubrics => this.setRubrics(rubrics));
 
         return this.rubrics;
     }
 
     public createRubric(rubric: RubricInterface): Observable<RubricInterface> {
-        return this.jsonbin.createRubric(rubric)
-            .do(newRubric => this.pushOrUpdateRubric(newRubric));
+        return this.jsonbin.createRubric(rubric).pipe(
+            tap(newRubric => this.pushOrUpdateRubric(newRubric)));
     }
 
     public deleteRubric(uuid?: string): Observable<Array<RubricInterface>> {
@@ -56,7 +56,7 @@ export class BackendDataService implements GetRubricDataInterface, GetRubricsDat
             const filteredRubrics = this._rubrics.filter(rubric => rubric.uuid !== uuid);
             const resp = this.saveCustomRubricsToLocalStorage(filteredRubrics);
 
-            return resp.map(() => filteredRubrics);
+            return resp.pipe(map(() => filteredRubrics));
         }
 
         throw new Error('Rubric could not be deleted.');

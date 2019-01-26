@@ -1,3 +1,4 @@
+import { takeUntil } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { RubricsStateInterface } from '../../store/rubrics.state';
@@ -15,7 +16,7 @@ export class CreateRubricButtonComponent extends BaseComponent implements OnInit
     }
 
     public ngOnInit(): void {
-        this.store.takeUntil(this.ngUnsubscribe)
+        this.store.pipe(takeUntil(this.ngUnsubscribe))
             .pipe(select('rubrics'))
             .subscribe((state: RubricsStateInterface) => this.connected = state.connected);
     }

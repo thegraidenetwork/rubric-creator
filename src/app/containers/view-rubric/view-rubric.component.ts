@@ -1,3 +1,4 @@
+import { takeUntil } from 'rxjs/operators';
 import { select, Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { getInitialState, RubricsStateInterface } from '../../store/rubrics.state';
@@ -20,11 +21,11 @@ export class ViewRubricComponent extends BaseRubricComponent implements OnInit {
 
     public ngOnInit(): void {
         super.ngOnInit();
-        this.route.params.takeUntil(this.ngUnsubscribe).subscribe((params: Params) => {
+        this.route.params.pipe(takeUntil(this.ngUnsubscribe)).subscribe((params: Params) => {
             this.store.dispatch(new GetRubric(params['rubric_uuid'] as string));
         });
 
-        this.store.takeUntil(this.ngUnsubscribe)
+        this.store.pipe(takeUntil(this.ngUnsubscribe))
             .pipe(select('rubrics'))
             .subscribe((state: RubricsStateInterface) => {
                 const title = state.currentRubric !== undefined ?

@@ -1,3 +1,4 @@
+import { takeUntil } from 'rxjs/operators';
 import { Component, Input, OnInit } from '@angular/core';
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -23,7 +24,7 @@ export class DeleteRubricModalComponent extends BaseComponent implements OnInit 
     }
 
     public ngOnInit(): void {
-        this.store.takeUntil(this.ngUnsubscribe)
+        this.store.pipe(takeUntil(this.ngUnsubscribe))
             .pipe(select('rubrics'))
             .subscribe((state: RubricsStateInterface) => this.deleting = state.deleting);
     }

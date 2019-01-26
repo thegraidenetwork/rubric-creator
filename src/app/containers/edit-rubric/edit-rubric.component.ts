@@ -1,3 +1,4 @@
+import { map, takeUntil } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { BaseRubricComponent } from '../../components/base/base-rubric.component';
 import { Store } from '@ngrx/store';
@@ -21,9 +22,9 @@ export class EditRubricComponent extends BaseRubricComponent implements OnInit {
 
     public ngOnInit(): void {
         this.store.dispatch(new SetPageTitle(this.title));
-        this.route.params
-            .takeUntil(this.ngUnsubscribe)
-            .map(params => this.store.dispatch(new GetRubric(params.rubric_uuid)))
+        this.route.params.pipe(
+            takeUntil(this.ngUnsubscribe),
+            map(params => this.store.dispatch(new GetRubric(params.rubric_uuid))))
             .subscribe();
         super.ngOnInit();
     }

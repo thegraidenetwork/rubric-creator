@@ -1,5 +1,6 @@
+import { map } from 'rxjs/operators';
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GetRubricDataInterface } from '../interfaces/get-rubric-data.interface';
@@ -9,18 +10,18 @@ import { JsonbinCreateResponseInterface } from '../../object-interfaces/jsonbin-
 export class JsonbinHttpService implements GetRubricDataInterface {
     private readonly rootUrl = 'https://api.jsonbin.io';
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     public getRubric(uuid: string): Observable<RubricInterface> {
-        return this.get(`${this.rootUrl}/b/${uuid}`)
+        return this.get(`${this.rootUrl}/b/${uuid}`).pipe(
             // Set the rubric's uuid from the request
-            .map((result: RubricInterface) => ({...result, uuid}));
+            map((result: RubricInterface) => ({ ...result, uuid })));
     }
 
     public createRubric(rubric: RubricInterface): Observable<RubricInterface> {
-        return this.post(`${this.rootUrl}/b`, rubric)
+        return this.post(`${this.rootUrl}/b`, rubric).pipe(
             // Set the rubric's uuid from the response
-            .map((result: JsonbinCreateResponseInterface) => ({...result.data, uuid: result.id}));
+            map((result: JsonbinCreateResponseInterface) => ({ ...result.data, uuid: result.id })));
     }
 
     private get(url: string): Observable<object> {

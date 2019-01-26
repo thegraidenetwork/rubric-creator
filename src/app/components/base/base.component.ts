@@ -1,5 +1,5 @@
 import { OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 export abstract class BaseComponent implements OnDestroy {
     protected ngUnsubscribe: Subject<void> = new Subject<void>();
