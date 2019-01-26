@@ -4,12 +4,12 @@ import { getMaxLevelsFromRubric } from '../functions/get-max-levels-from-rubric.
 import { getTotalPointsFromRubric } from '../functions/get-total-points-from-rubric.function';
 import { RubricInterface } from '../object-interfaces/rubric.interface';
 
-function _resetRubric(rubric: RubricInterface | undefined): RubricInterface | undefined {
-    return (rubric !== undefined) ? {
+function _resetRubric(rubric: RubricInterface): RubricInterface {
+    return {
         ...rubric,
         maxLevelsCount: getMaxLevelsFromRubric(rubric),
         totalPoints: getTotalPointsFromRubric(rubric),
-    } : rubric;
+    };
 }
 
 export function rubricsReducer(state: RubricsStateInterface, action: RubricsActionsUnion): RubricsStateInterface {
