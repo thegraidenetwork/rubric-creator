@@ -19,8 +19,8 @@ describe('PageAlertComponent', () => {
             declarations: [PageAlertComponent],
             imports: [
                 StoreModule.forRoot(
-                    {rubrics: rubricsReducer},
-                    {initialState: getInitialState}
+                    { rubrics: rubricsReducer },
+                    { initialState: getInitialState }
                 ),
                 RouterTestingModule,
             ],
@@ -44,8 +44,8 @@ describe('PageAlertComponent', () => {
 
         store.dispatch(action);
 
-        expect(component.alertMessage).toEqual(error.message);
-        expect(component.alertClass).toEqual('alert-danger');
+        void expect(component.alertMessage).toEqual(error.message);
+        void expect(component.alertClass).toEqual('alert-danger');
     });
 
     it('should clear error when route changed', () => {
@@ -58,7 +58,7 @@ describe('PageAlertComponent', () => {
 
         void router.navigateByUrl('/');
 
-        expect(component.alertMessage).toBeUndefined();
-        expect(component.alertClass).toBeUndefined();
+        void expect(component.alertMessage).toBeUndefined();
+        void expect(component.alertClass).toBeUndefined();
     });
 });

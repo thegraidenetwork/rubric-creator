@@ -66,6 +66,6 @@ describe('RubricViewMobileComponent', () => {
         fixture.detectChanges();
 
         const componentHeader = fixture.nativeElement.querySelectorAll('h4')[0].textContent;
-        expect(componentHeader).toContain('Components (3)');
+        void expect(componentHeader).toContain('Components (3)');
     });
 });
