@@ -13,10 +13,10 @@ describe('RubricActionButtonGroupComponent', () => {
         void TestBed.configureTestingModule({
             declarations: [RubricActionButtonGroupComponent],
             imports: [
-                NgbModule.forRoot(),
+                NgbModule,
                 RouterTestingModule,
             ],
-            schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
     }));
 

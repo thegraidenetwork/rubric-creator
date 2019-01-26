@@ -19,10 +19,10 @@ describe('RubricViewMobileComponent', () => {
         void TestBed.configureTestingModule({
             declarations: [RubricViewMobileComponent],
             imports: [
-                NgbModule.forRoot(),
+                NgbModule,
                 StoreModule.forRoot(
-                    {rubrics: rubricsReducer},
-                    {initialState: getInitialState}
+                    { rubrics: rubricsReducer },
+                    { initialState: getInitialState }
                 ),
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],

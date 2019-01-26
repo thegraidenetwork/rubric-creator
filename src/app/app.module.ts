@@ -82,7 +82,7 @@ import { DeleteRubricModalComponent } from './components/delete-rubric-modal/del
     imports: [
         appRoutes,
         BrowserModule,
-        NgbModule.forRoot(),
+        NgbModule,
         FormsModule,
         RouterModule,
         HttpClientModule,
