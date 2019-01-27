@@ -5,6 +5,7 @@ import { select, Store } from '@ngrx/store';
 import { RubricsStateInterface } from '../../store/rubrics.state';
 import { BaseComponent } from '../base/base.component';
 import { DeleteRubric } from '../../store/rubrics.actions';
+import { selectDeleting } from '../../store/rubrics.selectors';
 
 @Component({
     selector: 'rc-delete-rubric-modal',
@@ -24,8 +25,8 @@ export class DeleteRubricModalComponent extends BaseComponent implements OnInit 
 
     public ngOnInit(): void {
         this.store.takeUntil(this.ngUnsubscribe)
-            .pipe(select('rubrics'))
-            .subscribe((state: RubricsStateInterface) => this.deleting = state.deleting);
+            .pipe(select(selectDeleting))
+            .subscribe((deleting: boolean) => this.deleting = deleting);
     }
 
     public deleteRubric(): void {

@@ -3,6 +3,7 @@ import { OnInit } from '@angular/core';
 import { BaseComponent } from './base.component';
 import { select, Store } from '@ngrx/store';
 import { RubricsStateInterface } from '../../store/rubrics.state';
+import { selectConnected, selectCurrentRubric } from '../../store/rubrics.selectors';
 
 export abstract class BaseRubricComponent extends BaseComponent implements OnInit {
     public rubric: RubricInterface | undefined;
@@ -14,10 +15,15 @@ export abstract class BaseRubricComponent extends BaseComponent implements OnIni
 
     public ngOnInit(): void {
         this.store.takeUntil(this.ngUnsubscribe)
-            .pipe(select('rubrics'))
-            .subscribe((state: RubricsStateInterface) => {
-                this.rubric = state.currentRubric;
-                this.connected = state.connected;
+            .pipe(select(selectCurrentRubric))
+            .subscribe((currentRubric: RubricInterface) => {
+                this.rubric = currentRubric;
+            });
+
+        this.store.takeUntil(this.ngUnsubscribe)
+            .pipe(select(selectConnected))
+            .subscribe((connected: boolean) => {
+                this.connected = connected;
             });
     }
 }

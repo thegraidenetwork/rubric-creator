@@ -3,6 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { RubricsStateInterface } from '../../store/rubrics.state';
 import { BaseRubricComponent } from './base-rubric.component';
 import { UpdateCurrentRubric } from '../../store/rubrics.actions';
+import { selectSaving } from '../../store/rubrics.selectors';
 
 export abstract class BaseEditRubricComponent extends BaseRubricComponent implements OnInit {
     public saving: boolean = false;
@@ -13,8 +14,8 @@ export abstract class BaseEditRubricComponent extends BaseRubricComponent implem
 
     public ngOnInit(): void {
         this.store.takeUntil(this.ngUnsubscribe)
-            .pipe(select('rubrics'))
-            .subscribe((state: RubricsStateInterface) => this.saving = state.saving);
+            .pipe(select(selectSaving))
+            .subscribe((saving: boolean) => this.saving = saving);
         super.ngOnInit();
     }
 
