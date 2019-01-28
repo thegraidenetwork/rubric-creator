@@ -19,18 +19,32 @@ import {
     UpdateCurrentRubric,
 } from './rubrics.actions';
 import { rubricsReducer } from './rubrics.reducer';
-import { getInitialState } from './rubrics.state';
+import { getInitialState, RubricsStateInterface } from './rubrics.state';
+import * as faker from 'faker';
 
 describe('RubricsReducer', () => {
-    const { rubrics: initialState } = getInitialState();
-    const rubric: RubricInterface = { name: 'test' };
-    const currentRubric: RubricInterface = { maxLevelsCount: 0, name: 'test', totalPoints: 0 };
-    const allRubrics: Array<RubricInterface> = [];
-    const error: DisplayableErrorInterface = { message: 'test' };
+    let initialState: RubricsStateInterface;
+    let name: string;
+    let rubric: RubricInterface;
+    let currentRubric: RubricInterface;
+    let allRubrics: Array<RubricInterface>;
+    let error: DisplayableErrorInterface;
+
+    beforeEach(() => {
+        const state = getInitialState();
+        initialState = state.rubrics;
+
+        name = faker.lorem.words();
+        rubric = { name };
+        currentRubric = { maxLevelsCount: 0, name, totalPoints: 0 };
+
+        allRubrics = [];
+        error = { message: faker.lorem.words() };
+    });
 
     describe('Undefined action', () => {
         it('should return the default state', () => {
-            const action = { type: 'undefined' } as any;
+            const action = { type: faker.lorem.words() } as any;
 
             const result = rubricsReducer(initialState, action);
 
@@ -207,7 +221,7 @@ describe('RubricsReducer', () => {
 
     describe('SetPageTitle action', () => {
         it('should set pageTitle to title', () => {
-            const pageTitle = 'test';
+            const pageTitle = faker.lorem.words();
             const action = new SetPageTitle(pageTitle);
 
             const result = rubricsReducer(initialState, action);

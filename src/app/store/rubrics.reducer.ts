@@ -4,12 +4,12 @@ import { getMaxLevelsFromRubric } from '../functions/get-max-levels-from-rubric.
 import { getTotalPointsFromRubric } from '../functions/get-total-points-from-rubric.function';
 import { RubricInterface } from '../object-interfaces/rubric.interface';
 
-function _resetRubric(rubric: RubricInterface): RubricInterface {
-    return {
+function _resetRubric(rubric: RubricInterface | undefined): RubricInterface | undefined {
+    return (rubric !== undefined) ? {
         ...rubric,
         maxLevelsCount: getMaxLevelsFromRubric(rubric),
         totalPoints: getTotalPointsFromRubric(rubric),
-    };
+    } : rubric;
 }
 
 export function rubricsReducer(state: RubricsStateInterface, action: RubricsActionsUnion): RubricsStateInterface {
@@ -54,19 +54,19 @@ export function rubricsReducer(state: RubricsStateInterface, action: RubricsActi
             };
 
         case RubricsActionTypes.GetRubric:
-            return {...state, currentRubric: undefined};
+            return { ...state, currentRubric: undefined };
 
         case RubricsActionTypes.SetPageTitle:
-            return {...state, pageTitle: action.payload};
+            return { ...state, pageTitle: action.payload };
 
         case RubricsActionTypes.CreateRubric:
-            return {...state, saving: true};
+            return { ...state, saving: true };
 
         case RubricsActionTypes.ConnectionMade:
-            return {...state, connected: true};
+            return { ...state, connected: true };
 
         case RubricsActionTypes.ConnectionLost:
-            return {...state, connected: false};
+            return { ...state, connected: false };
 
         case RubricsActionTypes.GetRubrics:
         default:
