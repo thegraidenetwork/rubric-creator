@@ -1,3 +1,4 @@
+import { takeUntil } from 'rxjs/operators';
 import { select, Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { RubricsStateInterface } from '../../store/rubrics.state';
@@ -19,8 +20,11 @@ export class ListRubricsComponent extends BaseComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.store.takeUntil(this.ngUnsubscribe)
-            .pipe(select(selectAllRubrics))
+        this.store
+            .pipe(
+                takeUntil(this.ngUnsubscribe),
+                select(selectAllRubrics)
+            )
             .subscribe((allRubrics: Array<RubricInterface>) => {
                 this.rubrics = allRubrics;
             });

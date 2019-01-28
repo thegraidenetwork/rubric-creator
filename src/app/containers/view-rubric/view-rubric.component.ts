@@ -24,7 +24,7 @@ export class ViewRubricComponent extends BaseRubricComponent implements OnInit {
 
     public ngOnInit(): void {
         super.ngOnInit();
-        this.route.params.takeUntil(this.ngUnsubscribe).subscribe((params: Params) => {
+        this.route.params.pipe(takeUntil(this.ngUnsubscribe)).subscribe((params: Params) => {
             this.store.dispatch(new GetRubric(params['rubric_uuid'] as string));
         });
 
@@ -37,13 +37,13 @@ export class ViewRubricComponent extends BaseRubricComponent implements OnInit {
             ),
             this.store.pipe(select(selectPageTitle))
         )
-        .pipe(
-            takeUntil(this.ngUnsubscribe),
-            filter(([titleBasedOnCurrentRubric, pageTitle]: [string, string]) =>  titleBasedOnCurrentRubric !== pageTitle),
-            map(([titleBasedOnCurrentRubric, pageTitle]: [string, string]) => titleBasedOnCurrentRubric),
-            tap(titleBasedOnCurrentRubric => this.store.dispatch(new SetPageTitle(titleBasedOnCurrentRubric)))
-        )
-        .subscribe();
+            .pipe(
+                takeUntil(this.ngUnsubscribe),
+                filter(([titleBasedOnCurrentRubric, pageTitle]: [string, string]) => titleBasedOnCurrentRubric !== pageTitle),
+                map(([titleBasedOnCurrentRubric, pageTitle]: [string, string]) => titleBasedOnCurrentRubric),
+                tap(titleBasedOnCurrentRubric => this.store.dispatch(new SetPageTitle(titleBasedOnCurrentRubric)))
+            )
+            .subscribe();
     }
 
 }

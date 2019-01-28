@@ -1,3 +1,4 @@
+import { takeUntil } from 'rxjs/operators';
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
 import { OnInit } from '@angular/core';
 import { BaseComponent } from './base.component';
@@ -14,14 +15,20 @@ export abstract class BaseRubricComponent extends BaseComponent implements OnIni
     }
 
     public ngOnInit(): void {
-        this.store.takeUntil(this.ngUnsubscribe)
-            .pipe(select(selectCurrentRubric))
+        this.store
+            .pipe(
+                takeUntil(this.ngUnsubscribe),
+                select(selectCurrentRubric)
+            )
             .subscribe((currentRubric: RubricInterface) => {
                 this.rubric = currentRubric;
             });
 
-        this.store.takeUntil(this.ngUnsubscribe)
-            .pipe(select(selectConnected))
+        this.store
+            .pipe(
+                takeUntil(this.ngUnsubscribe),
+                select(selectConnected)
+            )
             .subscribe((connected: boolean) => {
                 this.connected = connected;
             });

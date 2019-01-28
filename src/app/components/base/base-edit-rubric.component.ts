@@ -1,3 +1,4 @@
+import { takeUntil } from 'rxjs/operators';
 import { OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { RubricsStateInterface } from '../../store/rubrics.state';
@@ -13,8 +14,11 @@ export abstract class BaseEditRubricComponent extends BaseRubricComponent implem
     }
 
     public ngOnInit(): void {
-        this.store.takeUntil(this.ngUnsubscribe)
-            .pipe(select(selectSaving))
+        this.store
+            .pipe(
+                takeUntil(this.ngUnsubscribe),
+                select(selectSaving)
+            )
             .subscribe((saving: boolean) => this.saving = saving);
         super.ngOnInit();
     }

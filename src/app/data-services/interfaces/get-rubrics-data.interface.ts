@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
 
 export interface GetRubricsDataInterface {

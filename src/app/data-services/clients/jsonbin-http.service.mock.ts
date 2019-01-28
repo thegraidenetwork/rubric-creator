@@ -1,7 +1,6 @@
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
-import { Observable } from 'rxjs/Observable';
+import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class MockJsonbinHttpService {

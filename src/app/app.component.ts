@@ -1,3 +1,4 @@
+import { filter } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Angulartics2Intercom } from 'angulartics2/intercom';
@@ -13,11 +14,11 @@ export class AppComponent implements OnInit {
         private angulartics2GoogleTagManager: Angulartics2GoogleAnalytics,
         private angulartics2Intercom: Angulartics2Intercom,
         private router: Router
-    ) {}
+    ) { }
 
     public ngOnInit(): void {
-        this.router.events
-            .filter(event => event instanceof NavigationEnd)
+        this.router.events.pipe(
+            filter(event => event instanceof NavigationEnd))
             .subscribe(() => window.scrollTo(0, 0));
     }
 }

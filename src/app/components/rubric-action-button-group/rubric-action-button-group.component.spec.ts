@@ -13,10 +13,10 @@ describe('RubricActionButtonGroupComponent', () => {
         void TestBed.configureTestingModule({
             declarations: [RubricActionButtonGroupComponent],
             imports: [
-                NgbModule.forRoot(),
+                NgbModule,
                 RouterTestingModule,
             ],
-            schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
     }));
 
@@ -35,7 +35,7 @@ describe('RubricActionButtonGroupComponent', () => {
 
     it('should render buttons', () => {
         const buttons = fixture.nativeElement.querySelectorAll('button');
-        expect(buttons.length).toBeGreaterThanOrEqual(2);
-        expect(buttons.length).toBeLessThanOrEqual(4);
+        void expect(buttons.length).toBeGreaterThanOrEqual(2);
+        void expect(buttons.length).toBeLessThanOrEqual(4);
     });
 });

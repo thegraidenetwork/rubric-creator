@@ -19,10 +19,10 @@ describe('RubricViewMobileComponent', () => {
         void TestBed.configureTestingModule({
             declarations: [RubricViewMobileComponent],
             imports: [
-                NgbModule.forRoot(),
+                NgbModule,
                 StoreModule.forRoot(
-                    {rubrics: rubricsReducer},
-                    {initialState: getInitialState}
+                    { rubrics: rubricsReducer },
+                    { initialState: getInitialState }
                 ),
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -66,6 +66,6 @@ describe('RubricViewMobileComponent', () => {
         fixture.detectChanges();
 
         const componentHeader = fixture.nativeElement.querySelectorAll('h4')[0].textContent;
-        expect(componentHeader).toContain('Components (3)');
+        void expect(componentHeader).toContain('Components (3)');
     });
 });

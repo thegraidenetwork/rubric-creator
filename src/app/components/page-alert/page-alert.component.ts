@@ -5,7 +5,7 @@ import { BaseComponent } from '../base/base.component';
 import { Router } from '@angular/router';
 import { selectError } from '../../store/rubrics.selectors';
 import { DisplayableErrorInterface } from '../../object-interfaces/displayable-error.interface';
-import { filter, tap } from 'rxjs/operators';
+import { filter, takeUntil, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'rc-page-alert',
@@ -27,8 +27,9 @@ export class PageAlertComponent extends BaseComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.store.takeUntil(this.ngUnsubscribe)
+        this.store
             .pipe(
+                takeUntil(this.ngUnsubscribe),
                 select(selectError),
                 filter(error => error !== undefined)
             )
