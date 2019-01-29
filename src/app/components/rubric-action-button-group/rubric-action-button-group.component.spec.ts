@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RubricActionButtonGroupComponent } from './rubric-action-button-group.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import * as faker from 'faker';
 
