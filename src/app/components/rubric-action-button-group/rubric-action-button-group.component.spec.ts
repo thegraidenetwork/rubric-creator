@@ -41,38 +41,52 @@ describe('RubricActionButtonGroupComponent', () => {
         component.floatRight = true;
         component.rubric.private = false;
         fixture.detectChanges();
+        const copyLinkButton = fixture.nativeElement.querySelector('#copy-link');
+        const duplicateRubricButton = fixture.nativeElement.querySelector('#duplicate-rubric');
 
-        const buttons = fixture.nativeElement.querySelectorAll('button');
-
-        void expect(buttons.length).toEqual(2);
+        void expect(copyLinkButton).toBeTruthy();
+        void expect(duplicateRubricButton).toBeTruthy();
     });
 
     it('should render 3 buttons when rubric is private and floatRight is true', () => {
         component.floatRight = true;
         component.rubric.private = true;
         fixture.detectChanges();
+        const copyLinkButton = fixture.nativeElement.querySelector('#copy-link');
+        const duplicateRubricButton = fixture.nativeElement.querySelector('#duplicate-rubric');
+        const deleteRubricButton = fixture.nativeElement.querySelector('#delete-rubric');
 
-        const buttons = fixture.nativeElement.querySelectorAll('button');
-
-        void expect(buttons.length).toEqual(3);
+        void expect(copyLinkButton).toBeTruthy();
+        void expect(duplicateRubricButton).toBeTruthy();
+        void expect(deleteRubricButton).toBeTruthy();
     });
 
     it('should render 3 buttons when rubric is public and showPrint is true', () => {
         component.showPrint = true;
         component.rubric.private = false;
         fixture.detectChanges();
+        const copyLinkButton = fixture.nativeElement.querySelector('#copy-link');
+        const duplicateRubricButton = fixture.nativeElement.querySelector('#duplicate-rubric');
+        const printRubricButton = fixture.nativeElement.querySelector('#print-rubric');
 
-        const buttons = fixture.nativeElement.querySelectorAll('button');
-        void expect(buttons.length).toEqual(3);
+        void expect(copyLinkButton).toBeTruthy();
+        void expect(duplicateRubricButton).toBeTruthy();
+        void expect(printRubricButton).toBeTruthy();
     });
 
     it('should render 4 buttons when rubric is private and showPrint is true', () => {
         component.showPrint = true;
         component.rubric.private = true;
         fixture.detectChanges();
+        const copyLinkButton = fixture.nativeElement.querySelector('#copy-link');
+        const duplicateRubricButton = fixture.nativeElement.querySelector('#duplicate-rubric');
+        const printRubricButton = fixture.nativeElement.querySelector('#print-rubric');
+        const deleteRubricButton = fixture.nativeElement.querySelector('#delete-rubric');
 
-        const buttons = fixture.nativeElement.querySelectorAll('button');
-        void expect(buttons.length).toEqual(4);
+        void expect(copyLinkButton).toBeTruthy();
+        void expect(duplicateRubricButton).toBeTruthy();
+        void expect(printRubricButton).toBeTruthy();
+        void expect(deleteRubricButton).toBeTruthy();
     });
 
     it('should render 1 span with date rubric was created', () => {
