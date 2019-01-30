@@ -1,13 +1,13 @@
 <div class="btn-group d-print-none" [class.float-md-right]="floatRight" role="group">
-    <button (click)="copyLink()" type="button" class="btn btn-secondary">
+    <button (click)="copyLink()" type="button" class="btn btn-secondary" id="copy-link">
         <span *ngIf="!copied" [ngbTooltip]="'Copy Link'" class="oi oi-link-intact" aria-label="Copy Link"></span>
         <span *ngIf="copied" [ngbTooltip]="'Link Copied!'" class="oi oi-check" aria-label="Link Copied"></span>
     </button>
-    <button *ngIf="rubric.uuid" type="button" class="btn btn-secondary" [routerLink]="'/rubrics/' + rubric.uuid + '/duplicate'">
+    <button *ngIf="rubric.uuid" type="button" class="btn btn-secondary" id="duplicate-rubric" [routerLink]="'/rubrics/' + rubric.uuid + '/duplicate'">
         <span [ngbTooltip]="'Duplicate Rubric'" class="oi oi-layers" aria-label="Duplicate Rubric"></span>
     </button>
-    <button *ngIf="showPrint" type="button" class="btn btn-secondary" (click)="printRubric()">
-        <span [ngbTooltip]="'Print/Download Rubric'" class="oi oi-print" aria-label="Print/Download Rubric"></span>
+    <button *ngIf="showPrint" type="button" class="btn btn-secondary" id="print-rubric" (click)="printRubric()">
+        <span [ngbTooltip]="'Print Rubric'" class="oi oi-print" aria-label="Print Rubric"></span>
     </button>
     <button *ngIf="rubric.private" type="button" class="btn btn-secondary" id="delete-rubric" (click)="openDeleteRubricModal()">
         <span [ngbTooltip]="'Delete Rubric'" class="oi oi-trash" aria-label="Delete Rubric"></span>
