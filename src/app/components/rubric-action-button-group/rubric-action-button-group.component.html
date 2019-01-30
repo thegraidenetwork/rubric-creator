@@ -9,17 +9,17 @@
     <button *ngIf="showPrint" type="button" class="btn btn-secondary" (click)="printRubric()">
         <span [ngbTooltip]="'Print/Download Rubric'" class="oi oi-print" aria-label="Print/Download Rubric"></span>
     </button>
-    <button *ngIf="rubric.private" type="button" class="btn btn-secondary" id="btn-delete" (click)="openDeleteRubricModal()">
+    <button *ngIf="rubric.private" type="button" class="btn btn-secondary" id="delete-rubric" (click)="openDeleteRubricModal()">
         <span [ngbTooltip]="'Delete Rubric'" class="oi oi-trash" aria-label="Delete Rubric"></span>
     </button>
-    <span *ngIf="rubric.created_at" [class.extra-wide]="!rubric.private" class="d-none d-lg-block btn btn-outline-secondary disabled btn-date"
+    <span *ngIf="rubric.created_at" [class.extra-wide]="!rubric.private" class="d-none d-lg-block btn btn-outline-secondary disabled btn-date" id="date-created"
         role="Date Created" tabindex="0">
         {{ rubric.created_at | date: 'mediumDate' }}
     </span>
     <div *ngIf="!rubric.private" class="btn btn-secondary disabled">
-        <span [ngbTooltip]="'Public'" class="oi oi-lock-unlocked" role="Rubric Public" tabindex="0"></span>
+        <span [ngbTooltip]="'Public'" class="oi oi-lock-unlocked" id="rubric-public" role="Rubric Public" tabindex="0"></span>
     </div>
     <div *ngIf="rubric.private" class="btn btn-secondary disabled">
-        <span [ngbTooltip]="'Private'" class="oi oi-lock-locked" role="Rubric Private" tabindex="0"></span>
+        <span [ngbTooltip]="'Private'" class="oi oi-lock-locked" id="rubric-private" role="Rubric Private" tabindex="0"></span>
     </div>
 </div>
