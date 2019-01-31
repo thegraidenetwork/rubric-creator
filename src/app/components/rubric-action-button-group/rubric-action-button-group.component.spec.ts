@@ -5,6 +5,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import * as faker from 'faker';
 import { DatePipe } from '@angular/common';
+import { By } from '@angular/platform-browser';
 
 describe('RubricActionButtonGroupComponent', () => {
     let component: RubricActionButtonGroupComponent;
@@ -41,8 +42,8 @@ describe('RubricActionButtonGroupComponent', () => {
         component.floatRight = true;
         component.rubric.private = false;
         fixture.detectChanges();
-        const copyLinkButton = fixture.nativeElement.querySelector('#copy-link');
-        const duplicateRubricButton = fixture.nativeElement.querySelector('#duplicate-rubric');
+        const copyLinkButton = fixture.debugElement.query(By.css('span.oi.oi-link-intact')).nativeElement.parentElement;
+        const duplicateRubricButton = fixture.debugElement.query(By.css('span.oi.oi-layers')).nativeElement.parentElement;
 
         void expect(copyLinkButton).toBeTruthy();
         void expect(duplicateRubricButton).toBeTruthy();
@@ -52,9 +53,9 @@ describe('RubricActionButtonGroupComponent', () => {
         component.floatRight = true;
         component.rubric.private = true;
         fixture.detectChanges();
-        const copyLinkButton = fixture.nativeElement.querySelector('#copy-link');
-        const duplicateRubricButton = fixture.nativeElement.querySelector('#duplicate-rubric');
-        const deleteRubricButton = fixture.nativeElement.querySelector('#delete-rubric');
+        const copyLinkButton = fixture.debugElement.query(By.css('span.oi.oi-link-intact')).nativeElement.parentElement;
+        const duplicateRubricButton = fixture.debugElement.query(By.css('span.oi.oi-layers')).nativeElement.parentElement;
+        const deleteRubricButton = fixture.debugElement.query(By.css('span.oi.oi-trash')).nativeElement.parentElement;
 
         void expect(copyLinkButton).toBeTruthy();
         void expect(duplicateRubricButton).toBeTruthy();
@@ -65,9 +66,9 @@ describe('RubricActionButtonGroupComponent', () => {
         component.showPrint = true;
         component.rubric.private = false;
         fixture.detectChanges();
-        const copyLinkButton = fixture.nativeElement.querySelector('#copy-link');
-        const duplicateRubricButton = fixture.nativeElement.querySelector('#duplicate-rubric');
-        const printRubricButton = fixture.nativeElement.querySelector('#print-rubric');
+        const copyLinkButton = fixture.debugElement.query(By.css('span.oi.oi-link-intact')).nativeElement.parentElement;
+        const duplicateRubricButton = fixture.debugElement.query(By.css('span.oi.oi-layers')).nativeElement.parentElement;
+        const printRubricButton = fixture.debugElement.query(By.css('span.oi.oi-print')).nativeElement.parentElement;
 
         void expect(copyLinkButton).toBeTruthy();
         void expect(duplicateRubricButton).toBeTruthy();
@@ -78,10 +79,10 @@ describe('RubricActionButtonGroupComponent', () => {
         component.showPrint = true;
         component.rubric.private = true;
         fixture.detectChanges();
-        const copyLinkButton = fixture.nativeElement.querySelector('#copy-link');
-        const duplicateRubricButton = fixture.nativeElement.querySelector('#duplicate-rubric');
-        const printRubricButton = fixture.nativeElement.querySelector('#print-rubric');
-        const deleteRubricButton = fixture.nativeElement.querySelector('#delete-rubric');
+        const copyLinkButton = fixture.debugElement.query(By.css('span.oi.oi-link-intact')).nativeElement.parentElement;
+        const duplicateRubricButton = fixture.debugElement.query(By.css('span.oi.oi-layers')).nativeElement.parentElement;
+        const printRubricButton = fixture.debugElement.query(By.css('span.oi.oi-print')).nativeElement.parentElement;
+        const deleteRubricButton = fixture.debugElement.query(By.css('span.oi.oi-trash')).nativeElement.parentElement;
 
         void expect(copyLinkButton).toBeTruthy();
         void expect(duplicateRubricButton).toBeTruthy();
@@ -91,7 +92,7 @@ describe('RubricActionButtonGroupComponent', () => {
 
     it('should render 1 span with date rubric was created', () => {
         pipe = new DatePipe('en');
-        const span = fixture.nativeElement.querySelector('#date-created');
+        const span = fixture.debugElement.query(By.css('span.d-none')).nativeElement;
 
         void expect(span.textContent).toBe(pipe.transform(component.rubric.created_at, ' MMM d, y '));
     });
@@ -99,7 +100,7 @@ describe('RubricActionButtonGroupComponent', () => {
     it('should render 1 span with Public ngbTooltip when rubric is public', () => {
         component.rubric.private = false;
         fixture.detectChanges();
-        const span = fixture.nativeElement.querySelector('#rubric-public');
+        const span = fixture.debugElement.query(By.css('span.oi.oi-lock-unlocked')).nativeElement;
         const ngbTooltip = span.getAttribute('ng-reflect-ngb-tooltip');
 
         void expect(ngbTooltip).toEqual('Public');
@@ -108,7 +109,7 @@ describe('RubricActionButtonGroupComponent', () => {
     it('should render 1 span with Private ngbTooltip when rubric is private', () => {
         component.rubric.private = true;
         fixture.detectChanges();
-        const span = fixture.nativeElement.querySelector('#rubric-private');
+        const span = fixture.debugElement.query(By.css('span.oi.oi-lock-locked')).nativeElement;
         const ngbTooltip = span.getAttribute('ng-reflect-ngb-tooltip');
 
         void expect(ngbTooltip).toEqual('Private');
@@ -135,7 +136,7 @@ describe('RubricActionButtonGroupComponent', () => {
         component.rubric.private = true;
         fixture.detectChanges();
         spyOn(component, 'openDeleteRubricModal');
-        const button = fixture.debugElement.nativeElement.querySelector('#delete-rubric');
+        const button = fixture.debugElement.query(By.css('span.oi.oi-trash')).nativeElement.parentElement;
 
         button.click();
 
