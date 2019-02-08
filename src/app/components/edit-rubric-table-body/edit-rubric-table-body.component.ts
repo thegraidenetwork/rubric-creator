@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { RubricsStateInterface } from '../../store/rubrics.state';
 import { ComponentInterface } from '../../object-interfaces/component.interface';
 import { BaseEditRubricComponent } from '../base/base-edit-rubric.component';
-import { emptyComponentObject } from '../../data-services/data/empty-component.object';
 import { LevelInterface } from '../../object-interfaces/level.interface';
 
 @Component({
@@ -28,12 +27,12 @@ export class EditRubricTableBodyComponent extends BaseEditRubricComponent {
     }
 
     public componentWidth(): object {
-        return {'min-width': '15em'};
+        return { 'min-width': '15em' };
     }
 
     public removeComponent(componentIndex: number): void {
         if (this.rubric !== undefined && this.rubric.components !== undefined) {
-            this.rubric.components = this.rubric.components.filter((c, i) =>  i !== componentIndex);
+            this.rubric.components = this.rubric.components.filter((c, i) => i !== componentIndex);
             this.updateRubric();
         }
     }
@@ -54,7 +53,7 @@ export class EditRubricTableBodyComponent extends BaseEditRubricComponent {
             this.rubric.components[componentIndex].levels.length > 0
         ) {
             this.rubric.components[componentIndex].levels = this.rubric.components[componentIndex].levels
-                .filter((c, i) =>  i !== levelIndex);
+                .filter((c, i) => i !== levelIndex);
             this.updateRubric();
         }
     }
@@ -64,7 +63,7 @@ export class EditRubricTableBodyComponent extends BaseEditRubricComponent {
             this.rubric !== undefined && this.rubric.components !== undefined &&
             this.rubric.components[componentIndex].levels.length > 0
         ) {
-            return {...this.rubric.components[componentIndex].levels[levelIndex - 1]};
+            return { ...this.rubric.components[componentIndex].levels[levelIndex - 1] };
         }
 
         return {};
