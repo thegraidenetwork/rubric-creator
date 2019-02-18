@@ -1,4 +1,4 @@
-import { async, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
+import { fakeAsync, inject, TestBed } from '@angular/core/testing';
 import { ConnectionService } from './connection.service';
 import { Store, StoreModule } from '@ngrx/store';
 import { getInitialState, RubricsStateInterface } from '../store/rubrics.state';
@@ -7,7 +7,7 @@ import { WindowRef } from './window-ref.service';
 import { NavigatorRef } from './navigator-ref.service';
 
 describe('ConnectionService', () => {
-    let testNavigator = {nativeNavigator: {onLine: true}};
+    let testNavigator = { nativeNavigator: { onLine: true } };
     let store: Store<RubricsStateInterface>;
 
     beforeEach(() => {
@@ -22,8 +22,8 @@ describe('ConnectionService', () => {
             ],
             imports: [
                 StoreModule.forRoot(
-                    {rubrics: rubricsReducer},
-                    {initialState: getInitialState}
+                    { rubrics: rubricsReducer },
+                    { initialState: getInitialState }
                 ),
             ],
         });
@@ -40,6 +40,6 @@ describe('ConnectionService', () => {
         testNavigator.nativeNavigator.onLine = false;
         service.init();
 
-        expect(store.dispatch).toHaveBeenCalledTimes(2);
+        void expect(store.dispatch).toHaveBeenCalledTimes(2);
     })));
 });

@@ -5,7 +5,7 @@ import { BaseComponent } from '../base/base.component';
 import { Router } from '@angular/router';
 import { selectError } from '../../store/rubrics.selectors';
 import { DisplayableErrorInterface } from '../../object-interfaces/displayable-error.interface';
-import { filter, takeUntil, tap } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'rc-page-alert',

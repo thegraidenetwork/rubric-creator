@@ -11,7 +11,9 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
     constructor(
+        // tslint:disable-next-line:no-unused-variable
         private angulartics2GoogleTagManager: Angulartics2GoogleAnalytics,
+        // tslint:disable-next-line:no-unused-variable
         private angulartics2Intercom: Angulartics2Intercom,
         private router: Router
     ) { }
