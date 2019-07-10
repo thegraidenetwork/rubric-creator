@@ -5,10 +5,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GetRubricDataInterface } from '../interfaces/get-rubric-data.interface';
 import { JsonbinCreateResponseInterface } from '../../object-interfaces/jsonbin-create-response.interface';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class JsonbinHttpService implements GetRubricDataInterface {
     private readonly rootUrl = 'https://api.jsonbin.io';
+    private readonly headers = {
+        'secret-key': environment.jsonbinSecretKey,
+        'collection-id': environment.jsonbinCollectionId,
+        private: 'false',
+    };
 
     constructor(private http: HttpClient) { }
 
@@ -25,11 +31,11 @@ export class JsonbinHttpService implements GetRubricDataInterface {
     }
 
     private get(url: string): Observable<object> {
-        return this.http.get(url);
+        return this.http.get(url, {headers: this.headers});
     }
 
     private post(url: string, payload: object): Observable<object> {
-        return this.http.post(url, payload);
+        return this.http.post(url, payload, {headers: this.headers});
     }
 
 }
