@@ -6,7 +6,6 @@ import { GetRubric, SetPageTitle } from '../../store/rubrics.actions';
 import { BaseRubricComponent } from '../../components/base/base-rubric.component';
 import { selectCurrentRubric, selectPageTitle } from '../../store/rubrics.selectors';
 import { combineLatest } from 'rxjs/internal/observable/combineLatest';
-import { RubricInterface } from '../../object-interfaces/rubric.interface';
 import { filter, map, takeUntil, tap } from 'rxjs/operators';
 
 @Component({

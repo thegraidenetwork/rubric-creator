@@ -37,10 +37,10 @@ describe('BackendDataService', () => {
             spyOn(mockLocalStorageService, 'getRubrics').and.callThrough();
             spyOn(mockJsonbinHttpService, 'getRubric').and.callThrough();
 
-            const results = service.getRubric(uuid);
+            service.getRubric(uuid);
 
-            expect(mockLocalStorageService.getRubrics).toHaveBeenCalledTimes(1);
-            expect(mockJsonbinHttpService.getRubric).toHaveBeenCalledTimes(1);
+            void expect(mockLocalStorageService.getRubrics).toHaveBeenCalledTimes(1);
+            void expect(mockJsonbinHttpService.getRubric).toHaveBeenCalledTimes(1);
         }
     ));
 
@@ -49,9 +49,9 @@ describe('BackendDataService', () => {
         (service: BackendDataService) => {
             spyOn(mockLocalStorageService, 'getRubrics').and.callThrough();
 
-            const results = service.getRubrics();
+            service.getRubrics();
 
-            expect(mockLocalStorageService.getRubrics).toHaveBeenCalledTimes(1);
+            void expect(mockLocalStorageService.getRubrics).toHaveBeenCalledTimes(1);
         }
     ));
 
@@ -63,9 +63,9 @@ describe('BackendDataService', () => {
                 name: faker.lorem.words(),
             };
 
-            const result = service.createRubric(rubric);
+            service.createRubric(rubric);
 
-            expect(mockJsonbinHttpService.createRubric).toHaveBeenCalledTimes(1);
+            void expect(mockJsonbinHttpService.createRubric).toHaveBeenCalledTimes(1);
         }
     ));
 });
