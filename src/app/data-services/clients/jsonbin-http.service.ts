@@ -11,9 +11,9 @@ import { environment } from '../../../environments/environment';
 export class JsonbinHttpService implements GetRubricDataInterface {
     private readonly rootUrl = 'https://api.jsonbin.io';
     private readonly headers = {
-        'secret-key': environment.jsonbinSecretKey,
         'collection-id': environment.jsonbinCollectionId,
         private: 'false',
+        'secret-key': environment.jsonbinSecretKey,
     };
 
     constructor(private http: HttpClient) { }

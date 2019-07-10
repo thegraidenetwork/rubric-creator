@@ -5,7 +5,7 @@
 
 export const environment = {
     googleAnalyticsId: '',
-    jsonbinSecretKey: '$2a$10$I6bgb7DFchGbSjFDyew08.wtyt5fP6fzplz1vkwDLPHLCqVJ2L66W',
     jsonbinCollectionId: '5d260bc10e09805769fe275e',
+    jsonbinSecretKey: '$2a$10$I6bgb7DFchGbSjFDyew08.wtyt5fP6fzplz1vkwDLPHLCqVJ2L66W',
     production: false,
 };
