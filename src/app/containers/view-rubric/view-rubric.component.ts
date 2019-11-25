@@ -27,15 +27,15 @@ export class ViewRubricComponent extends BaseRubricComponent implements OnInit {
             this.store.dispatch(new GetRubric(params['rubric_uuid'] as string));
         });
 
-        combineLatest(
+        combineLatest([
             this.store.pipe(
                 select(selectCurrentRubric),
                 map(currentRubric => currentRubric !== undefined ?
                     `${currentRubric.name} | Rubric Creator` :
                     getInitialState().rubrics.pageTitle)
             ),
-            this.store.pipe(select(selectPageTitle))
-        )
+            this.store.pipe(select(selectPageTitle)),
+        ])
             .pipe(
                 takeUntil(this.ngUnsubscribe),
                 filter(([titleBasedOnCurrentRubric, pageTitle]: [string, string]) => titleBasedOnCurrentRubric !== pageTitle),
