@@ -1,10 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SearchInputComponent } from './search-input.component';
-import { RouterTestingModule } from '@angular/router/testing';
 import { Nl2brPipe } from '../../pipes/nl2br.pipe';
-import * as faker from 'faker';
-import { ComponentInterface } from '../../object-interfaces/component.interface';
-import { RubricInterface } from '../../object-interfaces/rubric.interface';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Store, StoreModule } from '@ngrx/store';
 import { getInitialState, RubricsStateInterface } from '../../store/rubrics.state';
