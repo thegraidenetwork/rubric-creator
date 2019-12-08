@@ -20,6 +20,7 @@ export enum RubricsActionTypes {
     SetPageTitle = 'Set Page Title',
     ConnectionMade = 'Connection Made',
     ConnectionLost = 'Connection Lost',
+    UpdateListFilter = 'Update List Filter',
 }
 
 export class GetRubric implements Action {
@@ -102,6 +103,11 @@ export class ConnectionLost implements Action {
     constructor(public payload?: undefined) {}
 }
 
+export class UpdateListFilter implements Action {
+  public readonly type = RubricsActionTypes.UpdateListFilter;
+  constructor(public payload?: string) {}
+}
+
 export type RubricsActionsUnion =
     | GetRubric
     | GetRubricSuccess
@@ -118,4 +124,5 @@ export type RubricsActionsUnion =
     | CreateRubricError
     | SetPageTitle
     | ConnectionMade
-    | ConnectionLost;
+    | ConnectionLost
+    | UpdateListFilter;
