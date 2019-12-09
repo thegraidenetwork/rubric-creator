@@ -105,7 +105,7 @@ export class ConnectionLost implements Action {
 
 export class UpdateListFilter implements Action {
   public readonly type = RubricsActionTypes.UpdateListFilter;
-  constructor(public payload?: string) {}
+  constructor(public payload: string) {}
 }
 
 export type RubricsActionsUnion =

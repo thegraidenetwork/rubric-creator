@@ -7,7 +7,7 @@ import { getInitialState, RubricsStateInterface } from '../../store/rubrics.stat
 import { FormsModule } from '@angular/forms';
 import { rubricsReducer } from '../../store/rubrics.reducer';
 
-fdescribe('SearchInputComponent', () => {
+describe('SearchInputComponent', () => {
   let component: SearchInputComponent;
   let fixture: ComponentFixture<SearchInputComponent>;
   let store: Store<RubricsStateInterface>;
