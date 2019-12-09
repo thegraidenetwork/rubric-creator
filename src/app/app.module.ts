@@ -45,6 +45,7 @@ import { WindowRef } from './services/window-ref.service';
 import { NavigatorRef } from './services/navigator-ref.service';
 import { RubricActionButtonGroupComponent } from './components/rubric-action-button-group/rubric-action-button-group.component';
 import { DeleteRubricModalComponent } from './components/delete-rubric-modal/delete-rubric-modal.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
     bootstrap: [
@@ -75,6 +76,7 @@ import { DeleteRubricModalComponent } from './components/delete-rubric-modal/del
         CreateRubricButtonComponent,
         RubricActionButtonGroupComponent,
         DeleteRubricModalComponent,
+        SearchComponent,
     ],
     entryComponents: [
         DeleteRubricModalComponent,
