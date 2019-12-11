@@ -9,6 +9,7 @@ export interface RubricsStateInterface {
     deleting: boolean;
     pageTitle: string;
     connected: boolean;
+    currentSearchTerm: string;
 }
 
 export function getInitialState(): {rubrics: RubricsStateInterface} {
@@ -21,6 +22,7 @@ export function getInitialState(): {rubrics: RubricsStateInterface} {
             deleting: false,
             pageTitle: 'Rubric Creator by The Graide Network',
             connected: true,
+            currentSearchTerm: '',
         },
     };
 }

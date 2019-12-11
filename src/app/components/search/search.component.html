@@ -1,0 +1,8 @@
+<input
+    id="search"
+    type="search"
+    class="form-control"
+    [(ngModel)]="searchTerm"
+    (ngModelChange)="dispatchSearchTerm()"
+    placeholder="Search rubrics..."
+    required />

@@ -4,13 +4,15 @@
             <h1 class="mb-3">Available Rubrics</h1>
         </div>
     </div>
+    <div class="row">
+        <rc-search></rc-search>
+    </div>
     <div *ngIf="rubrics" class="row">
         <div class="col">
             <rc-rubric-list-item
                 class="list-group"
                 *ngFor="let rubric of rubrics"
-                [rubric]="rubric"
-            ></rc-rubric-list-item>
+                [rubric]="rubric"></rc-rubric-list-item>
         </div>
     </div>
     <div class="row">

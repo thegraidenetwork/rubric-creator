@@ -14,6 +14,12 @@ function _resetRubric(rubric: RubricInterface | undefined): RubricInterface | un
 
 export function rubricsReducer(state: RubricsStateInterface, action: RubricsActionsUnion): RubricsStateInterface {
     switch (action.type) {
+        case RubricsActionTypes.SetSearchTerm:
+            return {
+                ...state,
+                currentSearchTerm: action.payload,
+            };
+
         case RubricsActionTypes.GetRubricSuccess:
         case RubricsActionTypes.UpdateCurrentRubric:
         case RubricsActionTypes.CreateRubricSuccess:

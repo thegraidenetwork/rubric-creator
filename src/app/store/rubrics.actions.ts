@@ -4,6 +4,7 @@ import { RubricInterface } from '../object-interfaces/rubric.interface';
 import { DisplayableErrorInterface } from '../object-interfaces/displayable-error.interface';
 
 export enum RubricsActionTypes {
+    SetSearchTerm = 'Set Search Term',
     GetRubric = 'Get Rubric',
     GetRubricSuccess = 'Get Rubric Success',
     GetRubricError = 'Get Rubric Error',
@@ -20,6 +21,11 @@ export enum RubricsActionTypes {
     SetPageTitle = 'Set Page Title',
     ConnectionMade = 'Connection Made',
     ConnectionLost = 'Connection Lost',
+}
+
+export class SetSearchTerm implements Action {
+    public readonly type = RubricsActionTypes.SetSearchTerm;
+    constructor(public payload: string) {}
 }
 
 export class GetRubric implements Action {
@@ -118,4 +124,5 @@ export type RubricsActionsUnion =
     | CreateRubricError
     | SetPageTitle
     | ConnectionMade
-    | ConnectionLost;
+    | ConnectionLost
+    | SetSearchTerm;
