@@ -6,7 +6,6 @@ import { RubricsStateInterface } from '../../store/rubrics.state';
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
 import { BaseComponent } from '../../components/base/base.component';
 import { GetRubrics, SetPageTitle } from '../../store/rubrics.actions';
-import { selectAllRubrics } from '../../store/rubrics.selectors';
 
 @Component({
     selector: 'rc-list-rubrics',
