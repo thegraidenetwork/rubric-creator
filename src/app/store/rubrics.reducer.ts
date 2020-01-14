@@ -40,7 +40,7 @@ export function rubricsReducer(state: RubricsStateInterface, action: RubricsActi
             return {
                 ...state,
                 currentRubric: undefined,
-                allRubrics: undefined,
+                allRubrics: [],
                 error: action.payload,
                 saving: false,
                 deleting: false,
@@ -67,6 +67,12 @@ export function rubricsReducer(state: RubricsStateInterface, action: RubricsActi
 
         case RubricsActionTypes.ConnectionLost:
             return { ...state, connected: false };
+
+        case RubricsActionTypes.UpdateListFilter:
+            return {
+                ...state,
+                listFilter: action.payload,
+            };
 
         case RubricsActionTypes.GetRubrics:
         default:

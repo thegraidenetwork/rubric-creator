@@ -1,0 +1,15 @@
+<div class="row mb-3">
+  <div class="input-group col-12">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="search-input">Search</label>
+    </div>
+    <input
+      id="search-input"
+      type="text"
+      class="form-control"
+      placeholder="Start typing to search rubrics"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="updateSearchTerm()"
+    />
+  </div>
+</div>

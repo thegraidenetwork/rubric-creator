@@ -136,7 +136,7 @@ describe('RubricsReducer', () => {
             void expect(result).toEqual({
                 ...initialState,
                 error,
-                allRubrics: undefined,
+                allRubrics: [],
                 currentRubric: undefined,
                 deleting: false,
                 saving: false,
@@ -153,7 +153,7 @@ describe('RubricsReducer', () => {
             void expect(result).toEqual({
                 ...initialState,
                 error,
-                allRubrics: undefined,
+                allRubrics: [],
                 currentRubric: undefined,
                 deleting: false,
                 saving: false,
@@ -170,7 +170,7 @@ describe('RubricsReducer', () => {
             void expect(result).toEqual({
                 ...initialState,
                 error,
-                allRubrics: undefined,
+                allRubrics: [],
                 currentRubric: undefined,
                 deleting: false,
                 saving: false,
@@ -187,7 +187,7 @@ describe('RubricsReducer', () => {
             void expect(result).toEqual({
                 ...initialState,
                 error,
-                allRubrics: undefined,
+                allRubrics: [],
                 currentRubric: undefined,
                 deleting: false,
                 saving: false,

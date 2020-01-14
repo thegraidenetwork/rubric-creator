@@ -5,3 +5,12 @@ export const selectSaving = state => state.rubrics.saving;
 export const selectDeleting = state => state.rubrics.deleting;
 export const selectPageTitle = state => state.rubrics.pageTitle;
 export const selectConnected = state => state.rubrics.connected;
+
+export const selectFilteredRubrics = state => {
+    return state.rubrics.allRubrics.filter(rubric => {
+        return (
+            rubric.name.toLowerCase().includes(state.rubrics.listFilter.toLowerCase()) ||
+            rubric.description.toLowerCase().includes(state.rubrics.listFilter.toLowerCase())
+        );
+    });
+};

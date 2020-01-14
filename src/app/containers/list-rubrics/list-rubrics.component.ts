@@ -1,3 +1,4 @@
+import { selectFilteredRubrics } from './../../store/rubrics.selectors';
 import { takeUntil } from 'rxjs/operators';
 import { select, Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
@@ -5,7 +6,6 @@ import { RubricsStateInterface } from '../../store/rubrics.state';
 import { RubricInterface } from '../../object-interfaces/rubric.interface';
 import { BaseComponent } from '../../components/base/base.component';
 import { GetRubrics, SetPageTitle } from '../../store/rubrics.actions';
-import { selectAllRubrics } from '../../store/rubrics.selectors';
 
 @Component({
     selector: 'rc-list-rubrics',
@@ -23,7 +23,7 @@ export class ListRubricsComponent extends BaseComponent implements OnInit {
         this.store
             .pipe(
                 takeUntil(this.ngUnsubscribe),
-                select(selectAllRubrics)
+                select(selectFilteredRubrics)
             )
             .subscribe((allRubrics: Array<RubricInterface>) => {
                 this.rubrics = allRubrics;
