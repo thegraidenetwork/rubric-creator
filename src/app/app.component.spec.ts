@@ -3,7 +3,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { Angulartics2Intercom } from 'angulartics2/intercom';
 import { Angulartics2Module } from 'angulartics2';
 
 describe('AppComponent', () => {
@@ -24,7 +23,6 @@ describe('AppComponent', () => {
         TestBed.configureTestingModule({
             providers: [
                 Angulartics2GoogleAnalytics,
-                Angulartics2Intercom,
             ],
             declarations: [
                 AppComponent,
@@ -33,7 +31,6 @@ describe('AppComponent', () => {
                 RouterTestingModule,
                 Angulartics2Module.forRoot([
                     Angulartics2GoogleAnalytics,
-                    Angulartics2Intercom,
                 ]),
             ],
             schemas: [
