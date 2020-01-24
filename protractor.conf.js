@@ -8,12 +8,23 @@ exports.config = {
   specs: [
     './e2e/**/*.e2e-spec.ts'
   ],
-  capabilities: {
-    'browserName': 'chrome',
-    'chromeOptions': {
+  multiCapabilities: [
+    {
+      'browserName': 'chrome',
+      'chromeOptions': {
+        'mobileEmulation': {
+          'deviceName': 'iPhone 6/7/8 Plus'
+        },
         'args': ['no-sandbox']
+      },
+    },
+    {
+      'browserName': 'chrome',
+      'chromeOptions': {
+        'args': ['no-sandbox']
+      }
     }
-  },
+  ],
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',
