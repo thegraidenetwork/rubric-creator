@@ -9,7 +9,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Limited offline support, progressive web app.
 - Google Analytics support.
-- Intercom support.
 - Protractor tests.
 
 ### Fixed

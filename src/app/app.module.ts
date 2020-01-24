@@ -36,7 +36,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { RubricViewMobileComponent } from './components/rubric-view-mobile/rubric-view-mobile.component';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { Angulartics2Intercom } from 'angulartics2/intercom';
 import { OfflineComponent } from './components/offline/offline.component';
 import { ConnectionService } from './services/connection.service';
 import { LoadingComponent } from './components/loading/loading.component';
@@ -96,7 +95,6 @@ import { SearchInputComponent } from './components/search-input/search-input.com
         environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
         Angulartics2Module.forRoot([
             Angulartics2GoogleAnalytics,
-            Angulartics2Intercom,
         ]),
     ],
     providers: [
