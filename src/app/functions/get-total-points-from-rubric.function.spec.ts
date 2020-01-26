@@ -4,27 +4,20 @@ import { getTotalPointsFromRubric } from './get-total-points-from-rubric.functio
 
 describe('Function: getTotalPointsFromRubric', () => {
     it('should get total points in rubric', () => {
-        const scores = [
-            faker.random.number(),
-            faker.random.number(),
-            faker.random.number(),
-            faker.random.number(),
-            faker.random.number(),
-        ];
         const rubric: RubricInterface = {
             components: [
                 {
                     levels: [
-                        {score: scores[0]},
-                        {score: scores[1]},
-                        {score: scores[2]},
+                        {score: 0},
+                        {score: 4},
+                        {score: 8},
                     ],
                     name: faker.lorem.words(),
                 },
                 {
                     levels: [
-                        {score: scores[3]},
-                        {score: scores[4]},
+                        {score: 1},
+                        {score: 2},
                     ],
                     name: faker.lorem.words(),
                 },
@@ -34,6 +27,6 @@ describe('Function: getTotalPointsFromRubric', () => {
 
         const result = getTotalPointsFromRubric(rubric);
 
-        expect(result).toBe(scores.reduce((prev, curr) => prev + curr));
+        void expect(result).toBe(10);
     });
 });
