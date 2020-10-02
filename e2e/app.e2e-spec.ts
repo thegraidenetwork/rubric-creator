@@ -39,7 +39,7 @@ describe('rubric-creator App', () => {
         return title;
     }
 
-    it('should allow rubric creation', () => {
+    xit('should allow rubric creation', () => {
         void browser.get('/');
 
         void element(by.css('rc-create-rubric-button a')).click();
@@ -51,7 +51,7 @@ describe('rubric-creator App', () => {
         void expect(header.getText()).toContain(title);
     });
 
-    it('should allow rubric removal for custom rubrics', () => {
+    xit('should allow rubric removal for custom rubrics', () => {
         void browser.get('/rubrics/create');
 
         createCustomRubric();
@@ -65,7 +65,7 @@ describe('rubric-creator App', () => {
         void expect(rubricTitles.count()).toBe(defaultRubricsArray.length);
     });
 
-    it('should allow rubric duplication', () => {
+    xit('should allow rubric duplication', () => {
         void browser.get('/rubrics');
 
         void element.all(by.css('rc-rubric-action-button-group div button')).get(1).click();
