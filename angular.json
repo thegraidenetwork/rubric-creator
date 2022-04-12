@@ -19,7 +19,8 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/manifest.json"
+              "src/manifest.json",
+              "src/googlea62622c42108047b.html"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",

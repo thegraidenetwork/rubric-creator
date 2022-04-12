@@ -6,8 +6,7 @@
     "resources": {
       "files": [
         "/favicon.ico",
-        "/index.html",
-        "/googlea62622c42108047b.html"
+        "/index.html"
       ],
       "versionedFiles": [
         "/*.bundle.css",
