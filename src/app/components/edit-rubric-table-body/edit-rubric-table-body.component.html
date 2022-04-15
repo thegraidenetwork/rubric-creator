@@ -1,6 +1,6 @@
 <ng-container *ngIf="rubric">
-    <tr valign="top" *ngFor="let component of rubric.components; let i = index">
-        <th class="component-input-col" [ngStyle]="componentWidth()">
+    <div valign="top" *ngFor="let component of rubric.components; let i = index">
+        <div class="component-input-col" [ngStyle]="componentWidth()">
             <div class="level-actions form-group">
                 <button class="btn-sm btn-danger oi oi-x" aria-label="Remove Component" (click)="removeComponent(i)"></button>
             </div>
@@ -26,8 +26,8 @@
                         (ngModelChange)="updateRubric()"
                 ></textarea>
             </div>
-        </th>
-        <td *ngFor="let level of component.levels; let j = index" [ngStyle]="componentWidth()">
+        </div>
+        <div *ngFor="let level of component.levels; let j = index" [ngStyle]="componentWidth()">
             <div class="level-actions form-group">
                 <button class="btn-sm btn-success oi oi-plus" aria-label="Add Level" (click)="addLevel(i, j + 1)"></button>
                 <button class="btn-sm btn-danger oi oi-x" aria-label="Remove Level" (click)="removeLevel(i, j)"></button>
@@ -64,7 +64,7 @@
                         (ngModelChange)="updateRubric()"
                 ></textarea>
             </div>
-        </td>
-        <td *ngFor="let emptyElement of emptyElements(component)"></td>
-    </tr>
+        </div>
+        <div *ngFor="let emptyElement of emptyElements(component)"></div>
+    </div>
 </ng-container>

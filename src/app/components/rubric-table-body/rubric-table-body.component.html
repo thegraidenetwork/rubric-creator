@@ -1,11 +1,11 @@
 <ng-container *ngIf="rubric">
-    <tr valign="top" *ngFor="let component of rubric.components">
-        <th [ngStyle]="componentWidth()">
+    <div valign="top" *ngFor="let component of rubric.components">
+        <div [ngStyle]="componentWidth()">
             {{ component.name }}
             <div *ngIf="component.description" class="caption"
                  [innerHtml]="component.description | nl2br"></div>
-        </th>
-        <td *ngFor="let level of component.levels" [ngStyle]="componentWidth()">
+        </div>
+        <div *ngFor="let level of component.levels" [ngStyle]="componentWidth()">
             <div *ngIf="level.label">
                 <h5>{{ level.label }}</h5>
                 <div>
@@ -16,7 +16,7 @@
                 <h5>{{ level.score }}</h5>
             </div>
             <div class="text-muted" *ngIf="level.description" [innerHTML]="level.description | nl2br"></div>
-        </td>
-        <td *ngFor="let emptyElement of emptyElements(component)"></td>
-    </tr>
+        </div>
+        <div *ngFor="let emptyElement of emptyElements(component)"></div>
+    </div>
 </ng-container>
