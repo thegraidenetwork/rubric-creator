@@ -1,6 +1,37 @@
 .level-actions {
+    opacity: 0;
     float: right;
 }
 .level-actions .btn-sm {
     font-size: .7rem;
+}
+
+.level-wrapper {
+    display: inline-block;
+    max-width: 25%;
+    padding: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .level-wrapper {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}
+
+.level-wrapper:last-of-type .level-actions, .level-wrapper:hover .level-actions {
+    opacity: 1;
+}
+
+.component-wrapper {
+    padding: 10px;
+}
+
+.component-wrapper:nth-child(even) {
+    background-color: #efefef;
+}
+
+.component-wrapper:nth-child(odd) {
+    background-color: #dfdfdf;
 }

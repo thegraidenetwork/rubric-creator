@@ -1,5 +1,7 @@
+<hr>
+
 <ng-container *ngIf="rubric">
-    <div valign="top" *ngFor="let component of rubric.components; let i = index">
+    <div class="component-wrapper" valign="top" *ngFor="let component of rubric.components; let i = index">
         <div class="component-input-col" [ngStyle]="componentWidth()">
             <div class="level-actions form-group">
                 <button class="btn-sm btn-danger oi oi-x" aria-label="Remove Component" (click)="removeComponent(i)"></button>
@@ -27,7 +29,7 @@
                 ></textarea>
             </div>
         </div>
-        <div *ngFor="let level of component.levels; let j = index" [ngStyle]="componentWidth()">
+        <div *ngFor="let level of component.levels; let j = index" [ngStyle]="componentWidth()" class="level-wrapper">
             <div class="level-actions form-group">
                 <button class="btn-sm btn-success oi oi-plus" aria-label="Add Level" (click)="addLevel(i, j + 1)"></button>
                 <button class="btn-sm btn-danger oi oi-x" aria-label="Remove Level" (click)="removeLevel(i, j)"></button>

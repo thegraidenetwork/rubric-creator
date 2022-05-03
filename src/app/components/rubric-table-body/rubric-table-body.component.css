@@ -5,3 +5,7 @@ h5 {
     text-align: center;
     font-size: 1.1em;
 }
+
+.component-wrapper:nth-child(2) {
+    background-color: #ccc;
+}
